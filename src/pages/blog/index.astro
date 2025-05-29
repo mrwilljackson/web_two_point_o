@@ -1,5 +1,7 @@
 ---
-import '../../styles/global.css';
+import Layout from '../../layouts/Layout.astro';
+import NavBar from '../../components/NavBar';
+import Footer from '../../components/Footer';
 import { wordpressAPI } from '../../lib/wordpress';
 import {
   extractExcerpt,
@@ -38,42 +40,19 @@ const title = `Blog | ${process.env.SITE_NAME || 'Website'}`;
 const description = 'Read our latest blog posts and articles.';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
+<Layout title={title} description={description}>
 
-    <!-- SEO Meta Tags -->
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
+  <NavBar client:load />
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Blog" />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={`${process.env.SITE_URL}/blog`} />
-
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Blog" />
-    <meta name="twitter:description" content={description} />
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href={`${process.env.SITE_URL}/blog`} />
-
+  <main>
     <!-- Styles -->
     <style>
-      body {
-        font-family: system-ui, sans-serif;
-        line-height: 1.6;
+      .blog-container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 20px;
-        color: #333;
+        padding: 2rem 1rem;
         background: #f8f9fa;
+        min-height: 80vh;
       }
 
       .header {
@@ -294,13 +273,12 @@ const description = 'Read our latest blog posts and articles.';
         }
       }
     </style>
-  </head>
 
-  <body>
-    <header class="header">
-      <h1>Blog</h1>
-      <p>Latest posts and articles</p>
-    </header>
+    <div class="blog-container">
+      <header class="header">
+        <h1>Blog</h1>
+        <p>Latest posts and articles</p>
+      </header>
 
     <div class="main-content">
       <main>
@@ -422,9 +400,8 @@ const description = 'Read our latest blog posts and articles.';
         )}
       </aside>
     </div>
+    </div>
+  </main>
 
-    <footer class="navigation">
-      <a href="/" class="nav-link">← Home</a>
-    </footer>
-  </body>
-</html>
+  <Footer client:load />
+</Layout>

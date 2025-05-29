@@ -1,5 +1,7 @@
 ---
-import '../../styles/global.css';
+import Layout from '../../layouts/Layout.astro';
+import NavBar from '../../components/NavBar';
+import Footer from '../../components/Footer';
 import { wordpressAPI } from '../../lib/wordpress';
 import {
   processWordPressContent,
@@ -50,59 +52,19 @@ const title = `${post.title.rendered} | ${process.env.SITE_NAME || 'Blog'}`;
 const description = extractExcerpt(excerpt, 160);
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
+<Layout title={title} description={description}>
+  <NavBar client:load />
 
-    <!-- SEO Meta Tags -->
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <meta name="author" content={author?.name || 'Unknown'} />
-    <meta name="robots" content="index, follow" />
-
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content={post.title.rendered} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content={`${process.env.SITE_URL}/blog/${post.slug}`} />
-    {featuredImage && (
-      <meta property="og:image" content={featuredImage.source_url} />
-    )}
-
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={post.title.rendered} />
-    <meta name="twitter:description" content={description} />
-    {featuredImage && (
-      <meta name="twitter:image" content={featuredImage.source_url} />
-    )}
-
-    <!-- Article Meta Tags -->
-    <meta property="article:published_time" content={post.date} />
-    <meta property="article:modified_time" content={post.modified} />
-    {author && <meta property="article:author" content={author.name} />}
-    {categories.map(category => (
-      <meta property="article:section" content={category.name} />
-    ))}
-    {tags.map(tag => (
-      <meta property="article:tag" content={tag.name} />
-    ))}
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href={`${process.env.SITE_URL}/blog/${post.slug}`} />
+  <main>
 
     <!-- Basic Styles -->
     <style>
-      body {
-        font-family: system-ui, sans-serif;
-        line-height: 1.6;
+      .post-container {
         max-width: 800px;
         margin: 0 auto;
-        padding: 20px;
+        padding: 2rem 1rem;
         color: #333;
+        min-height: 80vh;
       }
 
       .post-header {
@@ -240,10 +202,9 @@ const description = extractExcerpt(excerpt, 160);
         }
       }
     </style>
-  </head>
 
-  <body>
-    <article>
+    <div class="post-container">
+      <article>
       <header class="post-header">
         <h1 class="post-title">{post.title.rendered}</h1>
 
@@ -303,6 +264,9 @@ const description = extractExcerpt(excerpt, 160);
           <a href="/blog" class="nav-link">← Back to Blog</a>
         </div>
       </footer>
-    </article>
-  </body>
-</html>
+      </article>
+    </div>
+  </main>
+
+  <Footer client:load />
+</Layout>
