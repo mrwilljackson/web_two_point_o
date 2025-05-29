@@ -1,0 +1,308 @@
+---
+import '../../styles/global.css';
+import { wordpressAPI } from '../../lib/wordpress';
+import {
+  processWordPressContent,
+  extractExcerpt,
+  getFeaturedImage,
+  getAuthor,
+  getCategories,
+  getTags,
+  formatDate
+} from '../../lib/content-utils';
+import type { WordPressPost } from '../../types/wordpress';
+
+export async function getStaticPaths() {
+  try {
+    console.log('🔄 Fetching all posts for static generation...');
+    const posts = await wordpressAPI.getAllPosts();
+
+    console.log(`✅ Found ${posts.length} posts`);
+
+    return posts.map((post: WordPressPost) => ({
+      params: { slug: post.slug },
+      props: { post },
+    }));
+  } catch (error) {
+    console.error('❌ Error fetching posts:', error);
+    return [];
+  }
+}
+
+const { post } = Astro.props;
+
+// Process the content
+const processedContent = processWordPressContent(
+  post.content.rendered,
+  process.env.WORDPRESS_URL || 'http://localhost:8080'
+);
+
+// Get additional data
+const featuredImage = getFeaturedImage(post);
+const author = getAuthor(post);
+const categories = getCategories(post);
+const tags = getTags(post);
+const excerpt = post.excerpt.rendered || extractExcerpt(post.content.rendered);
+const formattedDate = formatDate(post.date);
+
+// SEO data
+const title = `${post.title.rendered} | ${process.env.SITE_NAME || 'Blog'}`;
+const description = extractExcerpt(excerpt, 160);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={author?.name || 'Unknown'} />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content={post.title.rendered} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={`${process.env.SITE_URL}/blog/${post.slug}`} />
+    {featuredImage && (
+      <meta property="og:image" content={featuredImage.source_url} />
+    )}
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={post.title.rendered} />
+    <meta name="twitter:description" content={description} />
+    {featuredImage && (
+      <meta name="twitter:image" content={featuredImage.source_url} />
+    )}
+
+    <!-- Article Meta Tags -->
+    <meta property="article:published_time" content={post.date} />
+    <meta property="article:modified_time" content={post.modified} />
+    {author && <meta property="article:author" content={author.name} />}
+    {categories.map(category => (
+      <meta property="article:section" content={category.name} />
+    ))}
+    {tags.map(tag => (
+      <meta property="article:tag" content={tag.name} />
+    ))}
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={`${process.env.SITE_URL}/blog/${post.slug}`} />
+
+    <!-- Basic Styles -->
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        color: #333;
+      }
+
+      .post-header {
+        margin-bottom: 2rem;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 1rem;
+      }
+
+      .post-title {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        color: #2c3e50;
+      }
+
+      .post-meta {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+
+      .post-meta a {
+        color: #3498db;
+        text-decoration: none;
+      }
+
+      .post-meta a:hover {
+        text-decoration: underline;
+      }
+
+      .featured-image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+      }
+
+      .post-content {
+        font-size: 1.1rem;
+        line-height: 1.8;
+      }
+
+      .post-content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+      }
+
+      .post-content h1,
+      .post-content h2,
+      .post-content h3,
+      .post-content h4,
+      .post-content h5,
+      .post-content h6 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #2c3e50;
+      }
+
+      .post-content blockquote {
+        border-left: 4px solid #3498db;
+        padding-left: 1rem;
+        margin: 1.5rem 0;
+        font-style: italic;
+        color: #555;
+      }
+
+      .post-content pre {
+        background: #f8f9fa;
+        padding: 1rem;
+        border-radius: 4px;
+        overflow-x: auto;
+      }
+
+      .post-content code {
+        background: #f8f9fa;
+        padding: 0.2rem 0.4rem;
+        border-radius: 3px;
+        font-size: 0.9em;
+      }
+
+      .post-footer {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid #eee;
+      }
+
+      .categories,
+      .tags {
+        margin-bottom: 1rem;
+      }
+
+      .category-tag,
+      .post-tag {
+        display: inline-block;
+        background: #ecf0f1;
+        color: #2c3e50;
+        padding: 0.3rem 0.6rem;
+        margin: 0.2rem 0.3rem 0.2rem 0;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        text-decoration: none;
+      }
+
+      .category-tag:hover,
+      .post-tag:hover {
+        background: #bdc3c7;
+      }
+
+      .navigation {
+        margin-top: 2rem;
+        text-align: center;
+      }
+
+      .nav-link {
+        color: #3498db;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .nav-link:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+        }
+
+        .post-title {
+          font-size: 2rem;
+        }
+
+        .post-content {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <article>
+      <header class="post-header">
+        <h1 class="post-title">{post.title.rendered}</h1>
+
+        <div class="post-meta">
+          <time datetime={post.date}>{formattedDate}</time>
+          {author && (
+            <span> • By <a href={`/author/${author.slug}`}>{author.name}</a></span>
+          )}
+          {categories.length > 0 && (
+            <span> • In
+              {categories.map((category, index) => (
+                <span>
+                  <a href={`/category/${category.slug}`}>{category.name}</a>
+                  {index < categories.length - 1 ? ', ' : ''}
+                </span>
+              ))}
+            </span>
+          )}
+        </div>
+
+        {featuredImage && (
+          <img
+            src={featuredImage.source_url}
+            alt={featuredImage.alt_text || post.title.rendered}
+            class="featured-image"
+            loading="eager"
+          />
+        )}
+      </header>
+
+      <div class="post-content" set:html={processedContent}></div>
+
+      <footer class="post-footer">
+        {categories.length > 0 && (
+          <div class="categories">
+            <strong>Categories: </strong>
+            {categories.map(category => (
+              <a href={`/category/${category.slug}`} class="category-tag">
+                {category.name}
+              </a>
+            ))}
+          </div>
+        )}
+
+        {tags.length > 0 && (
+          <div class="tags">
+            <strong>Tags: </strong>
+            {tags.map(tag => (
+              <a href={`/tag/${tag.slug}`} class="post-tag">
+                {tag.name}
+              </a>
+            ))}
+          </div>
+        )}
+
+        <div class="navigation">
+          <a href="/blog" class="nav-link">← Back to Blog</a>
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>
