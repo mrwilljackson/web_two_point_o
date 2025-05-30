@@ -35,9 +35,13 @@ try {
 // Sort posts by date (newest first)
 posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
+// Get featured post (most recent) and remaining posts
+const featuredPost = posts.length > 0 ? posts[0] : null;
+const remainingPosts = posts.slice(1);
+
 // SEO data
 const title = `Blog | ${process.env.SITE_NAME || 'Website'}`;
-const description = 'Read our latest blog posts and articles.';
+const description = 'Read our latest posts and articles.';
 ---
 
 <Layout title={title} description={description}>
@@ -47,33 +51,254 @@ const description = 'Read our latest blog posts and articles.';
   <main>
     <!-- Styles -->
     <style>
-      .blog-container {
-        max-width: 1200px;
+      .hero-section {
+        background: linear-gradient(135deg, #f0fdff 0%, #f8f4ff 100%);
+        padding: 4rem 0;
+      }
+
+      .hero-content {
+        max-width: 768px;
         margin: 0 auto;
-        padding: 2rem 1rem;
-        background: #f8f9fa;
-        min-height: 80vh;
-      }
-
-      .header {
         text-align: center;
-        margin-bottom: 3rem;
-        background: white;
-        padding: 2rem;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 0 1rem;
       }
 
-      .header h1 {
+      .hero-title {
         font-size: 3rem;
-        margin-bottom: 0.5rem;
-        color: #2c3e50;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
       }
 
-      .header p {
-        font-size: 1.2rem;
-        color: #666;
+      .hero-title .brand {
+        background: linear-gradient(135deg, #22d3ee 0%, #a855f7 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+      }
+
+      .hero-title .text {
+        color: #1f2937;
+      }
+
+      .hero-description {
+        font-size: 1.25rem;
+        color: #6b7280;
+        line-height: 1.6;
         margin: 0;
+      }
+
+      .categories-section {
+        padding: 2rem 0 1rem 0;
+        background: white;
+      }
+
+      .categories-container {
+        max-width: 1024px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        text-align: center;
+      }
+
+      .categories-filter {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+
+      .category-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: 1px solid #d1d5db;
+        background: white;
+        color: #374151;
+        cursor: pointer;
+      }
+
+      .category-button:hover {
+        border-color: #9ca3af;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .category-button.active {
+        background: linear-gradient(135deg, #4DBBFA 0%, #58D68D 100%);
+        color: white;
+        border-color: transparent;
+      }
+
+      .category-button.active:hover {
+        background: linear-gradient(135deg, #4DBBFA 0%, #58D68D 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(77, 187, 250, 0.3);
+      }
+
+      .category-count {
+        background: rgba(0, 0, 0, 0.1);
+        color: inherit;
+        padding: 0.125rem 0.375rem;
+        border-radius: 9999px;
+        font-size: 0.625rem;
+        font-weight: 500;
+        margin-left: 0.25rem;
+      }
+
+      .category-button.active .category-count {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+      }
+
+      @media (max-width: 768px) {
+        .categories-filter {
+          gap: 0.5rem;
+        }
+
+        .category-button {
+          padding: 0.5rem 1rem;
+          font-size: 0.8rem;
+        }
+      }
+
+      .featured-section {
+        padding: 3rem 0;
+      }
+
+      .featured-container {
+        max-width: 1024px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      .featured-card {
+        background: linear-gradient(135deg, #f0fdff 0%, #f8f4ff 100%);
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        padding: 2rem;
+        align-items: center;
+      }
+
+      .featured-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .featured-badge {
+        background: linear-gradient(135deg, #22d3ee 0%, #10b981 100%);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        width: fit-content;
+      }
+
+      .featured-title {
+        font-size: 1.875rem;
+        font-weight: 700;
+        color: #1f2937;
+        line-height: 1.3;
+        margin: 0;
+      }
+
+      .featured-excerpt {
+        color: #6b7280;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      .featured-meta {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 0.875rem;
+        color: #9ca3af;
+        flex-wrap: wrap;
+      }
+
+      .featured-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      .featured-button {
+        background: linear-gradient(135deg, #22d3ee 0%, #10b981 100%);
+        color: white;
+        padding: 0.75rem 2rem;
+        border-radius: 9999px;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        width: fit-content;
+      }
+
+      .featured-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(34, 211, 238, 0.3);
+      }
+
+      .featured-image-container {
+        position: relative;
+      }
+
+      .featured-image {
+        width: 100%;
+        height: 16rem;
+        object-fit: cover;
+        border-radius: 0.75rem;
+      }
+
+      .featured-category-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(255, 255, 255, 0.9);
+        color: #374151;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .featured-card {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+          padding: 1.5rem;
+        }
+
+        .featured-title {
+          font-size: 1.5rem;
+        }
+
+        .featured-meta {
+          gap: 0.5rem;
+        }
       }
 
       .sidebar {
@@ -274,17 +499,126 @@ const description = 'Read our latest blog posts and articles.';
       }
     </style>
 
-    <div class="blog-container">
-      <header class="header">
-        <h1>Blog</h1>
-        <p>Latest posts and articles</p>
-      </header>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="brand">Playphysio</span>
+          <span class="text"> News</span>
+        </h1>
+        <p class="hero-description">
+          Insights, research, and stories about transforming respiratory therapy through innovative gamification and thoughtful design.
+        </p>
+      </div>
+    </section>
+
+    <!-- Categories Filter Section -->
+    <section class="categories-section">
+      <div class="categories-container">
+        <div class="categories-filter">
+          <a href="/blog" class="category-button active">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 6v6l4 2"></path>
+            </svg>
+            All Posts
+            <span class="category-count">{posts.length}</span>
+          </a>
+          {categories.map(category => {
+            const categoryPosts = posts.filter(post =>
+              getCategories(post).some(cat => cat.id === category.id)
+            );
+
+            return (
+              <a href={`/category/${category.slug}`} class="category-button">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                  <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                </svg>
+                {category.name}
+                <span class="category-count">{categoryPosts.length}</span>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Post Section -->
+    {featuredPost && (
+      <section class="featured-section">
+        <div class="featured-container">
+          <div class="featured-card">
+            <div class="featured-content">
+              <div class="featured-badge">Featured</div>
+              <h2 class="featured-title">{featuredPost.title.rendered}</h2>
+              <p class="featured-excerpt" set:html={extractExcerpt(featuredPost.content.rendered)}></p>
+              <div class="featured-meta">
+                <div class="featured-meta-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                  <span>{getAuthor(featuredPost)?.name || 'PlayPhysio Team'}</span>
+                </div>
+                <div class="featured-meta-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  <span>{formatDate(featuredPost.date)}</span>
+                </div>
+                <div class="featured-meta-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12,6 12,12 16,14"></polyline>
+                  </svg>
+                  <span>5 min read</span>
+                </div>
+              </div>
+              <a href={`/blog/${featuredPost.slug}`} class="featured-button">
+                Read Article
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12,5 19,12 12,19"></polyline>
+                </svg>
+              </a>
+            </div>
+            <div class="featured-image-container">
+              {getFeaturedImage(featuredPost) ? (
+                <img
+                  src={getFeaturedImage(featuredPost).source_url}
+                  alt={getFeaturedImage(featuredPost).alt_text || featuredPost.title.rendered}
+                  class="featured-image"
+                  loading="lazy"
+                />
+              ) : (
+                <div class="featured-image" style="background: linear-gradient(135deg, #22d3ee 0%, #a855f7 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">
+                  PlayPhysio Blog
+                </div>
+              )}
+              {getCategories(featuredPost).length > 0 && (
+                <div class="featured-category-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                    <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                  </svg>
+                  {getCategories(featuredPost)[0].name}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
 
     <div class="main-content">
       <main>
-        {posts.length > 0 ? (
+        {remainingPosts.length > 0 ? (
           <div class="posts-grid">
-            {posts.map(post => {
+            {remainingPosts.map(post => {
               const featuredImage = getFeaturedImage(post);
               const author = getAuthor(post);
               const postCategories = getCategories(post);
@@ -347,7 +681,7 @@ const description = 'Read our latest blog posts and articles.';
               );
             })}
           </div>
-        ) : (
+        ) : posts.length === 0 ? (
           <div class="no-posts">
             {wordpressAvailable ? (
               <>
@@ -363,7 +697,7 @@ const description = 'Read our latest blog posts and articles.';
               </>
             )}
           </div>
-        )}
+        ) : null}
       </main>
 
       <aside class="sidebar">
@@ -399,7 +733,6 @@ const description = 'Read our latest blog posts and articles.';
           </section>
         )}
       </aside>
-    </div>
     </div>
   </main>
 

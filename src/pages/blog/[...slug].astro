@@ -156,21 +156,67 @@ const description = extractExcerpt(excerpt, 160);
         margin-bottom: 1rem;
       }
 
-      .category-tag,
-      .post-tag {
-        display: inline-block;
-        background: #ecf0f1;
-        color: #2c3e50;
-        padding: 0.3rem 0.6rem;
-        margin: 0.2rem 0.3rem 0.2rem 0;
-        border-radius: 15px;
-        font-size: 0.8rem;
-        text-decoration: none;
+      .tags-section {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid #e5e7eb;
       }
 
-      .category-tag:hover,
-      .post-tag:hover {
-        background: #bdc3c7;
+      .tags-title {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .tags-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .tag-badge {
+        display: inline-flex;
+        align-items: center;
+        background: #f3f4f6;
+        color: #374151;
+        padding: 0.5rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        border: 1px solid transparent;
+      }
+
+      .tag-badge:hover {
+        background: #ecfdf5;
+        color: #059669;
+        border-color: #d1fae5;
+        transform: translateY(-1px);
+      }
+
+      .category-tag {
+        display: inline-block;
+        background: linear-gradient(135deg, #22d3ee 0%, #10b981 100%);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        margin: 0.2rem 0.3rem 0.2rem 0;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      .category-tag:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(34, 211, 238, 0.3);
       }
 
       .navigation {
@@ -237,24 +283,37 @@ const description = extractExcerpt(excerpt, 160);
 
       <div class="post-content" set:html={processedContent}></div>
 
+      {/* Tags Section - V0 Style */}
+      {tags.length > 0 && (
+        <div class="tags-section">
+          <h3 class="tags-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+              <line x1="7" y1="7" x2="7.01" y2="7"></line>
+            </svg>
+            Tags
+          </h3>
+          <div class="tags-container">
+            {tags.map(tag => (
+              <a href={`/tag/${tag.slug}`} class="tag-badge">
+                {tag.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
       <footer class="post-footer">
         {categories.length > 0 && (
           <div class="categories">
             <strong>Categories: </strong>
             {categories.map(category => (
               <a href={`/category/${category.slug}`} class="category-tag">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                  <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                </svg>
                 {category.name}
-              </a>
-            ))}
-          </div>
-        )}
-
-        {tags.length > 0 && (
-          <div class="tags">
-            <strong>Tags: </strong>
-            {tags.map(tag => (
-              <a href={`/tag/${tag.slug}`} class="post-tag">
-                {tag.name}
               </a>
             ))}
           </div>
