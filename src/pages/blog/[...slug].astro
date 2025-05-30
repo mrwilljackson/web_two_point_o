@@ -12,6 +12,7 @@ import {
   getTags,
   formatDate
 } from '../../lib/content-utils';
+import { processFeaturedImage, processPostImages } from '../../lib/image-processor.js';
 import type { WordPressPost } from '../../types/wordpress';
 
 export async function getStaticPaths() {
@@ -33,14 +34,36 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 
-// Process the content
+// Process images for this post
+console.log(`🖼️ Processing images for post: ${post.title.rendered}`);
+let processedFeaturedImage = getFeaturedImage(post);
+let contentWithImages = post.content.rendered;
+
+try {
+  // Process featured image
+  if (processedFeaturedImage) {
+    processedFeaturedImage = await processFeaturedImage(processedFeaturedImage, post.slug);
+  }
+
+  // Process images in post content
+  if (contentWithImages) {
+    contentWithImages = await processPostImages(contentWithImages, post.slug);
+  }
+
+  console.log(`✅ Image processing complete for: ${post.title.rendered}`);
+} catch (error) {
+  console.warn(`⚠️ Failed to process images for post ${post.slug}:`, error.message);
+  contentWithImages = post.content.rendered; // Fallback to original content
+}
+
+// Process the content (WordPress links, etc.)
 const processedContent = processWordPressContent(
-  post.content.rendered,
+  contentWithImages,
   process.env.WORDPRESS_URL || 'http://localhost:8080'
 );
 
 // Get additional data
-const featuredImage = getFeaturedImage(post);
+const featuredImage = processedFeaturedImage;
 const author = getAuthor(post);
 const categories = getCategories(post);
 const tags = getTags(post);
@@ -56,49 +79,148 @@ const description = extractExcerpt(excerpt, 160);
   <NavBar client:load />
 
   <main>
+    <!-- Sticky Sub-Header Navigation -->
+    <div class="sticky-sub-header">
+      <div class="sub-header-container">
+        <a href="/blog" class="back-to-news-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m15 18-6-6 6-6"></path>
+          </svg>
+          Back to News
+        </a>
+      </div>
+    </div>
 
     <!-- Basic Styles -->
     <style>
+      /* Ensure main doesn't interfere with sticky */
+      main {
+        position: relative;
+        overflow: visible;
+      }
+
+      /* Sticky Sub-Header */
+      .sticky-sub-header {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 4rem; /* Height of main navigation (h-16 = 4rem) */
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid #e5e7eb;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        margin-bottom: 0;
+      }
+
+      .sub-header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+      }
+
+      .back-to-news-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #6b7280;
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        padding: 0.5rem 0;
+      }
+
+      .back-to-news-link:hover {
+        color: #4DBBFA;
+      }
+
+      .back-to-news-link svg {
+        transition: transform 0.2s ease;
+      }
+
+      .back-to-news-link:hover svg {
+        transform: translateX(-2px);
+      }
+
       .post-container {
         max-width: 800px;
         margin: 0 auto;
-        padding: 2rem 1rem;
+        padding: 3rem 1rem;
         color: #333;
         min-height: 80vh;
       }
 
-      .post-header {
-        margin-bottom: 2rem;
-        border-bottom: 1px solid #eee;
-        padding-bottom: 1rem;
+      /* V0 Style Meta Header */
+      .post-meta-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
       }
 
-      .post-title {
+      .category-badge {
+        background: linear-gradient(135deg, #22d3ee 0%, #10b981 100%);
+        color: white;
+        padding: 0.5rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      .meta-items {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        font-size: 0.875rem;
+        color: #6b7280;
+      }
+
+      /* V0 Style Title */
+      .post-title-v0 {
         font-size: 2.5rem;
-        margin-bottom: 0.5rem;
-        color: #2c3e50;
-      }
-
-      .post-meta {
-        color: #666;
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
-      }
-
-      .post-meta a {
-        color: #3498db;
-        text-decoration: none;
-      }
-
-      .post-meta a:hover {
-        text-decoration: underline;
-      }
-
-      .featured-image {
-        width: 100%;
-        height: auto;
-        border-radius: 8px;
+        font-weight: 700;
+        color: #1f2937;
+        line-height: 1.2;
         margin-bottom: 2rem;
+      }
+
+      @media (min-width: 768px) {
+        .post-title-v0 {
+          font-size: 3rem;
+        }
+      }
+
+      /* V0 Style Featured Image */
+      .featured-image-container-v0 {
+        position: relative;
+        margin-bottom: 3rem;
+      }
+
+      .featured-image-v0 {
+        width: 100%;
+        height: 16rem;
+        object-fit: cover;
+        border-radius: 1rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      @media (min-width: 768px) {
+        .featured-image-v0 {
+          height: 24rem;
+        }
       }
 
       .post-content {
@@ -251,35 +373,58 @@ const description = extractExcerpt(excerpt, 160);
 
     <div class="post-container">
       <article>
-      <header class="post-header">
-        <h1 class="post-title">{post.title.rendered}</h1>
-
-        <div class="post-meta">
-          <time datetime={post.date}>{formattedDate}</time>
-          {author && (
-            <span> • By <a href={`/author/${author.slug}`}>{author.name}</a></span>
-          )}
-          {categories.length > 0 && (
-            <span> • In
-              {categories.map((category, index) => (
-                <span>
-                  <a href={`/category/${category.slug}`}>{category.name}</a>
-                  {index < categories.length - 1 ? ', ' : ''}
-                </span>
-              ))}
-            </span>
-          )}
+      {/* Meta Info Above Title - V0 Style */}
+      <div class="post-meta-header">
+        {categories.length > 0 && (
+          <div class="category-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+              <line x1="7" y1="7" x2="7.01" y2="7"></line>
+            </svg>
+            {categories[0].name}
+          </div>
+        )}
+        <div class="meta-items">
+          <div class="meta-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>{author?.name || 'PlayPhysio Team'}</span>
+          </div>
+          <div class="meta-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>{formattedDate}</span>
+          </div>
+          <div class="meta-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12,6 12,12 16,14"></polyline>
+            </svg>
+            <span>5 min read</span>
+          </div>
         </div>
+      </div>
 
-        {featuredImage && (
+      {/* Title - V0 Style */}
+      <h1 class="post-title-v0">{post.title.rendered}</h1>
+
+      {/* Featured Image - V0 Style */}
+      {featuredImage && (
+        <div class="featured-image-container-v0">
           <img
             src={featuredImage.source_url}
             alt={featuredImage.alt_text || post.title.rendered}
-            class="featured-image"
+            class="featured-image-v0"
             loading="eager"
           />
-        )}
-      </header>
+        </div>
+      )}
 
       <div class="post-content" set:html={processedContent}></div>
 

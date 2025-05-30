@@ -5,6 +5,7 @@ import { loadEnv } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 
 import react from '@astrojs/react';
+import imageCopyIntegration from './src/integrations/image-copy.js';
 
 // Load environment variables
 const env = loadEnv(process.env.NODE_ENV || 'development', process.cwd(), '');
@@ -31,5 +32,5 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  integrations: [react()],
+  integrations: [react(), imageCopyIntegration()],
 });

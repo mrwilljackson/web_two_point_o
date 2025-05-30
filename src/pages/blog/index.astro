@@ -11,6 +11,7 @@ import {
   getTags,
   formatDate
 } from '../../lib/content-utils';
+import { processFeaturedImage, processPostImages } from '../../lib/image-processor.js';
 
 // Fetch all posts
 let posts = [];
@@ -34,6 +35,35 @@ try {
 
 // Sort posts by date (newest first)
 posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+// Process images for all posts
+if (posts.length > 0) {
+  console.log('🖼️ Processing images for blog posts...');
+  for (let i = 0; i < posts.length; i++) {
+    const post = posts[i];
+    try {
+      // Process featured image
+      const featuredImage = getFeaturedImage(post);
+      if (featuredImage) {
+        const processedImage = await processFeaturedImage(featuredImage, post.slug);
+        // Update the post's featured media
+        if (post._embedded && post._embedded['wp:featuredmedia']) {
+          post._embedded['wp:featuredmedia'][0] = processedImage;
+        }
+      }
+
+      // Process images in post content
+      if (post.content && post.content.rendered) {
+        post.content.rendered = await processPostImages(post.content.rendered, post.slug);
+      }
+
+      console.log(`✅ Processed images for: ${post.title.rendered}`);
+    } catch (error) {
+      console.warn(`⚠️ Failed to process images for post ${post.slug}:`, error.message);
+    }
+  }
+  console.log('🎉 Image processing complete!');
+}
 
 // Get featured post (most recent) and remaining posts
 const featuredPost = posts.length > 0 ? posts[0] : null;
@@ -301,92 +331,91 @@ const description = 'Read our latest posts and articles.';
         }
       }
 
-      .sidebar {
-        background: white;
-        padding: 1.5rem;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        margin-bottom: 2rem;
-      }
 
-      .sidebar h3 {
-        margin-top: 0;
-        color: #2c3e50;
-        border-bottom: 2px solid #ecf0f1;
-        padding-bottom: 0.5rem;
-      }
-
-      .category-list,
-      .tag-list {
-        list-style: none;
-        padding: 0;
-      }
-
-      .category-list li,
-      .tag-list li {
-        margin-bottom: 0.5rem;
-      }
-
-      .category-list a,
-      .tag-list a {
-        color: #3498db;
-        text-decoration: none;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .category-list a:hover,
-      .tag-list a:hover {
-        text-decoration: underline;
-      }
-
-      .count {
-        background: #ecf0f1;
-        color: #2c3e50;
-        padding: 0.2rem 0.5rem;
-        border-radius: 12px;
-        font-size: 0.8rem;
-      }
 
       .main-content {
-        display: grid;
-        grid-template-columns: 1fr 300px;
-        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 3rem 1rem;
       }
 
       .posts-grid {
         display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         gap: 2rem;
+      }
+
+      @media (min-width: 768px) {
+        .posts-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .posts-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
       }
 
       .post-card {
         background: white;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        border-radius: 0.75rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        border: 1px solid #f3f4f6;
         overflow: hidden;
-        transition: transform 0.2s, box-shadow 0.2s;
+        transition: all 0.2s ease;
       }
 
       .post-card:hover {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      }
+
+      .post-image-container {
+        position: relative;
+        width: 100%;
+        height: 12rem;
+        overflow: hidden;
       }
 
       .post-image {
         width: 100%;
-        height: 200px;
+        height: 100%;
         object-fit: cover;
+      }
+
+      .post-category-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(255, 255, 255, 0.9);
+        color: #374151;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
       }
 
       .post-content {
         padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
       }
 
       .post-title {
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-        color: #2c3e50;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1f2937;
+        line-height: 1.4;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
       }
 
       .post-title a {
@@ -395,57 +424,78 @@ const description = 'Read our latest posts and articles.';
       }
 
       .post-title a:hover {
-        color: #3498db;
-      }
-
-      .post-meta {
-        color: #666;
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
-      }
-
-      .post-meta a {
-        color: #3498db;
-        text-decoration: none;
-      }
-
-      .post-meta a:hover {
-        text-decoration: underline;
+        color: #4DBBFA;
       }
 
       .post-excerpt {
-        color: #555;
-        margin-bottom: 1rem;
-        line-height: 1.6;
+        color: #6b7280;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-height: calc(1.5em * 3);
       }
 
-      .post-tags {
-        margin-top: 1rem;
+      .post-excerpt p {
+        margin: 0;
+        display: inline;
       }
 
-      .tag {
-        display: inline-block;
-        background: #ecf0f1;
-        color: #2c3e50;
-        padding: 0.3rem 0.6rem;
-        margin: 0.2rem 0.3rem 0.2rem 0;
-        border-radius: 15px;
-        font-size: 0.8rem;
-        text-decoration: none;
+      .post-excerpt * {
+        display: inline;
       }
 
-      .tag:hover {
-        background: #bdc3c7;
+      .post-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 0.75rem;
+        color: #9ca3af;
       }
 
-      .read-more {
-        color: #3498db;
-        text-decoration: none;
+      .post-meta-left {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      .post-meta-right {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .post-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      .post-button {
+        background: white;
+        color: #374151;
+        border: 1px solid #d1d5db;
+        padding: 0.75rem 1.5rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
         font-weight: 500;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        transition: all 0.2s ease;
+        width: 100%;
       }
 
-      .read-more:hover {
-        text-decoration: underline;
+      .post-button:hover {
+        background: #ecfdf5;
+        color: #059669;
+        border-color: #d1fae5;
       }
 
       .navigation {
@@ -615,124 +665,105 @@ const description = 'Read our latest posts and articles.';
     )}
 
     <div class="main-content">
-      <main>
-        {remainingPosts.length > 0 ? (
-          <div class="posts-grid">
-            {remainingPosts.map(post => {
-              const featuredImage = getFeaturedImage(post);
-              const author = getAuthor(post);
-              const postCategories = getCategories(post);
-              const postTags = getTags(post);
-              const excerpt = post.excerpt.rendered || extractExcerpt(post.content.rendered);
-              const formattedDate = formatDate(post.date);
+      {remainingPosts.length > 0 ? (
+        <div class="posts-grid">
+          {remainingPosts.map(post => {
+            const featuredImage = getFeaturedImage(post);
+            const author = getAuthor(post);
+            const postCategories = getCategories(post);
+            const excerpt = post.excerpt.rendered || extractExcerpt(post.content.rendered);
+            const formattedDate = formatDate(post.date);
 
-              return (
-                <article class="post-card">
-                  {featuredImage && (
+            return (
+              <article class="post-card">
+                <div class="post-image-container">
+                  {featuredImage ? (
                     <img
                       src={featuredImage.source_url}
                       alt={featuredImage.alt_text || post.title.rendered}
                       class="post-image"
                       loading="lazy"
                     />
-                  )}
-
-                  <div class="post-content">
-                    <h2 class="post-title">
-                      <a href={`/blog/${post.slug}`}>{post.title.rendered}</a>
-                    </h2>
-
-                    <div class="post-meta">
-                      <time datetime={post.date}>{formattedDate}</time>
-                      {author && (
-                        <span> • By <a href={`/author/${author.slug}`}>{author.name}</a></span>
-                      )}
-                      {postCategories.length > 0 && (
-                        <span> • In
-                          {postCategories.map((category, index) => (
-                            <span>
-                              <a href={`/category/${category.slug}`}>{category.name}</a>
-                              {index < postCategories.length - 1 ? ', ' : ''}
-                            </span>
-                          ))}
-                        </span>
-                      )}
+                  ) : (
+                    <div class="post-image" style="background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%); display: flex; align-items: center; justify-content: center; color: #9ca3af; font-weight: 500;">
+                      PlayPhysio Blog
                     </div>
+                  )}
+                  {postCategories.length > 0 && (
+                    <div class="post-category-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                        <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                      </svg>
+                      {postCategories[0].name}
+                    </div>
+                  )}
+                </div>
 
-                    <div class="post-excerpt" set:html={excerpt}></div>
+                <div class="post-content">
+                  <h3 class="post-title">
+                    <a href={`/blog/${post.slug}`}>{post.title.rendered}</a>
+                  </h3>
 
-                    {postTags.length > 0 && (
-                      <div class="post-tags">
-                        {postTags.map(tag => (
-                          <a href={`/tag/${tag.slug}`} class="tag">
-                            {tag.name}
-                          </a>
-                        ))}
+                  <div class="post-excerpt">{excerpt.replace(/<[^>]*>/g, '').trim()}</div>
+
+                  <div class="post-meta">
+                    <div class="post-meta-left">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                      </svg>
+                      <span>{author?.name || 'PlayPhysio Team'}</span>
+                    </div>
+                    <div class="post-meta-right">
+                      <div class="post-meta-item">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                          <line x1="16" y1="2" x2="16" y2="6"></line>
+                          <line x1="8" y1="2" x2="8" y2="6"></line>
+                          <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <span>{formattedDate}</span>
                       </div>
-                    )}
-
-                    <p>
-                      <a href={`/blog/${post.slug}`} class="read-more">
-                        Read more →
-                      </a>
-                    </p>
+                      <div class="post-meta-item">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <polyline points="12,6 12,12 16,14"></polyline>
+                        </svg>
+                        <span>5 min read</span>
+                      </div>
+                    </div>
                   </div>
-                </article>
-              );
-            })}
-          </div>
-        ) : posts.length === 0 ? (
-          <div class="no-posts">
-            {wordpressAvailable ? (
-              <>
-                <h2>No posts found</h2>
-                <p>Check back later for new content!</p>
-              </>
-            ) : (
-              <>
-                <h2>WordPress Not Connected</h2>
-                <p>Blog posts will appear here when WordPress is running.</p>
-                <p>Start your WordPress server at <code>http://localhost:8080</code> to see blog content.</p>
-                <p>For production builds, the static content will be generated from WordPress.</p>
-              </>
-            )}
-          </div>
-        ) : null}
-      </main>
 
-      <aside class="sidebar">
-        {categories.length > 0 && (
-          <section class="sidebar">
-            <h3>Categories</h3>
-            <ul class="category-list">
-              {categories.map(category => (
-                <li>
-                  <a href={`/category/${category.slug}`}>
-                    <span>{category.name}</span>
-                    <span class="count">{category.count}</span>
+                  <a href={`/blog/${post.slug}`} class="post-button">
+                    Read More
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12,5 19,12 12,19"></polyline>
+                    </svg>
                   </a>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
-
-        {tags.length > 0 && (
-          <section class="sidebar">
-            <h3>Tags</h3>
-            <ul class="tag-list">
-              {tags.slice(0, 20).map(tag => (
-                <li>
-                  <a href={`/tag/${tag.slug}`}>
-                    <span>{tag.name}</span>
-                    <span class="count">{tag.count}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
-      </aside>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      ) : posts.length === 0 ? (
+        <div class="no-posts">
+          {wordpressAvailable ? (
+            <>
+              <h2>No posts found</h2>
+              <p>Check back later for new content!</p>
+            </>
+          ) : (
+            <>
+              <h2>WordPress Not Connected</h2>
+              <p>Blog posts will appear here when WordPress is running.</p>
+              <p>Start your WordPress server at <code>http://localhost:8080</code> to see blog content.</p>
+              <p>For production builds, the static content will be generated from WordPress.</p>
+            </>
+          )}
+        </div>
+      ) : null}
     </div>
   </main>
 
