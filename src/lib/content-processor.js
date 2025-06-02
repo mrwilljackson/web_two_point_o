@@ -190,10 +190,10 @@ function processReferences(content) {
 
   let referencesData = {};
   let referencesHtml = '';
+  let referencesMatch;
 
-  // Extract references and build lookup table
-  const referencesMatch = referencesRegex.exec(content);
-  if (referencesMatch) {
+  // Extract reference data first
+  while ((referencesMatch = referencesRegex.exec(content)) !== null) {
     const referencesContent = referencesMatch[1];
 
     // Clean up the references content
@@ -202,8 +202,10 @@ function processReferences(content) {
       .replace(/&quot;/g, '"')
       .replace(/&#8217;/g, "'")
       .replace(/&#8211;/g, "–")
-      .replace(/&#8221;/g, '"')
+      .replace(/&#8221;/g, '"')  // Left double quotation mark
+      .replace(/&#8243;/g, '"')  // Double prime (often used as quote)
       .replace(/&amp;/g, "&")
+      .replace(/&038;/g, "&")   // Another ampersand encoding
       .trim();
 
     // Extract individual references
@@ -231,11 +233,27 @@ function processReferences(content) {
     }
   }
 
+  // Reset regex for replacement
+  referencesRegex.lastIndex = 0;
+
   // Process inline citations in the content FIRST (before replacing the references section)
-  // Look for patterns like [4], [12], [16] or [4][12][16]
+  // Look for patterns like [4], [12], [16] or [4][12][16] but NOT inside references section
   const citationRegex = /(\[(\d+)\])+/g;
 
-  content = content.replace(citationRegex, (match) => {
+  content = content.replace(citationRegex, (match, fullMatch, firstNum, offset) => {
+    // Check if this citation is inside a references section
+    const beforeMatch = content.substring(0, offset);
+    const afterMatch = content.substring(offset);
+
+    // If we're inside a [references] block, don't process as citation
+    const lastReferencesStart = beforeMatch.lastIndexOf('[references]');
+    const lastReferencesEnd = beforeMatch.lastIndexOf('[/references]');
+
+    if (lastReferencesStart > lastReferencesEnd) {
+      // We're inside a references block, return unchanged
+      return match;
+    }
+
     // Extract all citation numbers from the match
     const numberRegex = /\[(\d+)\]/g;
     let numberMatch;

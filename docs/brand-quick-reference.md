@@ -130,14 +130,18 @@ font-family: 'Inter', system-ui, sans-serif;
 
 ### **File Paths**
 ```
-Primary Logo:     src/assets/playphysio-p-logo.svg
+Primary Logo:     docs/playphysio-p-logo.svg (official)
+Alternative:      src/assets/playphysio-p-logo.svg (development)
 Horizontal Logo:  public/images/playphysio-logo-horizontal.svg
 Favicon:          public/favicon.svg
 ```
 
 ### **HTML Usage**
 ```html
-<!-- Primary Logo -->
+<!-- Primary Logo (official) -->
+<img src="/docs/playphysio-p-logo.svg" alt="PlayPhysio" />
+
+<!-- Primary Logo (development) -->
 <img src="/src/assets/playphysio-p-logo.svg" alt="PlayPhysio" />
 
 <!-- Horizontal Logo -->
@@ -281,15 +285,15 @@ Favicon:          public/favicon.svg
 ## ♿ Accessibility Checklist
 
 ### **Color Contrast**
-✅ All text meets WCAG AA standards (4.5:1 ratio)  
-✅ Interactive elements have sufficient contrast  
-✅ Focus indicators are clearly visible  
+✅ All text meets WCAG AA standards (4.5:1 ratio)
+✅ Interactive elements have sufficient contrast
+✅ Focus indicators are clearly visible
 
 ### **Interactive Elements**
-✅ Minimum 44px touch targets  
-✅ Keyboard navigation support  
-✅ Screen reader compatibility  
-✅ Alt text for all images  
+✅ Minimum 44px touch targets
+✅ Keyboard navigation support
+✅ Screen reader compatibility
+✅ Alt text for all images
 
 ---
 

@@ -19,7 +19,8 @@ Transform respiratory therapy into an exciting adventure that makes breathing ex
 ## 🎨 Visual Identity
 
 ### **Primary Logo**
-- **File**: `src/assets/playphysio-p-logo.svg`
+- **File**: `docs/playphysio-p-logo.svg`
+- **Alternative Location**: `src/assets/playphysio-p-logo.svg`
 - **Usage**: Primary brand mark for digital applications
 - **Format**: SVG (scalable vector graphics)
 - **Background**: Transparent or white backgrounds
@@ -200,18 +201,18 @@ background: linear-gradient(135deg, #22D3EE 0%, #4DBBFA 100%);
 ## 🎯 Logo Usage Guidelines
 
 ### **Do's**
-✅ Use the official logo files provided  
-✅ Maintain minimum clear space (equal to the height of the "P")  
-✅ Use on white or light backgrounds for primary logo  
-✅ Scale proportionally - never stretch or distort  
-✅ Use high-resolution files for print applications  
+✅ Use the official logo files provided
+✅ Maintain minimum clear space (equal to the height of the "P")
+✅ Use on white or light backgrounds for primary logo
+✅ Scale proportionally - never stretch or distort
+✅ Use high-resolution files for print applications
 
 ### **Don'ts**
-❌ Don't alter the logo colors  
-❌ Don't add effects, shadows, or outlines  
-❌ Don't use on busy or low-contrast backgrounds  
-❌ Don't separate the icon from the wordmark  
-❌ Don't recreate or redraw the logo  
+❌ Don't alter the logo colors
+❌ Don't add effects, shadows, or outlines
+❌ Don't use on busy or low-contrast backgrounds
+❌ Don't separate the icon from the wordmark
+❌ Don't recreate or redraw the logo
 
 ### **Minimum Sizes**
 - **Digital**: 32px height minimum
@@ -296,8 +297,10 @@ border-radius: 9999px;
 
 ### **Logo Files**
 ```
+docs/
+├── playphysio-p-logo.svg          # Primary P logo (official)
 src/assets/
-├── playphysio-p-logo.svg          # Primary P logo
+├── playphysio-p-logo.svg          # Primary P logo (development)
 public/images/
 ├── playphysio-logo-horizontal.svg  # Horizontal logo
 public/
@@ -353,6 +356,6 @@ For questions about brand usage, additional assets, or brand guidelines:
 
 ---
 
-*Last Updated: January 2025*  
-*Version: 1.0*  
+*Last Updated: January 2025*
+*Version: 1.0*
 *© 2025 PlayPhysio®. All rights reserved.*
