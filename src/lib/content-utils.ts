@@ -2,6 +2,7 @@ import type { WordPressPost, WordPressPage, WordPressMedia } from '../types/word
 
 /**
  * Process WordPress content to make it suitable for static site generation
+ * NOTE: Shortcode processing is now handled separately by content-processor.js
  */
 export function processWordPressContent(content: string, baseUrl: string): string {
   let processedContent = content;
@@ -9,9 +10,6 @@ export function processWordPressContent(content: string, baseUrl: string): strin
   // Replace WordPress site URLs with the new site URL
   const wpUrlPattern = new RegExp(baseUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
   processedContent = processedContent.replace(wpUrlPattern, process.env.SITE_URL || '');
-
-  // Process shortcodes (basic implementation)
-  processedContent = processShortcodes(processedContent);
 
   // Clean up WordPress-specific classes and attributes
   processedContent = cleanWordPressClasses(processedContent);
@@ -22,35 +20,7 @@ export function processWordPressContent(content: string, baseUrl: string): strin
   return processedContent;
 }
 
-/**
- * Basic shortcode processing
- */
-function processShortcodes(content: string): string {
-  let processedContent = content;
 
-  // Process [gallery] shortcode
-  processedContent = processedContent.replace(
-    /\[gallery[^\]]*\]/g,
-    '<div class="gallery"><!-- Gallery shortcode processed --></div>'
-  );
-
-  // Process [caption] shortcode
-  processedContent = processedContent.replace(
-    /\[caption[^\]]*\](.*?)\[\/caption\]/gs,
-    '<figure class="wp-caption">$1</figure>'
-  );
-
-  // Process [embed] shortcode
-  processedContent = processedContent.replace(
-    /\[embed[^\]]*\](.*?)\[\/embed\]/gs,
-    '<div class="embed-responsive">$1</div>'
-  );
-
-  // Remove any remaining shortcodes
-  processedContent = processedContent.replace(/\[[^\]]+\]/g, '');
-
-  return processedContent;
-}
 
 /**
  * Clean WordPress-specific CSS classes
@@ -105,7 +75,7 @@ function optimizeImages(content: string): string {
 export function extractExcerpt(content: string, maxLength: number = 160): string {
   // Remove HTML tags
   const textContent = content.replace(/<[^>]*>/g, '');
-  
+
   // Decode HTML entities
   const decodedContent = textContent
     .replace(/&amp;/g, '&')
@@ -122,7 +92,7 @@ export function extractExcerpt(content: string, maxLength: number = 160): string
   // Find the last complete word within the limit
   const truncated = decodedContent.substring(0, maxLength);
   const lastSpaceIndex = truncated.lastIndexOf(' ');
-  
+
   if (lastSpaceIndex > 0) {
     return truncated.substring(0, lastSpaceIndex).trim() + '...';
   }

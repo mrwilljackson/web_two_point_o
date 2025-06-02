@@ -1,0 +1,21 @@
+{
+  "name": "PlayPhysio - Gamified Respiratory Therapy",
+  "short_name": "PlayPhysio",
+  "description": "Gamified respiratory therapy solutions for children and adults",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#812C7C",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/"
+}

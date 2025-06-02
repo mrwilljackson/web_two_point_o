@@ -13,6 +13,7 @@ import {
   formatDate
 } from '../../lib/content-utils';
 import { processFeaturedImage, processPostImages } from '../../lib/image-processor.js';
+import { processShortcodes, getShortcodeStyles } from '../../lib/content-processor.js';
 import type { WordPressPost } from '../../types/wordpress';
 
 export async function getStaticPaths() {
@@ -57,10 +58,13 @@ try {
 }
 
 // Process the content (WordPress links, etc.)
-const processedContent = processWordPressContent(
+let processedContent = processWordPressContent(
   contentWithImages,
   process.env.WORDPRESS_URL || 'http://localhost:8080'
 );
+
+// Process shortcodes for rich content elements
+processedContent = processShortcodes(processedContent);
 
 // Get additional data
 const featuredImage = processedFeaturedImage;
@@ -224,8 +228,63 @@ const description = extractExcerpt(excerpt, 160);
       }
 
       .post-content {
-        font-size: 1.1rem;
-        line-height: 1.8;
+        font-size: 1.125rem;
+        line-height: 1.75;
+        color: #374151;
+        font-family: 'Inter', system-ui, sans-serif;
+      }
+
+      .post-content p {
+        margin-bottom: 1.5rem;
+        color: #4b5563;
+      }
+
+      .post-content strong {
+        font-weight: 600;
+        color: #1f2937;
+      }
+
+      .post-content em {
+        font-style: italic;
+        color: #6b7280;
+      }
+
+      /* List styling */
+      .post-content ul,
+      .post-content ol {
+        margin: 1.5rem 0;
+        padding-left: 1.5rem;
+      }
+
+      .post-content ul li {
+        margin-bottom: 0.5rem;
+        position: relative;
+      }
+
+      .post-content ul li::marker {
+        color: #4DBBFA;
+      }
+
+      .post-content ol li {
+        margin-bottom: 0.5rem;
+      }
+
+      .post-content ol li::marker {
+        color: #9B59B6;
+        font-weight: 600;
+      }
+
+      /* Links */
+      .post-content a {
+        color: #4DBBFA;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.2s ease;
+      }
+
+      .post-content a:hover {
+        color: #58D68D;
+        text-decoration: underline;
       }
 
       .post-content img {
@@ -234,15 +293,84 @@ const description = extractExcerpt(excerpt, 160);
         border-radius: 4px;
       }
 
-      .post-content h1,
-      .post-content h2,
-      .post-content h3,
-      .post-content h4,
-      .post-content h5,
-      .post-content h6 {
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        color: #2c3e50;
+      /* Blog Content Headers - Integrated with Site Design System */
+      :global(.post-content h1) {
+        font-size: 2.5rem !important;
+        font-weight: 800 !important;
+        margin-top: 3rem !important;
+        margin-bottom: 1.5rem !important;
+        background: linear-gradient(135deg, #4DBBFA 0%, #58D68D 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
+        line-height: 1.2 !important;
+        letter-spacing: -0.025em !important;
+      }
+
+      :global(.post-content h2) {
+        font-size: 2rem !important;
+        font-weight: 700 !important;
+        margin-top: 2.5rem !important;
+        margin-bottom: 1.25rem !important;
+        background: linear-gradient(135deg, #9B59B6 0%, #4DBBFA 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
+        line-height: 1.3 !important;
+        letter-spacing: -0.025em !important;
+      }
+
+      :global(.post-content h3) {
+        font-size: 1.5rem !important;
+        font-weight: 600 !important;
+        margin-top: 2rem !important;
+        margin-bottom: 1rem !important;
+        color: #1f2937 !important;
+        line-height: 1.4 !important;
+      }
+
+      :global(.post-content h4) {
+        font-size: 1.25rem !important;
+        font-weight: 600 !important;
+        margin-top: 1.5rem !important;
+        margin-bottom: 0.75rem !important;
+        color: #374151 !important;
+        line-height: 1.4 !important;
+      }
+
+      :global(.post-content h5) {
+        font-size: 1.125rem !important;
+        font-weight: 600 !important;
+        margin-top: 1.5rem !important;
+        margin-bottom: 0.75rem !important;
+        color: #4b5563 !important;
+        line-height: 1.4 !important;
+      }
+
+      :global(.post-content h6) {
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        margin-top: 1.25rem !important;
+        margin-bottom: 0.5rem !important;
+        color: #6b7280 !important;
+        line-height: 1.4 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+      }
+
+      /* Responsive header sizing */
+      @media (max-width: 768px) {
+        :global(.post-content h1) {
+          font-size: 2rem !important;
+        }
+
+        :global(.post-content h2) {
+          font-size: 1.75rem !important;
+        }
+
+        :global(.post-content h3) {
+          font-size: 1.375rem !important;
+        }
       }
 
       .post-content blockquote {
@@ -370,6 +498,9 @@ const description = extractExcerpt(excerpt, 160);
         }
       }
     </style>
+
+    <!-- Shortcode Styles -->
+    <style set:html={getShortcodeStyles()}></style>
 
     <div class="post-container">
       <article>
