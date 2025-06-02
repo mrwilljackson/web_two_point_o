@@ -1,11 +1,38 @@
 import type { WordPressPost, WordPressPage, WordPressMedia } from '../types/wordpress';
 
 /**
+ * Decode HTML entities in WordPress content
+ */
+export function decodeWordPressEntities(content: string): string {
+  if (!content) return content;
+
+  return content
+    .replace(/&quot;/g, '"')
+    .replace(/&#8220;/g, '"')  // Left double quotation mark
+    .replace(/&#8221;/g, '"')  // Right double quotation mark
+    .replace(/&#8217;/g, "'")  // Right single quotation mark (apostrophe)
+    .replace(/&#8216;/g, "'")  // Left single quotation mark
+    .replace(/&#8211;/g, "–")  // En dash
+    .replace(/&#8212;/g, "—")  // Em dash
+    .replace(/&#8230;/g, "…")  // Horizontal ellipsis
+    .replace(/&#8243;/g, '"')  // Double prime
+    .replace(/&#039;/g, "'")   // Apostrophe
+    .replace(/&amp;/g, "&")
+    .replace(/&038;/g, "&")    // Another ampersand encoding
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&nbsp;/g, " ");  // Non-breaking space
+}
+
+/**
  * Process WordPress content to make it suitable for static site generation
  * NOTE: Shortcode processing is now handled separately by content-processor.js
  */
 export function processWordPressContent(content: string, baseUrl: string): string {
   let processedContent = content;
+
+  // Decode HTML entities first
+  processedContent = decodeWordPressEntities(processedContent);
 
   // Replace WordPress site URLs with the new site URL
   const wpUrlPattern = new RegExp(baseUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
@@ -76,13 +103,8 @@ export function extractExcerpt(content: string, maxLength: number = 160): string
   // Remove HTML tags
   const textContent = content.replace(/<[^>]*>/g, '');
 
-  // Decode HTML entities
-  const decodedContent = textContent
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#039;/g, "'");
+  // Decode HTML entities using our comprehensive decoder
+  const decodedContent = decodeWordPressEntities(textContent);
 
   // Truncate to maxLength
   if (decodedContent.length <= maxLength) {

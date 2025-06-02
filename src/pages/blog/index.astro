@@ -11,7 +11,8 @@ import {
   getTags,
   formatDate,
   getStickyPosts,
-  getNonStickyPosts
+  getNonStickyPosts,
+  decodeWordPressEntities
 } from '../../lib/content-utils';
 import { processFeaturedImage, processPostImages } from '../../lib/image-processor.js';
 
@@ -614,7 +615,7 @@ const description = 'Read our latest posts and articles.';
           <div class="featured-card" data-categories={getCategories(featuredPost).map(cat => cat.slug).join(',')}>
             <div class="featured-content">
               <div class="featured-badge">Featured</div>
-              <h2 class="featured-title">{featuredPost.title.rendered}</h2>
+              <h2 class="featured-title">{decodeWordPressEntities(featuredPost.title.rendered)}</h2>
               <p class="featured-excerpt" set:html={extractExcerpt(featuredPost.content.rendered)}></p>
               <div class="featured-meta">
                 <div class="featured-meta-item">
@@ -653,7 +654,7 @@ const description = 'Read our latest posts and articles.';
               {getFeaturedImage(featuredPost) ? (
                 <img
                   src={getFeaturedImage(featuredPost).source_url}
-                  alt={getFeaturedImage(featuredPost).alt_text || featuredPost.title.rendered}
+                  alt={getFeaturedImage(featuredPost).alt_text || decodeWordPressEntities(featuredPost.title.rendered)}
                   class="featured-image"
                   loading="lazy"
                 />
@@ -686,6 +687,7 @@ const description = 'Read our latest posts and articles.';
             const postCategories = getCategories(post);
             const excerpt = post.excerpt.rendered || extractExcerpt(post.content.rendered);
             const formattedDate = formatDate(post.date);
+            const decodedTitle = decodeWordPressEntities(post.title.rendered);
 
             return (
               <article class="post-card" data-categories={postCategories.map(cat => cat.slug).join(',')}>
@@ -693,7 +695,7 @@ const description = 'Read our latest posts and articles.';
                   {featuredImage ? (
                     <img
                       src={featuredImage.source_url}
-                      alt={featuredImage.alt_text || post.title.rendered}
+                      alt={featuredImage.alt_text || decodedTitle}
                       class="post-image"
                       loading="lazy"
                     />
@@ -715,10 +717,10 @@ const description = 'Read our latest posts and articles.';
 
                 <div class="post-content">
                   <h3 class="post-title">
-                    <a href={`/blog/${post.slug}`}>{post.title.rendered}</a>
+                    <a href={`/blog/${post.slug}`}>{decodedTitle}</a>
                   </h3>
 
-                  <div class="post-excerpt">{excerpt.replace(/<[^>]*>/g, '').trim()}</div>
+                  <div class="post-excerpt">{decodeWordPressEntities(excerpt.replace(/<[^>]*>/g, '')).trim()}</div>
 
                   <div class="post-meta">
                     <div class="post-meta-left">

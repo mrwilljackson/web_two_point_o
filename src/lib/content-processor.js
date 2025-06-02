@@ -349,18 +349,25 @@ function getHighlightColorClass(color) {
 }
 
 /**
- * Decode HTML entities in content
+ * Decode HTML entities in content - comprehensive version
  */
 function decodeHtmlEntities(content) {
   return content
     .replace(/&quot;/g, '"')
-    .replace(/&#8220;/g, '"')
-    .replace(/&#8221;/g, '"')
-    .replace(/&#8217;/g, "'")
-    .replace(/&#8211;/g, "–")
+    .replace(/&#8220;/g, '"')  // Left double quotation mark
+    .replace(/&#8221;/g, '"')  // Right double quotation mark
+    .replace(/&#8217;/g, "'")  // Right single quotation mark (apostrophe)
+    .replace(/&#8216;/g, "'")  // Left single quotation mark
+    .replace(/&#8211;/g, "–")  // En dash
+    .replace(/&#8212;/g, "—")  // Em dash
+    .replace(/&#8230;/g, "…")  // Horizontal ellipsis
+    .replace(/&#8243;/g, '"')  // Double prime
+    .replace(/&#039;/g, "'")   // Apostrophe
     .replace(/&amp;/g, "&")
+    .replace(/&038;/g, "&")    // Another ampersand encoding
     .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">");
+    .replace(/&gt;/g, ">")
+    .replace(/&nbsp;/g, " ");  // Non-breaking space
 }
 
 /**

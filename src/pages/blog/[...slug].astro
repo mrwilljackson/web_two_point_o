@@ -10,7 +10,8 @@ import {
   getAuthor,
   getCategories,
   getTags,
-  formatDate
+  formatDate,
+  decodeWordPressEntities
 } from '../../lib/content-utils';
 import { processFeaturedImage, processPostImages } from '../../lib/image-processor.js';
 import { processShortcodes, getShortcodeStyles } from '../../lib/content-processor.js';
@@ -66,7 +67,7 @@ let processedContent = processWordPressContent(
 // Process shortcodes for rich content elements
 processedContent = processShortcodes(processedContent);
 
-// Get additional data
+// Get additional data and decode HTML entities
 const featuredImage = processedFeaturedImage;
 const author = getAuthor(post);
 const categories = getCategories(post);
@@ -74,9 +75,13 @@ const tags = getTags(post);
 const excerpt = post.excerpt.rendered || extractExcerpt(post.content.rendered);
 const formattedDate = formatDate(post.date);
 
+// Decode HTML entities in title and other content
+const decodedTitle = decodeWordPressEntities(post.title.rendered);
+const decodedExcerpt = decodeWordPressEntities(excerpt);
+
 // SEO data
-const title = `${post.title.rendered} | ${process.env.SITE_NAME || 'Blog'}`;
-const description = extractExcerpt(excerpt, 160);
+const title = `${decodedTitle} | ${process.env.SITE_NAME || 'Blog'}`;
+const description = extractExcerpt(decodedExcerpt, 160);
 ---
 
 <Layout title={title} description={description}>
@@ -543,14 +548,14 @@ const description = extractExcerpt(excerpt, 160);
       </div>
 
       {/* Title - V0 Style */}
-      <h1 class="post-title-v0">{post.title.rendered}</h1>
+      <h1 class="post-title-v0">{decodedTitle}</h1>
 
       {/* Featured Image - V0 Style */}
       {featuredImage && (
         <div class="featured-image-container-v0">
           <img
             src={featuredImage.source_url}
-            alt={featuredImage.alt_text || post.title.rendered}
+            alt={featuredImage.alt_text || decodedTitle}
             class="featured-image-v0"
             loading="eager"
           />

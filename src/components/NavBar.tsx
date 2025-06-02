@@ -14,10 +14,10 @@ const NavBar: React.FC = () => {
 
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-6">
-              <a href="/blog" className="text-gray-700 hover:text-playphysio-blue font-light tracking-wide">News</a>
               <a href="/#benefits" className="text-gray-700 hover:text-playphysio-blue font-light tracking-wide">Benefits</a>
               <a href="/#how-it-works" className="text-gray-700 hover:text-playphysio-blue font-light tracking-wide">How It Works</a>
               <a href="/#testimonials" className="text-gray-700 hover:text-playphysio-blue font-light tracking-wide">Testimonials</a>
+              <a href="/blog" className="text-gray-700 hover:text-playphysio-blue font-light tracking-wide">News</a>
               <a href="/#contact" className="text-gray-700 hover:text-playphysio-blue font-light tracking-wide">Contact</a>
               <Button
                 className="text-white rounded-full px-6 py-2 font-medium hover:scale-105 transition-all duration-300"
