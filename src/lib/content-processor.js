@@ -177,6 +177,103 @@ function processHighlight(content) {
 }
 
 /**
+ * Process References shortcode
+ * WordPress: [references]
+ *   [ref id="4" url="https://pmc.ncbi.nlm.nih.gov/articles/PMC10171344/"]Enhancing Respiratory Therapists' Well-Being: Battling Burnout in …[/ref]
+ *   [ref id="12" url="https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0312504"]A qualitative study examining stressors among Respiratory … – PLOS[/ref]
+ *   [ref id="16" url="https://scholarworks.waldenu.edu/cgi/viewcontent.cgi?article=17300&context=dissertations"][PDF] Effective Strategies Respiratory Managers Use to Reduce Burnout …[/ref]
+ * [/references]
+ */
+function processReferences(content) {
+  // First, extract reference data from the references section
+  const referencesRegex = /(?:<[^>]*>)*\[references\](?:<[^>]*>)*(.*?)(?:<[^>]*>)*\[\/references\](?:<[^>]*>)*/gs;
+
+  let referencesData = {};
+  let referencesHtml = '';
+
+  // Extract references and build lookup table
+  const referencesMatch = referencesRegex.exec(content);
+  if (referencesMatch) {
+    const referencesContent = referencesMatch[1];
+
+    // Clean up the references content
+    const cleanReferencesContent = referencesContent
+      .replace(/<[^>]*>/g, ' ') // Remove HTML tags
+      .replace(/&quot;/g, '"')
+      .replace(/&#8217;/g, "'")
+      .replace(/&#8211;/g, "–")
+      .replace(/&#8221;/g, '"')
+      .replace(/&amp;/g, "&")
+      .trim();
+
+    // Extract individual references
+    const refRegex = /\[ref\s+id\s*=\s*["']([^"']*)["'](?:\s+url\s*=\s*["']([^"']*)["'])?\](.*?)\[\/ref\]/g;
+    let refMatch;
+
+    while ((refMatch = refRegex.exec(cleanReferencesContent)) !== null) {
+      const [, id, url, title] = refMatch;
+
+      // Store reference data for inline citations
+      referencesData[id] = {
+        title: title.trim(),
+        url: url || '#'
+      };
+
+      // Build the reference list item
+      referencesHtml += `
+        <li class="reference-item">
+          <span class="reference-number">[${id}]</span>
+          ${url ? `<a href="${url}" target="_blank" rel="noopener noreferrer" class="reference-link">` : ''}
+          <span class="reference-title">${title.trim()}</span>
+          ${url ? '</a>' : ''}
+        </li>
+      `;
+    }
+  }
+
+  // Process inline citations in the content FIRST (before replacing the references section)
+  // Look for patterns like [4], [12], [16] or [4][12][16]
+  const citationRegex = /(\[(\d+)\])+/g;
+
+  content = content.replace(citationRegex, (match) => {
+    // Extract all citation numbers from the match
+    const numberRegex = /\[(\d+)\]/g;
+    let numberMatch;
+    let citations = [];
+
+    while ((numberMatch = numberRegex.exec(match)) !== null) {
+      citations.push(numberMatch[1]);
+    }
+
+    // Create superscript citations with links
+    const citationLinks = citations.map(num => {
+      const ref = referencesData[num];
+      if (ref && ref.url && ref.url !== '#') {
+        return `<a href="${ref.url}" target="_blank" rel="noopener noreferrer" class="citation-link" title="${ref.title}">${num}</a>`;
+      } else {
+        return `<span class="citation-number" title="${ref ? ref.title : 'Reference ' + num}">${num}</span>`;
+      }
+    }).join('');
+
+    return `<sup class="citation-group">${citationLinks}</sup>`;
+  });
+
+  // Now replace the references section with the formatted HTML
+  content = content.replace(referencesRegex, () => {
+    return `
+      <div class="references-section">
+        <h4 class="references-title">References</h4>
+        <ol class="references-list">
+          ${referencesHtml}
+        </ol>
+      </div>
+    `;
+  });
+
+  return content;
+}
+
+/**
  * Helper function to get color classes for statistics
  */
 function getColorClass(color) {
@@ -263,6 +360,7 @@ export function processShortcodes(content) {
   processedContent = processQuote(processedContent);
   processedContent = processCallout(processedContent);
   processedContent = processHighlight(processedContent);
+  processedContent = processReferences(processedContent);
 
   return processedContent;
 }
@@ -426,6 +524,89 @@ export function getShortcodeStyles() {
       color: #7c3aed;
     }
 
+    /* References Section */
+    .references-section {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #e5e7eb;
+      background: #fafafa;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+    }
+
+    .references-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #6b7280;
+      margin: 0 0 1rem 0;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .references-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .reference-item {
+      margin-bottom: 0.75rem;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .reference-number {
+      color: #6b7280;
+      font-weight: 500;
+      flex-shrink: 0;
+      min-width: 2rem;
+    }
+
+    .reference-link {
+      color: #4b5563;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .reference-link:hover {
+      color: #1f2937;
+      text-decoration: underline;
+    }
+
+    .reference-title {
+      color: #4b5563;
+    }
+
+    /* Inline Citations */
+    .citation-group {
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    .citation-link,
+    .citation-number {
+      color: #3b82f6;
+      text-decoration: none;
+      margin: 0 0.125rem;
+      padding: 0.125rem 0.25rem;
+      border-radius: 0.25rem;
+      background: #eff6ff;
+      transition: all 0.2s ease;
+    }
+
+    .citation-link:hover {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+
+    .citation-number {
+      color: #6b7280;
+      background: #f3f4f6;
+    }
+
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .stats-cards-container {
@@ -439,6 +620,15 @@ export function getShortcodeStyles() {
       .key-insight-panel,
       .callout-box {
         padding: 1rem;
+      }
+
+      .references-section {
+        padding: 1rem;
+        margin-top: 2rem;
+      }
+
+      .reference-item {
+        font-size: 0.8rem;
       }
     }
   `;

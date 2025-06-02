@@ -102,6 +102,43 @@ Our [highlight color="green"]94% success rate[/highlight] speaks for itself.
 
 ---
 
+### 6. References & Citations
+
+Creates an academic-style references section with inline citations. Perfect for adding credibility to your blog posts.
+
+**Usage:**
+```
+Inspired by insights from frontline clinicians and health systems worldwide[4][12][16][18].
+
+[references]
+[ref id="4" url="https://pmc.ncbi.nlm.nih.gov/articles/PMC10171344/"]Enhancing Respiratory Therapists' Well-Being: Battling Burnout in …[/ref]
+[ref id="12" url="https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0312504"]A qualitative study examining stressors among Respiratory … – PLOS[/ref]
+[ref id="16" url="https://scholarworks.waldenu.edu/cgi/viewcontent.cgi?article=17300&context=dissertations"][PDF] Effective Strategies Respiratory Managers Use to Reduce Burnout …[/ref]
+[ref id="18" url="https://example.com/study"]Another important study on respiratory therapy[/ref]
+[/references]
+```
+
+**Features:**
+- **Inline Citations**: Use `[4]`, `[12][16]`, or `[4][12][16]` anywhere in your text
+- **Clickable References**: Citations link directly to the source URLs
+- **Hover Tooltips**: Show reference titles on hover
+- **Academic Styling**: Subtle, professional appearance that doesn't distract from content
+- **Mobile Responsive**: Optimized for all screen sizes
+
+**Parameters:**
+- `id` (required): The citation number (e.g., "4", "12")
+- `url` (optional): The source URL - makes citations clickable
+
+**Without URLs:**
+```
+[references]
+[ref id="1"]Internal company study, 2024[/ref]
+[ref id="2"]Personal communication with Dr. Smith[/ref]
+[/references]
+```
+
+---
+
 ## 🎨 Color Options
 
 ### Available Colors:
@@ -154,6 +191,14 @@ The engagement levels we observe with gamified therapy are unlike anything we've
 [callout type="success" title="Ready to Get Started?"]
 Contact our team to learn how PlayPhysio can transform your respiratory therapy program.
 [/callout]
+
+<p>This research is supported by multiple clinical studies[4][12][16] demonstrating the effectiveness of gamified therapy approaches.</p>
+
+[references]
+[ref id="4" url="https://pmc.ncbi.nlm.nih.gov/articles/PMC10171344/"]Enhancing Respiratory Therapists' Well-Being: Battling Burnout in …[/ref]
+[ref id="12" url="https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0312504"]A qualitative study examining stressors among Respiratory … – PLOS[/ref]
+[ref id="16" url="https://scholarworks.waldenu.edu/cgi/viewcontent.cgi?article=17300&context=dissertations"][PDF] Effective Strategies Respiratory Managers Use to Reduce Burnout …[/ref]
+[/references]
 ```
 
 ---
@@ -182,6 +227,7 @@ Contact our team to learn how PlayPhysio can transform your respiratory therapy 
 - **Use Quotes** to add credibility and expert opinions
 - **Use Callouts** for important notes, warnings, or CTAs
 - **Use Highlights** sparingly for emphasis
+- **Use References** to add academic credibility and support claims with sources
 
 ### Design Consistency:
 - Stick to the provided color palette for brand consistency

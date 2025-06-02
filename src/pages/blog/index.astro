@@ -9,7 +9,9 @@ import {
   getAuthor,
   getCategories,
   getTags,
-  formatDate
+  formatDate,
+  getStickyPosts,
+  getNonStickyPosts
 } from '../../lib/content-utils';
 import { processFeaturedImage, processPostImages } from '../../lib/image-processor.js';
 
@@ -65,9 +67,17 @@ if (posts.length > 0) {
   console.log('🎉 Image processing complete!');
 }
 
-// Get featured post (most recent) and remaining posts
-const featuredPost = posts.length > 0 ? posts[0] : null;
-const remainingPosts = posts.slice(1);
+// Get featured post (sticky post) and remaining posts
+const stickyPosts = getStickyPosts(posts);
+const featuredPost = stickyPosts.length > 0 ? stickyPosts[0] : null; // Use first sticky post as featured
+const remainingPosts = getNonStickyPosts(posts); // All non-sticky posts
+
+console.log(`📌 Found ${stickyPosts.length} sticky posts`);
+if (featuredPost) {
+  console.log(`✨ Featured post: "${featuredPost.title.rendered}"`);
+} else {
+  console.log('ℹ️ No sticky posts found - featured section will be hidden');
+}
 
 // SEO data
 const title = `Blog | ${process.env.SITE_NAME || 'Website'}`;

@@ -123,6 +123,27 @@ export function getFeaturedImage(item: WordPressPost | WordPressPage): WordPress
 }
 
 /**
+ * Check if a post is sticky (featured)
+ */
+export function isSticky(post: WordPressPost): boolean {
+  return post.sticky === true;
+}
+
+/**
+ * Get sticky posts from a list of posts
+ */
+export function getStickyPosts(posts: WordPressPost[]): WordPressPost[] {
+  return posts.filter(post => isSticky(post));
+}
+
+/**
+ * Get non-sticky posts from a list of posts
+ */
+export function getNonStickyPosts(posts: WordPressPost[]): WordPressPost[] {
+  return posts.filter(post => !isSticky(post));
+}
+
+/**
  * Get author information from post/page
  */
 export function getAuthor(item: WordPressPost | WordPressPage) {

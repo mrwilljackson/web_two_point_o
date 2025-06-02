@@ -41,12 +41,12 @@ try {
     wordpressAPI.getCategories()
   ]);
   wordpressAvailable = true;
-  
+
   // Filter posts by category
   posts = posts.filter(post =>
     getCategories(post).some(cat => cat.id === category.id)
   );
-  
+
   console.log(`✅ Found ${posts.length} posts in category "${category.name}"`);
 } catch (error) {
   console.error('❌ Error fetching category posts:', error);
@@ -54,6 +54,9 @@ try {
 
 // Sort posts by date (newest first)
 posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+// Note: Category pages show all posts in the category, including sticky posts
+// The main blog page handles sticky posts as featured content
 
 // Process images for all posts
 if (posts.length > 0) {
