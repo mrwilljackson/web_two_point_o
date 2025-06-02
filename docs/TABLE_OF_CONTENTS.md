@@ -14,6 +14,7 @@ Quick reference for all PlayPhysio website documentation.
 | **[STICKY_POSTS_FEATURE.md](STICKY_POSTS_FEATURE.md)** | ⭐ Featured posts management | Content Creators |
 | **[IMAGE_HANDLING_GUIDE.md](IMAGE_HANDLING_GUIDE.md)** | 🖼️ Image processing and optimization | Everyone |
 | **[FAVICON_README.md](FAVICON_README.md)** | 🎯 Brand consistency and favicon setup | Designers |
+| **[404_PAGE_GUIDE.md](404_PAGE_GUIDE.md)** | 🚫 Custom 404 error page design and UX | Designers |
 
 ## 🎯 By Use Case
 
@@ -40,10 +41,10 @@ Quick reference for all PlayPhysio website documentation.
 
 ## 📊 Documentation Stats
 
-- **Total Files**: 8 documentation files
+- **Total Files**: 9 documentation files
 - **Content Creation**: 4 guides
-- **Technical Setup**: 3 guides  
-- **Brand/Design**: 2 guides
+- **Technical Setup**: 3 guides
+- **Brand/Design**: 3 guides
 - **Last Updated**: January 2025
 
 ---

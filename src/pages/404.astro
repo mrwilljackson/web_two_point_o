@@ -1,0 +1,445 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
+import { wordpressAPI } from '../lib/wordpress';
+import {
+  extractExcerpt,
+  getFeaturedImage,
+  getAuthor,
+  getCategories,
+  formatDate,
+  getStickyPosts,
+  decodeWordPressEntities
+} from '../lib/content-utils';
+
+// Fetch sticky posts for featured content
+let featuredPost = null;
+let wordpressAvailable = false;
+
+try {
+  console.log('🔄 Fetching sticky posts for 404 page...');
+  const posts = await wordpressAPI.getAllPosts();
+  const stickyPosts = getStickyPosts(posts);
+  featuredPost = stickyPosts.length > 0 ? stickyPosts[0] : null;
+  wordpressAvailable = true;
+
+  if (featuredPost) {
+    console.log(`✨ 404 page featuring: "${featuredPost.title.rendered}"`);
+  } else {
+    console.log('ℹ️ No sticky posts found for 404 page - using fallback content');
+  }
+} catch (error) {
+  console.error('❌ Error fetching posts for 404 page:', error);
+  console.log('📝 Using static fallback content for 404 page');
+}
+---
+
+<Layout title="Page Not Found - PlayPhysio">
+  <NavBar client:load />
+
+  <main class="min-h-screen flex items-center justify-center px-4 py-16">
+    <div class="max-w-4xl mx-auto text-center">
+
+      {/* 404 Hero Section */}
+      <div class="mb-12">
+        {/* Large 404 with PlayPhysio styling */}
+        <div class="mb-8">
+          <h1 class="text-8xl md:text-9xl font-extrabold mb-4">
+            <span class="bg-gradient-to-r from-playphysio-blue to-playphysio-green bg-clip-text text-transparent">
+              4
+            </span>
+            <span class="bg-gradient-to-r from-playphysio-green to-playphysio-purple bg-clip-text text-transparent">
+              0
+            </span>
+            <span class="bg-gradient-to-r from-playphysio-purple to-playphysio-pink bg-clip-text text-transparent">
+              4
+            </span>
+          </h1>
+        </div>
+
+        {/* Friendly Message */}
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+          Don't worry, it's not Game Over!
+        </h2>
+
+        <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+          Looks like you've discovered a secret level that doesn't exist yet! No respawn needed though -
+          just use the power-ups below to get back to the main adventure.
+        </p>
+      </div>
+
+      {/* Playful Game Elements */}
+      <div class="mb-12">
+        <div class="flex justify-center items-center space-x-4 mb-8">
+          <div class="w-16 h-16 bg-gradient-to-br from-playphysio-blue to-playphysio-cyan rounded-full flex items-center justify-center text-white text-2xl font-bold animate-bounce-gentle">
+            🎮
+          </div>
+          <div class="w-12 h-12 bg-gradient-to-br from-playphysio-green to-playphysio-yellow rounded-full flex items-center justify-center text-white text-xl font-bold animate-bounce-gentle" style="animation-delay: 0.2s;">
+            🏆
+          </div>
+          <div class="w-14 h-14 bg-gradient-to-br from-playphysio-purple to-playphysio-pink rounded-full flex items-center justify-center text-white text-xl font-bold animate-bounce-gentle" style="animation-delay: 0.4s;">
+            ⭐
+          </div>
+        </div>
+
+        <p class="text-playphysio-blue font-medium">
+          Ready to continue your quest? Choose your next move!
+        </p>
+      </div>
+
+      {/* Action Buttons */}
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+        <a
+          href="/"
+          class="inline-flex items-center px-8 py-4 text-white font-bold rounded-full hover:scale-105 transition-all duration-300 shadow-lg"
+          style="background: linear-gradient(to right, #4DBBFA, #58D68D);"
+        >
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+          </svg>
+          Return to Home
+        </a>
+
+        <a
+          href="/blog"
+          class="inline-flex items-center px-8 py-4 text-white font-bold rounded-full hover:scale-105 transition-all duration-300 shadow-lg"
+          style="background: linear-gradient(to right, #9B59B6, #FF6B81);"
+        >
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
+          </svg>
+          Check For Updates
+        </a>
+      </div>
+
+      {/* Quick Links */}
+      <div class="rounded-2xl shadow-lg p-8 max-w-3xl mx-auto" style="background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 50%, #f3e8ff 100%);">
+        <h3 class="text-xl font-bold text-gray-800 mb-6">
+          Learn more about Playphysio
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <a href="/#benefits" class="group p-4 rounded-xl bg-gradient-to-br from-playphysio-blue/10 to-playphysio-cyan/10 hover:from-playphysio-blue/20 hover:to-playphysio-cyan/20 transition-all duration-300">
+            <div class="text-playphysio-blue text-2xl mb-2">💪</div>
+            <h4 class="font-semibold text-gray-800 group-hover:text-playphysio-blue transition-colors">playphysio</h4>
+            <p class="text-sm text-gray-600 mt-1">your benefits</p>
+          </a>
+
+          <a href="/#how-it-works" class="group p-4 rounded-xl bg-gradient-to-br from-playphysio-green/10 to-playphysio-yellow/10 hover:from-playphysio-green/20 hover:to-playphysio-yellow/20 transition-all duration-300">
+            <div class="text-playphysio-green text-2xl mb-2">⚙️</div>
+            <h4 class="font-semibold text-gray-800 group-hover:text-playphysio-green transition-colors">mechanics</h4>
+            <p class="text-sm text-gray-600 mt-1">how it works</p>
+          </a>
+
+          <a href="/#testimonials" class="group p-4 rounded-xl bg-gradient-to-br from-playphysio-purple/10 to-playphysio-pink/10 hover:from-playphysio-purple/20 hover:to-playphysio-pink/20 transition-all duration-300">
+            <div class="text-playphysio-purple text-2xl mb-2">💬</div>
+            <h4 class="font-semibold text-gray-800 group-hover:text-playphysio-purple transition-colors">your reviews</h4>
+            <p class="text-sm text-gray-600 mt-1">what players think</p>
+          </a>
+        </div>
+      </div>
+
+      {/* Featured Content Panel */}
+      <div class="mt-12">
+        {featuredPost ? (
+          <div class="featured-card-404">
+            <div class="featured-content-404">
+              <h3 class="featured-title-404">{decodeWordPressEntities(featuredPost.title.rendered)}</h3>
+              <p class="featured-excerpt-404">
+                {extractExcerpt(featuredPost.content.rendered, 200)}
+              </p>
+              <div class="featured-meta-404">
+                <div class="featured-meta-item-404">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                  <span>{getAuthor(featuredPost)?.name || 'PlayPhysio Team'}</span>
+                </div>
+                <div class="featured-meta-item-404">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  <span>{formatDate(featuredPost.date)}</span>
+                </div>
+                <div class="featured-meta-item-404">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12,6 12,12 16,14"></polyline>
+                  </svg>
+                  <span>5 min read</span>
+                </div>
+              </div>
+              <a href={`/blog/${featuredPost.slug}`} class="featured-button-404">
+                Read This Article
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12,5 19,12 12,19"></polyline>
+                </svg>
+              </a>
+            </div>
+            <div class="featured-image-container-404">
+              <div class="featured-image-404">
+                {getFeaturedImage(featuredPost) ? (
+                  <img
+                    src={getFeaturedImage(featuredPost).source_url}
+                    alt={getFeaturedImage(featuredPost).alt_text || decodeWordPressEntities(featuredPost.title.rendered)}
+                    class="featured-image-real-404"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div class="featured-placeholder-404">
+                    <div class="featured-icon-404">🎮</div>
+                    <div class="featured-stats-404">
+                      <div class="stat-404">94% Adherence</div>
+                      <div class="stat-404">67% Improvement</div>
+                      <div class="stat-404">89% Enjoyment</div>
+                    </div>
+                  </div>
+                )}
+                {getCategories(featuredPost).length > 0 && (
+                  <div class="featured-category-badge-404">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                      <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                    </svg>
+                    {getCategories(featuredPost)[0].name}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ) : (
+          <!-- Fallback content when no sticky post is available -->
+          <div class="featured-card-404">
+            <div class="featured-content-404">
+              <h3 class="featured-title-404">The Science Behind Gamified Respiratory Therapy</h3>
+              <p class="featured-excerpt-404">
+                Discover how PlayPhysio achieves 94% therapy adherence rates through innovative gamification techniques that transform challenging medical routines into engaging experiences.
+              </p>
+              <div class="featured-meta-404">
+                <div class="featured-meta-item-404">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                  <span>PlayPhysio Team</span>
+                </div>
+                <div class="featured-meta-item-404">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12,6 12,12 16,14"></polyline>
+                  </svg>
+                  <span>5 min read</span>
+                </div>
+              </div>
+              <a href="/blog" class="featured-button-404">
+                Read More Articles
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12,5 19,12 12,19"></polyline>
+                </svg>
+              </a>
+            </div>
+            <div class="featured-image-container-404">
+              <div class="featured-image-404">
+                <div class="featured-placeholder-404">
+                  <div class="featured-icon-404">🎮</div>
+                  <div class="featured-stats-404">
+                    <div class="stat-404">94% Adherence</div>
+                    <div class="stat-404">67% Improvement</div>
+                    <div class="stat-404">89% Enjoyment</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </main>
+
+  <Footer client:load />
+</Layout>
+
+<style>
+  @keyframes bounce-gentle {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-bounce-gentle {
+    animation: bounce-gentle 3s ease-in-out infinite;
+  }
+
+  /* Featured Panel Styles */
+  .featured-card-404 {
+    background: linear-gradient(135deg, #f0fdff 0%, #f8f4ff 100%);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+    align-items: center;
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+
+  .featured-content-404 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    align-items: center;
+  }
+
+  .featured-badge-404 {
+    background: linear-gradient(135deg, #22d3ee 0%, #10b981 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    width: fit-content;
+  }
+
+  .featured-title-404 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #1f2937;
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  .featured-excerpt-404 {
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .featured-meta-404 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: #9ca3af;
+    flex-wrap: wrap;
+  }
+
+  .featured-meta-item-404 {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .featured-button-404 {
+    background: linear-gradient(135deg, #22d3ee 0%, #10b981 100%);
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    width: fit-content;
+  }
+
+  .featured-button-404:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(34, 211, 238, 0.3);
+  }
+
+  .featured-image-container-404 {
+    position: relative;
+  }
+
+  .featured-image-404 {
+    width: 100%;
+    height: 16rem;
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+
+  .featured-placeholder-404 {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #4DBBFA 0%, #58D68D 50%, #9B59B6 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .featured-icon-404 {
+    font-size: 3rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  }
+
+  .featured-stats-404 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .stat-404 {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+  }
+
+  .featured-image-real-404 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .featured-category-badge-404 {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: #374151;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    backdrop-filter: blur(10px);
+  }
+
+  @media (max-width: 768px) {
+    .featured-card-404 {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 1.5rem;
+    }
+
+    .featured-title-404 {
+      font-size: 1.5rem;
+    }
+
+    .featured-meta-404 {
+      gap: 0.5rem;
+    }
+  }
+</style>

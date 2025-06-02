@@ -30,6 +30,9 @@ Welcome to the comprehensive documentation for the PlayPhysio website project. T
 - **[Favicon Guide](FAVICON_README.md)**
   *Brand consistency guidelines, favicon setup, and logo usage instructions to maintain PlayPhysio's visual identity.*
 
+- **[404 Page Guide](404_PAGE_GUIDE.md)**
+  *Custom 404 error page design, user experience features, and brand-consistent error handling for better user retention.*
+
 ## 🎯 Quick Reference by Role
 
 ### 👩‍💻 For Content Creators
