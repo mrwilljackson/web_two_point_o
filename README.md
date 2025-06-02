@@ -220,6 +220,18 @@ The `src/lib/wordpress.ts` file provides a comprehensive API client with methods
 - **Advanced Custom Fields**: Adds custom field support to REST API
 - **Yoast SEO**: Adds SEO data to REST API responses
 
+## 📚 Documentation
+
+For comprehensive documentation, guides, and references, visit the **[docs/](docs/)** directory:
+
+- **[Complete Documentation Index](docs/README.md)** - Overview of all available documentation
+- **[Shortcodes Guide](docs/SHORTCODES_GUIDE.md)** - Rich content elements for blog posts
+- **[Deployment Guide](docs/DEPLOYMENT.md)** - Production deployment instructions
+- **[Category System](docs/CATEGORY_SYSTEM_README.md)** - Blog organization and filtering
+- **[Image Handling](docs/IMAGE_HANDLING_GUIDE.md)** - Image optimization and processing
+- **[Favicon Setup](docs/FAVICON_README.md)** - Brand consistency and favicon management
+- **[Sticky Posts](docs/STICKY_POSTS_FEATURE.md)** - Featured posts management
+
 ## 📚 Learn More
 
 - [Astro Documentation](https://docs.astro.build)
@@ -228,4 +240,4 @@ The `src/lib/wordpress.ts` file provides a comprehensive API client with methods
 
 ## 🤝 Contributing
 
-Feel free to submit issues and enhancement requests!
+Feel free to submit issues and enhancement requests! When contributing, please update the relevant documentation in the [docs/](docs/) directory.
