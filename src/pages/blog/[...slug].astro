@@ -82,9 +82,25 @@ const decodedExcerpt = decodeWordPressEntities(excerpt);
 // SEO data
 const title = `${decodedTitle} | ${process.env.SITE_NAME || 'Blog'}`;
 const description = extractExcerpt(decodedExcerpt, 160);
+const featuredImageUrl = featuredImage?.source_url;
+const canonical = `${process.env.SITE_URL || 'https://playphysio.com'}/blog/${post.slug}`;
+const publishedTime = new Date(post.date).toISOString();
+const modifiedTime = new Date(post.modified).toISOString();
+const authorName = author?.name || 'PlayPhysio Team';
+const postTags = tags.map(tag => tag.name);
 ---
 
-<Layout title={title} description={description}>
+<Layout
+  title={title}
+  description={description}
+  image={featuredImageUrl}
+  canonical={canonical}
+  type="article"
+  publishedTime={publishedTime}
+  modifiedTime={modifiedTime}
+  author={authorName}
+  tags={postTags}
+>
   <NavBar client:load />
 
   <main>
@@ -576,7 +592,7 @@ const description = extractExcerpt(decodedExcerpt, 160);
           </h3>
           <div class="tags-container">
             {tags.map(tag => (
-              <a href={`/tag/${tag.slug}`} class="tag-badge">
+              <a href="#" class="tag-badge">
                 {tag.name}
               </a>
             ))}

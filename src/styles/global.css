@@ -127,6 +127,169 @@
     transform: translateY(-4px);
   }
 
+  /* List styling for blog content */
+  .post-content ul,
+  .post-content ol {
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+    line-height: 1.7;
+  }
+
+  .post-content ul li {
+    position: relative;
+    margin-bottom: 0.5rem;
+    list-style: none;
+  }
+
+  .post-content ul li::before {
+    content: '•';
+    color: #9CA3AF; /* Subtle gray color */
+    font-size: 1.2em;
+    position: absolute;
+    left: -1.2rem;
+    top: 0;
+    line-height: 1.4;
+  }
+
+  .post-content ol li {
+    margin-bottom: 0.5rem;
+    list-style: decimal;
+    list-style-position: outside;
+    color: #374151;
+  }
+
+  .post-content ol li::marker {
+    color: #9CA3AF; /* Subtle gray for numbers */
+    font-weight: 500;
+  }
+
+  /* Nested lists */
+  .post-content ul ul,
+  .post-content ol ol,
+  .post-content ul ol,
+  .post-content ol ul {
+    margin: 0.5rem 0;
+    padding-left: 1.2rem;
+  }
+
+  .post-content ul ul li::before {
+    content: '◦'; /* Hollow bullet for nested lists */
+    font-size: 1em;
+  }
+
+  /* List items with proper spacing */
+  .post-content li p {
+    margin: 0.25rem 0;
+  }
+
+  .post-content li:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Paragraph spacing for blog content */
+  .post-content p {
+    margin-bottom: 1.25rem;
+    line-height: 1.7;
+  }
+
+  .post-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Spacing between different content elements */
+  .post-content h1,
+  .post-content h2,
+  .post-content h3,
+  .post-content h4,
+  .post-content h5,
+  .post-content h6 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .post-content h1:first-child,
+  .post-content h2:first-child,
+  .post-content h3:first-child,
+  .post-content h4:first-child,
+  .post-content h5:first-child,
+  .post-content h6:first-child {
+    margin-top: 0;
+  }
+
+  /* Spacing for other content elements */
+  .post-content blockquote {
+    margin: 1.5rem 0;
+    padding-left: 1rem;
+    border-left: 4px solid #E5E7EB;
+  }
+
+  .post-content img {
+    margin: 1.5rem 0;
+  }
+
+  .post-content hr {
+    margin: 2rem 0;
+  }
+
+  /* Link styling for blog content */
+  .post-content a {
+    color: #4DBBFA; /* PlayPhysio blue */
+    text-decoration: underline;
+    text-decoration-color: rgba(77, 187, 250, 0.3); /* Subtle underline */
+    text-underline-offset: 3px;
+    transition: all 0.2s ease;
+    font-weight: 500;
+  }
+
+  .post-content a:hover {
+    color: #2563EB; /* Darker blue on hover */
+    text-decoration-color: #2563EB; /* Solid underline on hover */
+    text-decoration-thickness: 2px;
+  }
+
+  .post-content a:visited {
+    color: #7C3AED; /* Purple for visited links */
+  }
+
+  .post-content a:visited:hover {
+    color: #5B21B6; /* Darker purple on hover */
+    text-decoration-color: #5B21B6;
+  }
+
+  /* External link indicator (optional) */
+  .post-content a[href^="http"]:not([href*="playphysio.com"])::after {
+    content: " ↗";
+    font-size: 0.8em;
+    opacity: 0.6;
+    margin-left: 2px;
+  }
+
+  /* Link styling within lists */
+  .post-content li a {
+    font-weight: 500;
+  }
+
+  /* Ensure links in headings maintain proper styling */
+  .post-content h1 a,
+  .post-content h2 a,
+  .post-content h3 a,
+  .post-content h4 a,
+  .post-content h5 a,
+  .post-content h6 a {
+    text-decoration: none;
+    border-bottom: 2px solid rgba(77, 187, 250, 0.3);
+    transition: border-color 0.2s ease;
+  }
+
+  .post-content h1 a:hover,
+  .post-content h2 a:hover,
+  .post-content h3 a:hover,
+  .post-content h4 a:hover,
+  .post-content h5 a:hover,
+  .post-content h6 a:hover {
+    border-bottom-color: #4DBBFA;
+  }
+
   /* Logo styles from App.css */
   .logo {
     height: 6em;

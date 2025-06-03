@@ -33,6 +33,9 @@ Welcome to the comprehensive documentation for the PlayPhysio website project. T
 - **[404 Page Guide](404_PAGE_GUIDE.md)**
   *Custom 404 error page design, user experience features, and brand-consistent error handling for better user retention.*
 
+- **[Deployment Checklist](DEPLOYMENT_CHECKLIST.md)**
+  *Comprehensive pre-deployment checklist covering SEO, performance, security, and best practices for production deployment.*
+
 ## 🎯 Quick Reference by Role
 
 ### 👩‍💻 For Content Creators
