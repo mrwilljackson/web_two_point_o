@@ -283,7 +283,7 @@ const HeroSection: React.FC = () => {
                     background: 'linear-gradient(to right, #F4D03F, #F39C12)',
                   }}
                 >
-                  <p className="font-extrabold text-white text-lg tracking-tight">Follow Willow Waterford!</p>
+                  <p className="font-extrabold text-white text-lg tracking-tight">let's make physio fun!</p>
                 </div>
               </div>
 
