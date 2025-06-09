@@ -1,6 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Button } from "./ui/button";
 import { Play } from "lucide-react";
+import happyPlayPhysioUser1 from '../assets/happy-playphysio-user-1.jpg';
+import happyPlayPhysioUser2 from '../assets/happy-playphysio-user-2.jpg';
+import happyPlayPhysioUser3 from '../assets/happy-playphysio-user-3.jpg';
 
 interface Bubble {
   id: number;
@@ -21,9 +24,26 @@ interface Bubble {
 
 const HeroSection: React.FC = () => {
   const [bubbles, setBubbles] = useState<Bubble[]>([]);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const animationFrameRef = useRef<number | null>(null);
   const timeRef = useRef<number>(0);
+
+  // Array of hero images with multiple happy PlayPhysio users
+  const heroImages = [
+    {
+      src: happyPlayPhysioUser1.src,
+      alt: "Happy PlayPhysio user enjoying respiratory therapy"
+    },
+    {
+      src: happyPlayPhysioUser2.src,
+      alt: "Child having fun with PlayPhysio breathing exercises"
+    },
+    {
+      src: happyPlayPhysioUser3.src,
+      alt: "Family enjoying PlayPhysio together"
+    }
+  ];
 
   // Colors for the bubbles
   const colors = [
@@ -42,6 +62,19 @@ const HeroSection: React.FC = () => {
   const SCALE_CYCLE_DURATION = 8000; // 8 seconds for a complete scale cycle
   const MIN_SCALE = 0.8; // Minimum scale factor
   const MAX_SCALE = 1.2; // Maximum scale factor
+
+  // Image carousel effect - only runs if there are multiple images
+  useEffect(() => {
+    if (heroImages.length <= 1) return; // Don't run carousel for single image
+
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) =>
+        (prevIndex + 1) % heroImages.length
+      );
+    }, 4000); // Change image every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
 
   useEffect(() => {
     // Create a fixed set of bubbles with staggered cycles
@@ -269,11 +302,49 @@ const HeroSection: React.FC = () => {
           <div className="mt-10 md:mt-0 md:w-1/2 animate-fade-in" style={{ animationDelay: "0.6s" }}>
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-playphysio-blue/20 to-playphysio-green/20 rounded-3xl transform rotate-3 animate-pulse"></div>
-              <img
-                src="images/bubbles-child.jpg"
-                alt="Child using Playphysio"
-                className="relative z-10 rounded-3xl shadow-xl transform -rotate-2 hover:rotate-0 transition-transform duration-300 hover:scale-105"
-              />
+
+              {/* Image carousel container with proper sizing */}
+              <div className="relative w-full h-auto">
+                {heroImages.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image.src}
+                    alt={image.alt}
+                    className={`
+                      w-full h-auto rounded-3xl shadow-xl transform -rotate-2 hover:rotate-0 transition-all duration-1000 hover:scale-105
+                      ${index === currentImageIndex
+                        ? 'opacity-100 relative z-10'
+                        : 'opacity-0 absolute inset-0 z-0'
+                      }
+                    `}
+                    style={{
+                      transitionProperty: 'opacity, transform',
+                      transitionDuration: '1000ms',
+                      transitionTimingFunction: 'ease-in-out'
+                    }}
+                  />
+                ))}
+              </div>
+
+              {/* Image indicators (dots) - only show if multiple images */}
+              {heroImages.length > 1 && (
+                <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30">
+                  {heroImages.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentImageIndex(index)}
+                      className={`
+                        w-3 h-3 rounded-full transition-all duration-300 hover:scale-110
+                        ${index === currentImageIndex
+                          ? 'bg-playphysio-blue shadow-lg'
+                          : 'bg-gray-300 hover:bg-gray-400'
+                        }
+                      `}
+                      aria-label={`View image ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              )}
 
               {/* Animated stats badge */}
               <div className="absolute -bottom-6 -right-6 bg-white p-2 rounded-xl shadow-lg transform rotate-6 hover:rotate-0 hover:scale-110 transition-all duration-300 z-20">
