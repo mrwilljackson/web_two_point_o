@@ -112,6 +112,17 @@
     padding-bottom: 0.1em;
   }
 
+  .gradient-text-orange {
+    background: linear-gradient(135deg, #FF8C00 0%, #FFD700 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: inline-block;
+    line-height: 1.25;
+    padding-bottom: 0.1em;
+  }
+
   .bubble {
     position: absolute;
     border-radius: 50%;

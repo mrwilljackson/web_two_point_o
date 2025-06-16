@@ -244,7 +244,7 @@ const HeroSection: React.FC = () => {
   };
 
   return (
-    <section className="relative pt-16 pb-20 md:pt-24 md:pb-32 overflow-hidden bg-gradient-to-b from-white to-playphysio-blue/5">
+    <section className="relative pt-16 pb-20 md:pt-24 md:pb-32 overflow-hidden w-full bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700">
       {/* Animated background elements */}
       <div ref={containerRef} className="absolute inset-0 overflow-hidden z-0">
         {bubbles.map(bubble => {
@@ -275,12 +275,12 @@ const HeroSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 md:pr-12">
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 animate-fade-in leading-tight">
+            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 animate-fade-in leading-tight drop-shadow-lg">
               <span className="gradient-text-blue">Little Lungs,</span>
               <br />
-              <span className="gradient-text-purple drop-shadow-md">Big Wins!</span>
+              <span className="gradient-text-orange">Big Wins!</span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-700 mb-8 font-light tracking-wide animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            <p className="text-lg md:text-xl text-white/90 mb-8 font-light tracking-wide animate-fade-in drop-shadow-md" style={{ animationDelay: "0.2s" }}>
               Transform respiratory therapy into an exciting adventure. Playphysio® makes breathing exercises fun, engaging, and effective for children.
             </p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in" style={{ animationDelay: "0.4s" }}>
@@ -311,7 +311,7 @@ const HeroSection: React.FC = () => {
                     src={image.src}
                     alt={image.alt}
                     className={`
-                      w-full h-auto rounded-3xl shadow-xl transform -rotate-2 hover:rotate-0 transition-all duration-1000 hover:scale-105
+                      w-full h-auto rounded-3xl shadow-xl transform -rotate-2 hover:rotate-0 transition-all duration-1000 hover:scale-105 border-8 border-white
                       ${index === currentImageIndex
                         ? 'opacity-100 relative z-10'
                         : 'opacity-0 absolute inset-0 z-0'
