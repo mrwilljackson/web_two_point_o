@@ -1,120 +1,115 @@
 import React from 'react';
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Gamepad, Play } from "lucide-react";
+import { Play, CheckCircle, Clock, Heart, Trophy, Shield, Zap } from "lucide-react";
 
 const CTASection: React.FC = () => {
   return (
-    <section id="contact" className="py-16 md:py-24 bg-gradient-to-r from-playphysio-blue/10 to-playphysio-green/10 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden z-0">
-        <div className="bubble w-64 h-64 bg-playphysio-pink top-10 right-10 opacity-10 animate-float"></div>
-        <div className="bubble w-40 h-40 bg-playphysio-yellow bottom-10 left-10 opacity-10 animate-float" style={{ animationDelay: "1.5s" }}></div>
+    <section id="contact" className="py-20 bg-gradient-to-br from-slate-800 via-purple-800 to-indigo-900 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-purple-400 rounded-full opacity-10 animate-pulse"></div>
+        <div className="absolute bottom-32 right-20 w-40 h-40 bg-pink-400 rounded-full opacity-15 animate-bounce"></div>
+        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-blue-400 rounded-full opacity-20 animate-pulse"></div>
       </div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-[1.01] transition-transform duration-300">
-          <div className="md:flex">
-            <div className="md:w-1/2 bg-gradient-to-br from-playphysio-blue to-playphysio-green p-12 md:p-16 text-white">
-              <h2 className="text-3xl font-extrabold mb-6 flex items-center">
-                <Gamepad className="mr-2 h-8 w-8" />
-                Start Your Journey Today
-              </h2>
-              <p className="text-lg mb-8">
-                Join thousands of families who have transformed respiratory therapy from a chore into fun and games.
-              </p>
-              
-              <div className="rounded-xl overflow-hidden shadow-xl mb-8 bg-white/10 backdrop-blur-md transform hover:translate-y-[-5px] transition-all duration-300">
-                {/* Mobile Game Video - This has a animated overlay to make it more dynamic */}
-                <div className="relative pt-[56.25%]">
-                  <div className="absolute inset-0 bg-gradient-to-r from-playphysio-blue/40 to-transparent z-10 pointer-events-none"></div>
-                  <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
-                    <div className="w-20 h-20 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center animate-pulse">
-                      <Play className="h-10 w-10 text-white" />
-                    </div>
-                  </div>
-                  <iframe 
-                    className="absolute inset-0 w-full h-full"
-                    src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&controls=1&rel=0" 
-                    title="PlayPhysio Mobile Game Demo" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowFullScreen>
-                  </iframe>
-                </div>
-                <div className="p-4">
-                  <p className="font-semibold">See how Playphysio transforms therapy into play!</p>
-                </div>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="flex items-center transform hover:translate-x-1 transition-transform duration-200">
-                  <div className="mr-4 bg-white/20 rounded-full p-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <p>Clinically validated results</p>
-                </div>
-                
-                <div className="flex items-center transform hover:translate-x-1 transition-transform duration-200">
-                  <div className="mr-4 bg-white/20 rounded-full p-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <p>30-day satisfaction guarantee</p>
-                </div>
-                
-                <div className="flex items-center transform hover:translate-x-1 transition-transform duration-200">
-                  <div className="mr-4 bg-white/20 rounded-full p-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <p>Compatible with most devices</p>
-                </div>
-              </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center text-white mb-16">
+          <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-bold mb-6">
+            🚀 START YOUR TRANSFORMATION
+          </div>
+          <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">
+            Ready to Make Treatment{" "}
+            <span className="bg-gradient-to-r from-yellow-300 to-pink-300 bg-clip-text text-transparent">
+              Epic?
+            </span>
+          </h2>
+          <p className="text-xl md:text-2xl text-purple-100 max-w-4xl mx-auto leading-relaxed">
+            Join thousands of families who've transformed daily treatment battles
+            into epic gaming adventures. Your child's journey to better health starts here.
+          </p>
+        </div>
+
+        {/* Benefits Grid */}
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <div className="text-center text-white bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+            <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <Play className="text-white" size={32} />
             </div>
-            
-            <div className="md:w-1/2 p-12">
-              <h3 className="text-2xl font-extrabold mb-6">Request More Information</h3>
-              <form className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                    Full Name
-                  </label>
-                  <Input id="name" placeholder="Your name" className="w-full hover:border-playphysio-blue focus:border-playphysio-blue transition-colors duration-200" />
-                </div>
-                
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                    Email Address
-                  </label>
-                  <Input id="email" type="email" placeholder="your@email.com" className="w-full hover:border-playphysio-blue focus:border-playphysio-blue transition-colors duration-200" />
-                </div>
-                
-                <div>
-                  <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-1">
-                    I am a:
-                  </label>
-                  <select id="role" className="w-full rounded-md border border-gray-300 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-playphysio-blue focus:border-transparent">
-                    <option>Parent/Guardian</option>
-                    <option>Healthcare Professional</option>
-                    <option>School/Institution</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                
-                <Button className="w-full bg-gradient-to-r from-playphysio-blue to-playphysio-green text-white hover:shadow-lg hover:scale-[1.02] transition-all duration-300 font-extrabold">
-                  Get Information Package
-                </Button>
-                
-                <p className="text-xs text-gray-500 text-center mt-4">
-                  We respect your privacy and will never share your information.
-                </p>
-              </form>
+            <h3 className="text-xl font-bold mb-3">Start Free Trial</h3>
+            <p className="text-purple-100">No credit card required. 30-day free access to all adventures.</p>
+          </div>
+
+          <div className="text-center text-white bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+            <div className="w-16 h-16 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <Zap className="text-white" size={32} />
+            </div>
+            <h3 className="text-xl font-bold mb-3">See Results Fast</h3>
+            <p className="text-purple-100">Most families see dramatic improvement within the first week.</p>
+          </div>
+
+          <div className="text-center text-white bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+            <div className="w-16 h-16 bg-gradient-to-r from-pink-400 to-red-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <Heart className="text-white" size={32} />
+            </div>
+            <h3 className="text-xl font-bold mb-3">Family Approved</h3>
+            <p className="text-purple-100">Built by families, for families. We understand your journey.</p>
+          </div>
+        </div>
+        {/* Main CTA Card */}
+        <div className="bg-white rounded-3xl p-12 shadow-2xl max-w-5xl mx-auto border-4 border-purple-200">
+          <div className="text-center mb-10">
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <Trophy className="text-purple-600" size={32} />
+              <h3 className="text-3xl font-black text-slate-800">
+                Get Started in Less Than 2 Minutes
+              </h3>
+            </div>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Download PhysioPal, set up your child's gaming profile, and watch
+              treatment time transform into the best part of their day.
+            </p>
+          </div>
+
+          <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-10">
+            <button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-10 py-5 rounded-2xl text-xl font-black hover:shadow-2xl transition-all duration-300 transform hover:scale-105 w-full md:w-auto flex items-center justify-center gap-3">
+              <Trophy size={24} />
+              Start Your Adventure Now
+            </button>
+            <span className="text-slate-400 font-bold text-lg">or</span>
+            <button className="bg-slate-100 text-slate-700 px-10 py-5 rounded-2xl text-xl font-bold hover:bg-slate-200 transition-all duration-300 w-full md:w-auto flex items-center justify-center gap-3">
+              <Play size={24} />
+              Watch 2-Minute Demo
+            </button>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="flex flex-wrap items-center justify-center gap-8 text-sm text-slate-500">
+            <div className="flex items-center gap-2">
+              <CheckCircle className="text-green-500" size={20} />
+              <span className="font-semibold">No credit card required</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Clock className="text-blue-500" size={20} />
+              <span className="font-semibold">2-minute setup</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Shield className="text-purple-500" size={20} />
+              <span className="font-semibold">HIPAA compliant</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Heart className="text-red-500" size={20} />
+              <span className="font-semibold">Cancel anytime</span>
             </div>
           </div>
+        </div>
+
+        {/* Contact Info */}
+        <div className="text-center mt-12">
+          <p className="text-purple-200 text-lg">
+            Questions? <a href="#" className="underline hover:text-white transition-colors font-bold">Chat with our team</a> or call{" "}
+            <a href="tel:1-800-PLAYPHYSIO" className="font-black underline hover:text-white transition-colors">
+              1-800-PLAYPHYSIO
+            </a>
+          </p>
         </div>
       </div>
     </section>
