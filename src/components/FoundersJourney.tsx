@@ -6,11 +6,11 @@ const FoundersJourney: React.FC = () => {
     <section className="py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Centered Badge and Heading */}
-        <div className="text-center mb-16">
-          <div className="inline-block bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 px-4 py-2 rounded-full text-sm font-bold mb-6">
+        <div className="section-header">
+          <div className="section-badge">
             💜 FOUNDER'S JOURNEY
           </div>
-          <h2 className="text-4xl font-black text-slate-800 leading-tight">
+          <h2 className="section-title leading-tight">
             Born from{" "}
             <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
               Personal Experience
@@ -28,9 +28,9 @@ const FoundersJourney: React.FC = () => {
                 <h3 className="text-xl font-bold text-slate-800">The Reality I Lived</h3>
               </div>
               <p className="text-lg text-slate-700 leading-relaxed mb-4">
-                "I was diagnosed with cystic fibrosis at 6 months old. For over 20 years, 
+                "My daughter was diagnosed at 18 months old. For over 9 years, 
                 I experienced firsthand the daily struggle of respiratory treatments. 
-                The isolation, the boredom, the family conflicts—I lived it all."
+                The guilt, the burden, the family conflicts — We lived it all."
               </p>
             </div>
 
@@ -41,8 +41,8 @@ const FoundersJourney: React.FC = () => {
               </div>
               <p className="text-lg leading-relaxed">
                 "But I also knew that with the right motivation, treatments could become 
-                something kids actually looked forward to. What if we could turn medicine 
-                into magic? That's when Playphysio was born."
+                something my daughter actually looked forward to. What if we could turn medicine 
+                into magic? That's how Playphysio was born."
               </p>
             </div>
 
@@ -61,7 +61,7 @@ const FoundersJourney: React.FC = () => {
                   <Heart className="text-white" size={20} />
                 </div>
                 <h4 className="font-black text-slate-800 mb-2">Our Vision</h4>
-                <p className="text-slate-600 text-sm">Transform respiratory care worldwide</p>
+                <p className="text-slate-600 text-sm">Transform respiratory care</p>
               </div>
               
               <div className="text-center bg-white p-6 rounded-2xl border-2 border-blue-100 shadow-sm">
@@ -69,7 +69,7 @@ const FoundersJourney: React.FC = () => {
                   <Users className="text-white" size={20} />
                 </div>
                 <h4 className="font-black text-slate-800 mb-2">Our Impact</h4>
-                <p className="text-slate-600 text-sm">10,000+ families helped</p>
+                <p className="text-slate-600 text-sm">Over 500,000+ blows recorded</p>
               </div>
             </div>
           </div>

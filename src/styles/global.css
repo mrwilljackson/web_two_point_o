@@ -123,6 +123,43 @@
     padding-bottom: 0.1em;
   }
 
+  /* ===== SECTION SPACING SYSTEM ===== */
+
+  /* Section Header Container - consistent spacing for all section headers */
+  .section-header {
+    @apply text-center mb-16;
+  }
+
+  /* Badge to Title spacing - consistent 6 units */
+  .section-badge {
+    @apply inline-block bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 px-4 py-2 rounded-full text-sm font-bold mb-6;
+  }
+
+  /* Section Title - consistent styling and spacing */
+  .section-title {
+    @apply text-4xl md:text-5xl font-black text-slate-800 mb-6;
+  }
+
+  /* Section Description - consistent spacing and styling */
+  .section-description {
+    @apply text-xl text-slate-600 max-w-3xl mx-auto;
+  }
+
+  /* Content Section spacing - consistent spacing between major content blocks */
+  .content-section {
+    @apply mb-20;
+  }
+
+  /* Subsection spacing - for content within sections */
+  .subsection {
+    @apply mb-12;
+  }
+
+  /* Card grid spacing - consistent spacing for card layouts */
+  .card-grid {
+    @apply grid gap-8 mb-16;
+  }
+
   .bubble {
     position: absolute;
     border-radius: 50%;

@@ -12,30 +12,30 @@ const CTASection: React.FC = () => {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center text-white mb-16">
+        <div className="section-header text-white">
           <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-bold mb-6">
             🚀 START YOUR TRANSFORMATION
           </div>
-          <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">
+          <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight text-white">
             Ready to Make Treatment{" "}
             <span className="bg-gradient-to-r from-yellow-300 to-pink-300 bg-clip-text text-transparent">
               Epic?
             </span>
           </h2>
           <p className="text-xl md:text-2xl text-purple-100 max-w-4xl mx-auto leading-relaxed">
-            Join thousands of families who've transformed daily treatment battles
-            into epic gaming adventures. Your child's journey to better health starts here.
+            Join the families who've transformed their daily treatment battles
+            into epic gaming adventures. Your families' journey to better health starts here.
           </p>
         </div>
 
         {/* Benefits Grid */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="card-grid md:grid-cols-3">
           <div className="text-center text-white bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
             <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
               <Play className="text-white" size={32} />
             </div>
             <h3 className="text-xl font-bold mb-3">Start Free Trial</h3>
-            <p className="text-purple-100">No credit card required. 30-day free access to all adventures.</p>
+            <p className="text-purple-100">Get access to all of our digital adventures.</p>
           </div>
 
           <div className="text-center text-white bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
@@ -43,7 +43,7 @@ const CTASection: React.FC = () => {
               <Zap className="text-white" size={32} />
             </div>
             <h3 className="text-xl font-bold mb-3">See Results Fast</h3>
-            <p className="text-purple-100">Most families see dramatic improvement within the first week.</p>
+            <p className="text-purple-100">Most families will see a dramatic improvement within the first week.</p>
           </div>
 
           <div className="text-center text-white bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
@@ -64,7 +64,7 @@ const CTASection: React.FC = () => {
               </h3>
             </div>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Download PhysioPal, set up your child's gaming profile, and watch
+              Download Playphysio, set up your child's gaming profile, and watch
               treatment time transform into the best part of their day.
             </p>
           </div>
@@ -85,7 +85,7 @@ const CTASection: React.FC = () => {
           <div className="flex flex-wrap items-center justify-center gap-8 text-sm text-slate-500">
             <div className="flex items-center gap-2">
               <CheckCircle className="text-green-500" size={20} />
-              <span className="font-semibold">No credit card required</span>
+              <span className="font-semibold">Sign up online</span>
             </div>
             <div className="flex items-center gap-2">
               <Clock className="text-blue-500" size={20} />
@@ -93,7 +93,7 @@ const CTASection: React.FC = () => {
             </div>
             <div className="flex items-center gap-2">
               <Shield className="text-purple-500" size={20} />
-              <span className="font-semibold">HIPAA compliant</span>
+              <span className="font-semibold">CE Medical device</span>
             </div>
             <div className="flex items-center gap-2">
               <Heart className="text-red-500" size={20} />

@@ -3,7 +3,7 @@ import { Star, Quote, Heart, Trophy, Users } from "lucide-react";
 
 const testimonials = [
   {
-    quote: "Sarah actually RUNS to get her vest now! She calls it 'dragon training time' and has made friends with kids from around the world. It's like magic watching her excitement.",
+    quote: "Sarah actually RUNS to get her OPEP now! She calls it 'dragon training time' and has made friends with kids from around the world. It's like magic watching her excitement.",
     author: "Maria K.",
     role: "Parent of CF patient",
     avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=60&h=60&fit=crop&crop=face",
@@ -12,7 +12,7 @@ const testimonials = [
     badge: "Parent Champion"
   },
   {
-    quote: "I'm on level 15 of Crystal Caves and my breathing is getting SO much stronger! I beat my friend Jake yesterday and we're planning to tackle the Ice Kingdom together!",
+    quote: "I'm on level 15 of Drop Charge! I beat my friend 'Pink Squirrel' yesterday and we're planning to tackle the Penguin Kingdom together!",
     author: "Emma, age 9",
     role: "Playphysio Warrior",
     avatar: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?w=60&h=60&fit=crop&crop=face",
@@ -53,23 +53,23 @@ const Testimonials: React.FC = () => {
   return (
     <section id="testimonials" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <div className="inline-block bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
+        <div className="section-header">
+          <div className="section-badge">
             ⭐ REAL STORIES, REAL RESULTS
           </div>
-          <h2 className="text-4xl font-black text-slate-800 mb-6">
+          <h2 className="section-title">
             Families Sharing Their{" "}
             <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
               Transformation Stories
             </span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="section-description">
             Real testimonials from families whose lives have been completely transformed
             by making treatment time the best part of their day.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="card-grid md:grid-cols-3">
           {testimonials.map((testimonial, index) => {
             const BadgeIcon = getBadgeIcon(testimonial.badge);
             return (
@@ -123,7 +123,7 @@ const Testimonials: React.FC = () => {
         {/* CTA Section */}
         <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl p-12 text-white text-center shadow-2xl">
           <h3 className="text-3xl font-black mb-6">
-            Ready to Join 10,000+ Families Making Treatment Fun?
+            Are you ready to make treatment serious fun?
           </h3>
           <p className="text-xl mb-8 text-purple-100">
             See why healthcare providers and families worldwide trust Playphysio

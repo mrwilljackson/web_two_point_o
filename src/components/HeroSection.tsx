@@ -56,9 +56,9 @@ const HeroSection: React.FC = () => {
   ];
 
   // Constants for bubble behavior
-  const TOTAL_BUBBLES = 15;
-  const CYCLE_DURATION = 15000; // 15 seconds for a complete fade in/out cycle
-  const FADE_PORTION = 0.3; // 30% of the cycle is spent fading in or out
+  const TOTAL_BUBBLES = 20; // More bubbles for better coverage
+  const CYCLE_DURATION = 12000; // 12 seconds for a complete fade in/out cycle (shorter)
+  const FADE_PORTION = 0.15; // 15% of the cycle is spent fading in or out (less fading time)
   const SCALE_CYCLE_DURATION = 8000; // 8 seconds for a complete scale cycle
   const MIN_SCALE = 0.8; // Minimum scale factor
   const MAX_SCALE = 1.2; // Maximum scale factor
@@ -205,7 +205,7 @@ const HeroSection: React.FC = () => {
     const y = Math.random() * (visibleHeight - baseSize - 40) + 20; // Keep in top portion and away from edges
 
     const color = colors[Math.floor(Math.random() * colors.length)];
-    const maxOpacity = Math.random() * 0.2 + 0.1; // Max opacity between 0.1 and 0.3
+    const maxOpacity = Math.random() * 0.25 + 0.15; // Max opacity between 0.15 and 0.4 (more visible)
 
     // Faster movement
     const speed = Math.random() * 0.3 + 0.1; // Speed between 0.1 and 0.4 (faster)
@@ -244,7 +244,12 @@ const HeroSection: React.FC = () => {
   };
 
   return (
-    <section className="relative pt-16 pb-20 md:pt-24 md:pb-32 overflow-hidden w-full bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700">
+    <section
+      className="relative pt-16 pb-20 md:pt-24 md:pb-32 overflow-hidden w-full"
+      style={{
+        background: 'linear-gradient(135deg, #9333ea 0%, #9333ea 40%, #2563eb 70%, #3730a3 100%)'
+      }}
+    >
       {/* Animated background elements */}
       <div ref={containerRef} className="absolute inset-0 overflow-hidden z-0">
         {bubbles.map(bubble => {
@@ -278,14 +283,14 @@ const HeroSection: React.FC = () => {
             <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 animate-fade-in leading-tight drop-shadow-lg">
               <span className="gradient-text-blue">Little Lungs,</span>
               <br />
-              <span className="gradient-text-orange">Big Wins!</span>
+              <span className="bg-gradient-to-r from-yellow-300 to-pink-300 bg-clip-text text-transparent">Big Wins!</span>
             </h1>
             <p className="text-lg md:text-xl text-white/90 mb-8 font-light tracking-wide animate-fade-in drop-shadow-md" style={{ animationDelay: "0.2s" }}>
               Transform respiratory therapy into an exciting adventure. Playphysio® makes breathing exercises fun, engaging, and effective for children.
             </p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in" style={{ animationDelay: "0.4s" }}>
               <Button
-                className="text-white text-lg py-6 px-8 rounded-full font-bold tracking-tight hover:scale-105 transition-all duration-300 shadow-lg"
+                className="text-white text-lg py-6 px-8 rounded-full font-bold tracking-tight hover:scale-105 transition-all duration-300 shadow-lg border-4 border-white"
                 style={{
                   background: 'linear-gradient(to right, #4DBBFA, #58D68D)',
                 }}
@@ -293,7 +298,7 @@ const HeroSection: React.FC = () => {
                 <Play className="mr-2" />
                 Get Started
               </Button>
-              <Button variant="outline" className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 bg-white text-lg py-6 px-8 rounded-full hover:scale-105 transition-all duration-300">
+              <Button variant="outline" className="border-4 border-white text-gray-700 hover:bg-gray-50 bg-white text-lg py-6 px-8 rounded-full hover:scale-105 transition-all duration-300">
                 Learn More
               </Button>
             </div>
@@ -334,7 +339,7 @@ const HeroSection: React.FC = () => {
                       key={index}
                       onClick={() => setCurrentImageIndex(index)}
                       className={`
-                        w-3 h-3 rounded-full transition-all duration-300 hover:scale-110
+                        w-3 h-3 rounded-full transition-all duration-300 hover:scale-110 border-2 border-white
                         ${index === currentImageIndex
                           ? 'bg-playphysio-blue shadow-lg'
                           : 'bg-gray-300 hover:bg-gray-400'
@@ -348,13 +353,8 @@ const HeroSection: React.FC = () => {
 
               {/* Animated stats badge */}
               <div className="absolute -bottom-6 -right-6 bg-white p-2 rounded-xl shadow-lg transform rotate-6 hover:rotate-0 hover:scale-110 transition-all duration-300 z-20">
-                <div
-                  className="p-3 rounded-lg"
-                  style={{
-                    background: 'linear-gradient(to right, #F4D03F, #F39C12)',
-                  }}
-                >
-                  <p className="font-extrabold text-white text-lg tracking-tight">We make treatment fun!</p>
+                <div className="p-3 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600">
+                  <p className="font-extrabold text-white text-lg tracking-tight">make treatment serious fun</p>
                 </div>
               </div>
 

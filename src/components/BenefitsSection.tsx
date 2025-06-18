@@ -56,11 +56,11 @@ const BenefitsSection: React.FC = () => {
   return (
     <section id="benefits" className="py-16 md:py-24 bg-gradient-to-b from-white to-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+        <div className="section-header">
+          <h2 className="section-title">
             <span className="gradient-text">Benefits</span> That Make a Difference
           </h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+          <p className="section-description text-gray-700">
             Playphysio® transforms respiratory therapy from a dreaded chore to an exciting challenge through smart gamification and thoughtful design.
           </p>
         </div>
