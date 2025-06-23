@@ -1,159 +1,149 @@
-import { AlertTriangle, Heart, Shield, TrendingUp, Users, Clock, Stethoscope } from "lucide-react";
+
+import { Clock, PlayCircle } from "lucide-react";
+import beforeImage from "../assets/before-image.png";
+import afterImage from "../assets/after-image.png";
 
 const ProblemSolution = () => {
   return (
-    <section className="min-h-screen bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
-      {/* Diagonal Split Background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 to-red-700/10 transform -skew-y-1 origin-top-left"></div>
-        <div className="absolute inset-0 bg-gradient-to-tl from-purple-900/20 to-blue-800/10 transform skew-y-1 origin-bottom-right"></div>
-      </div>
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        {/* Powerful Header */}
+    <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-block bg-red-500/20 border border-red-400/30 px-6 py-3 rounded-sm mb-6">
-            <span className="text-red-300 font-semibold uppercase tracking-wider text-sm">Critical Healthcare Challenge</span>
+          <div className="text-sm font-semibold text-blue-600 mb-4 tracking-wider uppercase">
+            BEFORE / AFTER
           </div>
-          <h2 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
-            The Treatment Crisis
-            <br />
-            <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-              vs. The Solution
-            </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">
+            From Daily Struggle to 
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Treatment Success</span>
           </h2>
-          <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
-            Every day, thousands of families struggle with respiratory treatment adherence. 
-            The impact on patients and healthcare systems is not visible — until now.
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            See how Playphysio transforms treatment for real families.
           </p>
         </div>
 
-        {/* Dramatic Before/After Split */}
-        <div className="grid lg:grid-cols-2 gap-0 border border-slate-600">
-          {/* BEFORE - Crisis Side */}
-          <div className="bg-gradient-to-br from-red-950 to-red-900 p-12 relative">
-            {/* Crisis Header */}
-            <div className="flex items-center gap-4 mb-8 border-b border-red-700 pb-6">
-              <div className="p-3 bg-red-800/50 border border-red-600">
-                <AlertTriangle className="text-red-300" size={32} />
-              </div>
-              <div>
-                <h3 className="text-3xl font-bold text-red-200 uppercase tracking-wide">The Crisis</h3>
-                <p className="text-red-400 text-lg">Current Respiratory Healthcare Reality</p>
-              </div>
-            </div>
-
-            {/* Crisis Image */}
-            <div className="mb-8 relative">
-              <img 
-                src="https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=600&h=300&fit=crop" 
-                alt="Family struggling with treatment"
-                className="w-full h-48 object-cover filter grayscale contrast-125"
+        {/* Main Comparison Container */}
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16">
+          
+          {/* BEFORE Side - Treatment Struggles */}
+          <div className="relative">
+            {/* Background Image */}
+            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+              <img
+                src={beforeImage.src}
+                alt="Family struggling with treatment - before Playphysio"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-red-900/60 flex items-center justify-center">
-                <div className="text-center bg-black/50 p-4 border border-red-500">
-                  <p className="text-red-200 font-bold text-lg">"I don't want to do it..."</p>
-                  <p className="text-red-400 text-sm">Daily treatment resistance</p>
+
+              {/* Dark overlay for text readability */}
+              <div className="absolute inset-0 bg-black/10"></div>
+            </div>
+
+            {/* Floating Callout Boxes - Repositioned to prevent overlap */}
+            <div className="absolute -top-6 -left-16 z-10">
+              <div className="bg-slate-800 text-white p-4 rounded-2xl shadow-xl max-w-xs transform -rotate-2">
+                <div className="flex items-center gap-2 mb-2">
+                  <Clock className="text-orange-400" size={20} />
+                  <span className="font-bold text-orange-400">We get it. Treatment time is HARD</span>
                 </div>
+                <p className="text-sm text-slate-300">Families face daily struggles</p>
               </div>
             </div>
 
-            {/* Crisis Statistics */}
-            <div className="space-y-6">
-              <div className="flex items-start gap-4 p-4 bg-red-900/30 border-l-4 border-red-500">
-                <Clock className="text-red-400 mt-1" size={20} />
-                <div>
-                  <p className="text-red-200 font-bold text-lg">Poor Adherence Rates</p>
-                  <p className="text-red-400">No one knows how many daily treatments are completed</p>
-                </div>
+            <div className="absolute top-4 -right-8 z-10">
+              <div className="bg-slate-700 text-white p-3 rounded-xl shadow-lg max-w-48 transform rotate-1">
+                <h4 className="font-bold text-sm mb-1">Treatment Avoidance</h4>
+                <p className="text-xs text-slate-300">Kids naturally resist daily out of repetitive boring treatment.</p>
               </div>
-              
-              <div className="flex items-start gap-4 p-4 bg-red-900/30 border-l-4 border-red-500">
-                <Users className="text-red-400 mt-1" size={20} />
-                <div>
-                  <p className="text-red-200 font-bold text-lg">Family Stress</p>
-                  <p className="text-red-400">A daily struggle through battles and emotional exhaustion</p>
-                </div>
-              </div>
+            </div>
 
-              <div className="flex items-start gap-4 p-4 bg-red-900/30 border-l-4 border-red-500">
-                <Stethoscope className="text-red-400 mt-1" size={20} />
-                <div>
-                  <p className="text-red-200 font-bold text-lg">Clinical Concerns</p>
-                  <p className="text-red-400">Children can't benefit from prescribed treatments</p>
-                </div>
+            <div className="absolute top-40 -left-30 z-10">
+              <div className="bg-slate-800 text-white p-3 rounded-xl shadow-lg max-w-44 transform -rotate-350">
+                <h4 className="font-bold text-sm mb-1">Family Stress</h4>
+                <p className="text-xs text-slate-300">Treatment is hard for everyone in the family, high stress and arguments.</p>
+              </div>
+            </div>
+
+            <div className="absolute bottom-34 -right-6 z-10">
+              <div className="bg-slate-700 text-white p-3 rounded-xl shadow-lg max-w-52 transform rotate-10">
+                <h4 className="font-bold text-sm mb-1">Inconsistent Results</h4>
+                <p className="text-xs text-slate-300">Confused about doing it correctly gives poor results.</p>
+              </div>
+            </div>
+
+            {/* Main Quote */}
+            <div className="absolute bottom-4 left-4 right-4 z-20">
+              <div className="bg-slate-900/90 backdrop-blur-sm text-white p-4 rounded-xl border border-slate-600">
+                <p className="text-lg italic font-medium">"Treatment feels like a negotiation"</p>
+                <p className="text-sm text-slate-400 mt-1">"We all dread that time of day"</p>
+                <p className="text-xs text-slate-500 mt-1">Parents before Playphysio</p>
               </div>
             </div>
           </div>
 
-          {/* AFTER - Solution Side */}
-          <div className="bg-white p-12 relative text-gray-900">
-            {/* Solution Header */}
-            <div className="flex items-center gap-4 mb-8 border-b border-gray-200 pb-6">
-              <div className="w-14 h-14">
-                <img
-                  src="/images/playphysio-p-logo.svg"
-                  alt="Playphysio Logo"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <div>
-                <h3 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent uppercase tracking-wide">The Solution</h3>
-                <p className="text-gray-600 text-lg">Playphysio - Make Treatment Serious Fun</p>
-              </div>
-            </div>
-
-            {/* Solution Image */}
-            <div className="mb-8 relative">
-              <img 
-                src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=600&h=300&fit=crop" 
-                alt="Child engaged with Playphysio"
-                className="w-full h-48 object-cover brightness-110 rounded-lg"
+          {/* AFTER Side - Treatment Success */}
+          <div className="relative">
+            {/* Background Image */}
+            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+              <img
+                src={afterImage.src}
+                alt="Happy family enjoying treatment with Playphysio"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg flex items-center justify-center">
-                <div className="text-center bg-white/90 p-4 rounded-lg border-2 border-blue-200">
-                  <p className="text-blue-700 font-bold text-lg">"Is it time for Playphysio yet?"</p>
-                  <p className="text-blue-600 text-sm">Eager anticipation of treatment</p>
+
+              {/* Light overlay */}
+              <div className="absolute inset-0 bg-white/20"></div>
+            </div>
+
+            {/* Floating Callout Boxes - Repositioned to prevent overlap */}
+            <div className="absolute -top-6 -right-6 z-10">
+              <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-4 rounded-2xl shadow-xl max-w-xs transform rotate-2">
+                <div className="flex items-center gap-2 mb-2">
+                  <PlayCircle className="text-yellow-300" size={20} />
+                  <span className="font-bold text-yellow-300">We make treatment EASY</span>
                 </div>
+                <p className="text-sm text-purple-100">Family life is better for everyone</p>
               </div>
             </div>
 
-            {/* Solution Results */}
-            <div className="space-y-6">
-              <div className="flex items-start gap-4 p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
-                <TrendingUp className="text-green-600 mt-1" size={20} />
-                <div>
-                  <p className="font-bold text-lg bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">Transforming Adherence Levels</p>
-                  <p className="text-green-700">Children actively request their therapy sessions</p>
-                </div>
+            <div className="absolute top-1 -left-8 z-10">
+              <div className="bg-green-500 text-white p-3 rounded-xl shadow-lg max-w-48 transform -rotate-350">
+                <h4 className="font-bold text-sm mb-1 text-green-100">Life is easier</h4>
+                <p className="text-xs text-green-100">Treatment time is easy because your child decides that they want to play physio games.</p>
               </div>
-              
-              <div className="flex items-start gap-4 p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
-                <Heart className="text-blue-600 mt-1" size={20} />
-                <div>
-                  <p className="font-bold text-lg bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Family Harmony</p>
-                  <p className="text-blue-700">Now stress-free treatment time becomes easy routine</p>
-                </div>
-              </div>
+            </div>
 
-              <div className="flex items-start gap-4 p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
-                <Shield className="text-purple-600 mt-1" size={20} />
-                <div>
-                  <p className="font-bold text-lg bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Clinical Excellence</p>
-                  <p className="text-purple-700">Quality of life and quality of therapy is improved</p>
-                </div>
+            <div className="absolute top-44 -right-10 z-10">
+              <div className="bg-blue-500 text-white p-3 rounded-xl shadow-lg max-w-44 transform rotate-1">
+                <h4 className="font-bold text-sm mb-1">Treatment Engagement</h4>
+                <p className="text-xs text-blue-100">Kids are eager to try another game or to top the high scores and level up!</p>
+              </div>
+            </div>
+
+            <div className="absolute bottom-34 -left-6 z-10">
+              <div className="bg-orange-500 text-white p-3 rounded-xl shadow-lg max-w-52 transform -rotate-12">
+                <h4 className="font-bold text-sm mb-1">Better Therapy</h4>
+                <p className="text-xs text-orange-100">Engaged, happy kids do more therapy and they do it better when they choose to play.</p>
+              </div>
+            </div>
+
+            {/* Main Quote */}
+            <div className="absolute bottom-2 left-4 right-4 z-20">
+              <div className="bg-white/95 backdrop-blur-sm text-purple-700 p-4 rounded-xl border border-purple-200 shadow-lg">
+                <p className="text-lg italic font-medium text-purple-800">"Playphysio = PlayBrilliant!"</p>
+                <p className="text-sm text-purple-600 mt-1">"I can't imagine going back to the old way of doing treatment"</p>
+                <p className="text-xs text-purple-500 mt-1">Same family, 3 weeks later</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Impact Statement */}
-        <div className="text-center mt-16 p-8 bg-gradient-to-r from-purple-900/50 to-blue-900/50 border border-purple-700">
-          <h3 className="text-3xl font-bold text-white mb-4">The Evidence is Clear</h3>
-          <p className="text-xl text-slate-300 max-w-4xl mx-auto">
-            Playphysio doesn't just improve adherence—it transforms the entire treatment experience, 
-            delivering measurable results for patients, families, and healthcare providers.
-          </p>
+        {/* Call to Action */}
+        <div className="text-center mt-16">
+
+          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
+            <PlayCircle size={20} />
+            <span>Join the families who make treatment fun!</span>
+          </div>
         </div>
       </div>
     </section>
