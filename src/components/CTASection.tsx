@@ -60,7 +60,7 @@ const CTASection: React.FC = () => {
             <div className="flex items-center justify-center gap-3 mb-6">
               <Trophy className="text-purple-600" size={32} />
               <h3 className="text-3xl font-black text-slate-800">
-                Get Started in Less Than 2 Minutes
+                Get Started in Less Than <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">2 Minutes</span>
               </h3>
             </div>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
@@ -103,14 +103,14 @@ const CTASection: React.FC = () => {
         </div>
 
         {/* Contact Info */}
-        <div className="text-center mt-12">
+        {/* <div className="text-center mt-12">
           <p className="text-purple-200 text-lg">
             Questions? <a href="#" className="underline hover:text-white transition-colors font-bold">Chat with our team</a> or call{" "}
             <a href="tel:1-800-PLAYPHYSIO" className="font-black underline hover:text-white transition-colors">
               1-800-PLAYPHYSIO
             </a>
           </p>
-        </div>
+        </div> */}
       </div>
     </section>
   );

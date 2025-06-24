@@ -3,11 +3,12 @@ import Layout from '../layouts/Layout.astro';
 import NavBar from '../components/NavBar';
 import HeroSection from '../components/HeroSection';
 import ProblemSolution from '../components/ProblemSolution';
-import BenefitsSection from '../components/BenefitsSection';
+
 import HowItWorks from '../components/HowItWorks';
 import Testimonials from '../components/Testimonials';
 import FoundersJourney from '../components/FoundersJourney';
 import CTASection from '../components/CTASection';
+import Supporters from '../components/Supporters';
 import Footer from '../components/Footer';
 ---
 
@@ -16,11 +17,11 @@ import Footer from '../components/Footer';
 	<main>
 		<HeroSection client:load />
 		<ProblemSolution client:load />
-		<BenefitsSection client:load />
 		<HowItWorks client:load />
 		<Testimonials client:load />
 		<FoundersJourney client:load />
 		<CTASection client:load />
+		<Supporters client:load />
 	</main>
 	<Footer client:load />
 </Layout>

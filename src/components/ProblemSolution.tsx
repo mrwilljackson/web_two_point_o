@@ -9,7 +9,8 @@ const ProblemSolution = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="text-sm font-semibold text-blue-600 mb-4 tracking-wider uppercase">
+          <div className="inline-block bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 px-4 py-2 rounded-full text-sm font-bold mb-6">
+            <Clock className="inline-block mr-2" size={16} />
             BEFORE / AFTER
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">
