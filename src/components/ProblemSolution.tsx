@@ -138,14 +138,6 @@ const ProblemSolution = () => {
           </div>
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-
-          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
-            <PlayCircle size={20} />
-            <span>Join the families who make treatment fun!</span>
-          </div>
-        </div>
       </div>
     </section>
   );

@@ -10,12 +10,14 @@ const HowItWorks: React.FC = () => {
           <div className="section-badge">
             🎮 HOW IT WORKS
           </div>
+          <div className="hidden md:block h-8"></div>
           <h2 className="section-title">
             See the{" "}
             <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
               Magic in Action
             </span>
           </h2>
+          <div className="hidden md:block h-8"></div>
           <p className="section-description">
             From gameplay to real health outcomes - discover how Playphysio transforms respiratory therapy into an adventure everyone loves.
           </p>
@@ -130,6 +132,7 @@ const HowItWorks: React.FC = () => {
         </div>
 
         {/* For Clinicians - Center aligned */}
+        <div className="hidden md:block h-8"></div>
         <div className="text-center">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center justify-center gap-3 mb-8">
@@ -138,9 +141,9 @@ const HowItWorks: React.FC = () => {
               </div>
               <h3 className="text-3xl font-black text-slate-800">For Clinicians</h3>
             </div>
-
+            <div className="hidden md:block h-4"></div>
             <h4 className="text-2xl font-bold text-slate-700 mb-8">Data-Driven Care & Better Outcomes</h4>
-
+            <div className="hidden md:block h-8"></div>
             <div className="card-grid md:grid-cols-3">
               <div className="bg-white p-6 rounded-2xl border-2 border-purple-100 shadow-lg">
                 <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-violet-500 rounded-xl flex items-center justify-center mx-auto mb-4">

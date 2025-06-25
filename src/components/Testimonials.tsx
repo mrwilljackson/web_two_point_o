@@ -63,12 +63,13 @@ const Testimonials: React.FC = () => {
               Transformation Stories
             </span>
           </h2>
+          <div className="hidden md:block h-8"></div>
           <p className="section-description">
             Real testimonials from families whose lives have been completely transformed
             by making treatment time the best part of their day.
           </p>
         </div>
-
+        <div className="hidden md:block h-8"></div>
         <div className="card-grid md:grid-cols-3">
           {testimonials.map((testimonial, index) => {
             const BadgeIcon = getBadgeIcon(testimonial.badge);
@@ -119,6 +120,7 @@ const Testimonials: React.FC = () => {
             );
           })}
         </div>
+        <div className="hidden md:block h-12"></div>
 
         {/* CTA Section */}
         <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl p-12 text-white text-center shadow-2xl">
