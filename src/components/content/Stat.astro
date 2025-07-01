@@ -1,0 +1,74 @@
+---
+// Individual Stat component - replaces WordPress [stat] shortcode
+export interface Props {
+  value: string;
+  label: string;
+  color?: 'cyan' | 'emerald' | 'purple' | 'blue' | 'green' | 'indigo' | 'pink' | 'yellow';
+  class?: string;
+}
+
+const { value, label, color = 'blue', class: className = '' } = Astro.props;
+
+// Color mapping for different stat types
+const colorClasses = {
+  cyan: 'bg-gradient-to-br from-cyan-50 to-cyan-100 border-cyan-200 text-cyan-900',
+  emerald: 'bg-gradient-to-br from-emerald-50 to-emerald-100 border-emerald-200 text-emerald-900',
+  purple: 'bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200 text-purple-900',
+  blue: 'bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200 text-blue-900',
+  green: 'bg-gradient-to-br from-green-50 to-green-100 border-green-200 text-green-900',
+  indigo: 'bg-gradient-to-br from-indigo-50 to-indigo-100 border-indigo-200 text-indigo-900',
+  pink: 'bg-gradient-to-br from-pink-50 to-pink-100 border-pink-200 text-pink-900',
+  yellow: 'bg-gradient-to-br from-yellow-50 to-yellow-100 border-yellow-200 text-yellow-900',
+};
+
+const colorClass = colorClasses[color] || colorClasses.blue;
+---
+
+<div class={`stat-card ${colorClass} ${className}`}>
+  <div class="stat-value">{value}</div>
+  <div class="stat-label">{label}</div>
+</div>
+
+<style>
+  .stat-card {
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .stat-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.25;
+    opacity: 0.8;
+  }
+
+  @media (max-width: 768px) {
+    .stat-card {
+      padding: 1.25rem;
+    }
+    
+    .stat-value {
+      font-size: 2rem;
+    }
+    
+    .stat-label {
+      font-size: 0.8rem;
+    }
+  }
+</style>

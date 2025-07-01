@@ -1,0 +1,113 @@
+---
+// References component - replaces WordPress [references] shortcode
+export interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`references-section ${className}`}>
+  <h4 class="references-title">References</h4>
+  <div class="references-content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .references-section {
+    margin: 3rem 0 2rem 0;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .references-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #334155;
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+  }
+
+  .references-content {
+    color: #475569;
+    line-height: 1.6;
+  }
+
+  .references-content :global(ol) {
+    margin: 0;
+    padding-left: 1.5rem;
+    counter-reset: reference-counter;
+  }
+
+  .references-content :global(li) {
+    margin: 0.75rem 0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    position: relative;
+  }
+
+  .references-content :global(li::marker) {
+    font-weight: 600;
+    color: #64748b;
+  }
+
+  .references-content :global(a) {
+    color: #3b82f6;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+
+  .references-content :global(a:hover) {
+    border-bottom-color: #3b82f6;
+  }
+
+  .references-content :global(strong) {
+    font-weight: 600;
+    color: #334155;
+  }
+
+  .references-content :global(em) {
+    font-style: italic;
+  }
+
+  /* Handle plain text references (not in a list) */
+  .references-content :global(p) {
+    margin: 0.75rem 0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .references-content :global(p:first-child) {
+    margin-top: 0;
+  }
+
+  .references-content :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .references-section {
+      padding: 1.25rem;
+      margin: 2rem 0 1.5rem 0;
+    }
+
+    .references-title {
+      font-size: 1rem;
+    }
+
+    .references-content :global(ol) {
+      padding-left: 1.25rem;
+    }
+
+    .references-content :global(li) {
+      font-size: 0.8rem;
+      margin: 0.5rem 0;
+    }
+  }
+</style>

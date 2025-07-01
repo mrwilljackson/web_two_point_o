@@ -1,0 +1,30 @@
+---
+// StatsCards component - replaces WordPress [stats_cards] shortcode
+export interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`stats-cards-container ${className}`}>
+  <slot />
+</div>
+
+<style>
+  .stats-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+    padding: 0;
+  }
+
+  @media (max-width: 768px) {
+    .stats-cards-container {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+  }
+</style>

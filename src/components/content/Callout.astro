@@ -1,0 +1,131 @@
+---
+// Callout component - replaces WordPress [callout] shortcode
+export interface Props {
+  type?: 'info' | 'warning' | 'success' | 'error';
+  title?: string;
+  class?: string;
+}
+
+const { type = 'info', title, class: className = '' } = Astro.props;
+
+// Type-specific styling
+const typeStyles = {
+  info: {
+    bg: 'bg-gradient-to-br from-blue-50 to-blue-100',
+    border: 'border-blue-200',
+    text: 'text-blue-900',
+    icon: 'ℹ️'
+  },
+  warning: {
+    bg: 'bg-gradient-to-br from-yellow-50 to-yellow-100',
+    border: 'border-yellow-200',
+    text: 'text-yellow-900',
+    icon: '⚠️'
+  },
+  success: {
+    bg: 'bg-gradient-to-br from-green-50 to-green-100',
+    border: 'border-green-200',
+    text: 'text-green-900',
+    icon: '✅'
+  },
+  error: {
+    bg: 'bg-gradient-to-br from-red-50 to-red-100',
+    border: 'border-red-200',
+    text: 'text-red-900',
+    icon: '❌'
+  }
+};
+
+const style = typeStyles[type];
+---
+
+<div class={`callout ${style.bg} ${style.border} ${style.text} ${className}`}>
+  {(title || style.icon) && (
+    <div class="callout-header">
+      <span class="callout-icon">{style.icon}</span>
+      {title && <h4 class="callout-title">{title}</h4>}
+    </div>
+  )}
+  <div class="callout-content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .callout {
+    border: 1px solid;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .callout-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .callout-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  .callout-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.25;
+  }
+
+  .callout-content {
+    line-height: 1.6;
+  }
+
+  .callout-content :global(p) {
+    margin: 0;
+  }
+
+  .callout-content :global(p + p) {
+    margin-top: 0.75rem;
+  }
+
+  .callout-content :global(strong) {
+    font-weight: 700;
+  }
+
+  .callout-content :global(em) {
+    font-style: italic;
+  }
+
+  .callout-content :global(ul),
+  .callout-content :global(ol) {
+    margin: 0.75rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .callout-content :global(li) {
+    margin: 0.25rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .callout {
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+
+    .callout-header {
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .callout-icon {
+      font-size: 1.125rem;
+    }
+
+    .callout-title {
+      font-size: 1rem;
+    }
+  }
+</style>

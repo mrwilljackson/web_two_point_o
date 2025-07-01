@@ -1,0 +1,98 @@
+---
+// Quote component - replaces WordPress [quote] shortcode
+export interface Props {
+  author: string;
+  title?: string;
+  class?: string;
+}
+
+const { author, title, class: className = '' } = Astro.props;
+---
+
+<blockquote class={`content-quote ${className}`}>
+  <div class="quote-content">
+    <slot />
+  </div>
+  <footer class="quote-footer">
+    <cite class="quote-author">{author}</cite>
+    {title && <span class="quote-title">{title}</span>}
+  </footer>
+</blockquote>
+
+<style>
+  .content-quote {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-left: 4px solid #0ea5e9;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    position: relative;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .content-quote::before {
+    content: '"';
+    position: absolute;
+    top: -0.5rem;
+    left: 1rem;
+    font-size: 4rem;
+    color: #0ea5e9;
+    font-family: Georgia, serif;
+    line-height: 1;
+    opacity: 0.3;
+  }
+
+  .quote-content {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: #0c4a6e;
+    font-style: italic;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .quote-content :global(p) {
+    margin: 0;
+  }
+
+  .quote-content :global(p + p) {
+    margin-top: 0.75rem;
+  }
+
+  .quote-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .quote-author {
+    font-weight: 700;
+    color: #0c4a6e;
+    font-style: normal;
+  }
+
+  .quote-title {
+    font-size: 0.875rem;
+    color: #075985;
+    opacity: 0.8;
+  }
+
+  @media (max-width: 768px) {
+    .content-quote {
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+
+    .content-quote::before {
+      font-size: 3rem;
+      top: -0.25rem;
+      left: 0.75rem;
+    }
+
+    .quote-content {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+  }
+</style>
