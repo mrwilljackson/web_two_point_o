@@ -25,6 +25,9 @@ const { post } = Astro.props;
 // Get post content and metadata
 console.log(`📄 Loading post: ${post.data.title}`);
 
+// Render the content
+const { Content } = await post.render();
+
 // Get related posts
 const relatedPosts = await getRelatedPosts(post, 3);
 
@@ -479,13 +482,13 @@ const postTags = post.data.tags;
       <article>
       {/* Meta Info Above Title - V0 Style */}
       <div class="post-meta-header">
-        {categories.length > 0 && (
+        {post.data.categories.length > 0 && (
           <div class="category-badge">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
               <line x1="7" y1="7" x2="7.01" y2="7"></line>
             </svg>
-            {categories[0].name}
+            {post.data.categories[0]}
           </div>
         )}
         <div class="meta-items">
@@ -531,7 +534,7 @@ const postTags = post.data.tags;
       )}
 
       <div class="post-content">
-        <post.Content components={{ KeyInsight, StatsCards, Stat, Quote, Callout, Highlight, References }} />
+        <Content components={{ KeyInsight, StatsCards, Stat, Quote, Callout, Highlight, References }} />
       </div>
 
       {/* Tags Section - V0 Style */}
