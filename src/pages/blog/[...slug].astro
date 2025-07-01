@@ -2,92 +2,45 @@
 import Layout from '../../layouts/Layout.astro';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
-import { wordpressAPI } from '../../lib/wordpress';
-import {
-  processWordPressContent,
-  extractExcerpt,
-  getFeaturedImage,
-  getAuthor,
-  getCategories,
-  getTags,
-  formatDate,
-  decodeWordPressEntities
-} from '../../lib/content-utils';
-import { processFeaturedImage, processPostImages } from '../../lib/image-processor.js';
-import { processShortcodes, getShortcodeStyles } from '../../lib/content-processor.js';
-import type { WordPressPost } from '../../types/wordpress';
+import { getAllPosts, getPostBySlug, formatDate, getRelatedPosts } from '../../lib/content';
+import type { BlogPost } from '../../lib/content';
+
+// Import our rich content components
+import { KeyInsight, StatsCards, Stat, Quote, Callout, Highlight, References } from '../../components/content';
 
 export async function getStaticPaths() {
-  try {
-    console.log('🔄 Fetching all posts for static generation...');
-    const posts = await wordpressAPI.getAllPosts();
+  console.log('🔄 Generating static paths for blog posts...');
+  const posts = await getAllPosts();
 
-    console.log(`✅ Found ${posts.length} posts`);
+  console.log(`✅ Found ${posts.length} posts for static generation`);
 
-    return posts.map((post: WordPressPost) => ({
-      params: { slug: post.slug },
-      props: { post },
-    }));
-  } catch (error) {
-    console.error('❌ Error fetching posts:', error);
-    return [];
-  }
+  return posts.map((post: BlogPost) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
 }
 
 const { post } = Astro.props;
 
-// Process images for this post
-console.log(`🖼️ Processing images for post: ${post.title.rendered}`);
-let processedFeaturedImage = getFeaturedImage(post);
-let contentWithImages = post.content.rendered;
+// Get post content and metadata
+console.log(`📄 Loading post: ${post.data.title}`);
 
-try {
-  // Process featured image
-  if (processedFeaturedImage) {
-    processedFeaturedImage = await processFeaturedImage(processedFeaturedImage, post.slug);
-  }
+// Get related posts
+const relatedPosts = await getRelatedPosts(post, 3);
 
-  // Process images in post content
-  if (contentWithImages) {
-    contentWithImages = await processPostImages(contentWithImages, post.slug);
-  }
-
-  console.log(`✅ Image processing complete for: ${post.title.rendered}`);
-} catch (error) {
-  console.warn(`⚠️ Failed to process images for post ${post.slug}:`, error.message);
-  contentWithImages = post.content.rendered; // Fallback to original content
-}
-
-// Process the content (WordPress links, etc.)
-let processedContent = processWordPressContent(
-  contentWithImages,
-  process.env.WORDPRESS_URL || 'http://localhost:8080'
-);
-
-// Process shortcodes for rich content elements
-processedContent = processShortcodes(processedContent);
-
-// Get additional data and decode HTML entities
-const featuredImage = processedFeaturedImage;
-const author = getAuthor(post);
-const categories = getCategories(post);
-const tags = getTags(post);
-const excerpt = post.excerpt.rendered || extractExcerpt(post.content.rendered);
-const formattedDate = formatDate(post.date);
-
-// Decode HTML entities in title and other content
-const decodedTitle = decodeWordPressEntities(post.title.rendered);
-const decodedExcerpt = decodeWordPressEntities(excerpt);
+// Format data for display
+const formattedDate = formatDate(post.data.date);
+const featuredImage = post.data.featuredImage;
 
 // SEO data
-const title = `${decodedTitle} | ${process.env.SITE_NAME || 'Blog'}`;
-const description = extractExcerpt(decodedExcerpt, 160);
-const featuredImageUrl = featuredImage?.source_url;
+const title = `${post.data.title} | ${process.env.SITE_NAME || 'PlayPhysio Blog'}`;
+const description = post.data.excerpt;
+const featuredImageUrl = featuredImage?.src;
 const canonical = `${process.env.SITE_URL || 'https://playphysio.com'}/blog/${post.slug}`;
-const publishedTime = new Date(post.date).toISOString();
-const modifiedTime = new Date(post.modified).toISOString();
-const authorName = author?.name || 'PlayPhysio Team';
-const postTags = tags.map(tag => tag.name);
+const publishedTime = new Date(post.data.date).toISOString();
+const modifiedTime = publishedTime; // Use published time as modified time for now
+const authorName = 'PlayPhysio Team';
+const postTags = post.data.tags;
 ---
 
 <Layout
@@ -520,8 +473,7 @@ const postTags = tags.map(tag => tag.name);
       }
     </style>
 
-    <!-- Shortcode Styles -->
-    <style set:html={getShortcodeStyles()}></style>
+    <!-- Rich content components have their own styles -->
 
     <div class="post-container">
       <article>
@@ -542,7 +494,7 @@ const postTags = tags.map(tag => tag.name);
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
-            <span>{author?.name || 'PlayPhysio Team'}</span>
+            <span>{authorName}</span>
           </div>
           <div class="meta-item">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -558,30 +510,32 @@ const postTags = tags.map(tag => tag.name);
               <circle cx="12" cy="12" r="10"></circle>
               <polyline points="12,6 12,12 16,14"></polyline>
             </svg>
-            <span>5 min read</span>
+            <span>{Math.ceil((post.data.wordCount || 500) / 200)} min read</span>
           </div>
         </div>
       </div>
 
       {/* Title - V0 Style */}
-      <h1 class="post-title-v0">{decodedTitle}</h1>
+      <h1 class="post-title-v0">{post.data.title}</h1>
 
       {/* Featured Image - V0 Style */}
       {featuredImage && (
         <div class="featured-image-container-v0">
           <img
-            src={featuredImage.source_url}
-            alt={featuredImage.alt_text || decodedTitle}
+            src={featuredImage.src}
+            alt={featuredImage.alt || post.data.title}
             class="featured-image-v0"
             loading="eager"
           />
         </div>
       )}
 
-      <div class="post-content" set:html={processedContent}></div>
+      <div class="post-content">
+        <post.Content components={{ KeyInsight, StatsCards, Stat, Quote, Callout, Highlight, References }} />
+      </div>
 
       {/* Tags Section - V0 Style */}
-      {tags.length > 0 && (
+      {post.data.tags.length > 0 && (
         <div class="tags-section">
           <h3 class="tags-title">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -591,9 +545,9 @@ const postTags = tags.map(tag => tag.name);
             Tags
           </h3>
           <div class="tags-container">
-            {tags.map(tag => (
+            {post.data.tags.map((tag: string) => (
               <a href="#" class="tag-badge">
-                {tag.name}
+                {tag}
               </a>
             ))}
           </div>
@@ -601,16 +555,16 @@ const postTags = tags.map(tag => tag.name);
       )}
 
       <footer class="post-footer">
-        {categories.length > 0 && (
+        {post.data.categories.length > 0 && (
           <div class="categories">
             <strong>Categories: </strong>
-            {categories.map(category => (
-              <a href={`/category/${category.slug}`} class="category-tag">
+            {post.data.categories.map((category: string) => (
+              <a href={`/category/${category}`} class="category-tag">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
                   <line x1="7" y1="7" x2="7.01" y2="7"></line>
                 </svg>
-                {category.name}
+                {category}
               </a>
             ))}
           </div>
