@@ -25,19 +25,20 @@ const NavBar: React.FC = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-6">
-              <a href="/#benefits" className="text-gray-700 hover:text-playphysio-blue font-light tracking-wide">Benefits</a>
               <a href="/#how-it-works" className="text-gray-700 hover:text-playphysio-blue font-light tracking-wide">How It Works</a>
               <a href="/#testimonials" className="text-gray-700 hover:text-playphysio-blue font-light tracking-wide">Testimonials</a>
               <a href="/blog" className="text-gray-700 hover:text-playphysio-blue font-light tracking-wide">News</a>
               <a href="/#contact" className="text-gray-700 hover:text-playphysio-blue font-light tracking-wide">Contact</a>
-              <Button
-                className="text-white rounded-full px-6 py-2 font-medium hover:scale-105 transition-all duration-300"
-                style={{
-                  background: 'linear-gradient(to right, #4DBBFA, #58D68D)',
-                }}
-              >
-                Get Started
-              </Button>
+              <a href="/#contact">
+                <Button
+                  className="text-white rounded-full px-6 py-2 font-medium hover:scale-105 transition-all duration-300"
+                  style={{
+                    background: 'linear-gradient(to right, #4DBBFA, #58D68D)',
+                  }}
+                >
+                  Get Started
+                </Button>
+              </a>
             </div>
           </div>
 
@@ -61,13 +62,6 @@ const NavBar: React.FC = () => {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-white/95 backdrop-blur-md border-t border-gray-200">
-              <a
-                href="/#benefits"
-                className="block px-3 py-2 text-gray-700 hover:text-playphysio-blue font-light tracking-wide"
-                onClick={closeMenu}
-              >
-                Benefits
-              </a>
               <a
                 href="/#how-it-works"
                 className="block px-3 py-2 text-gray-700 hover:text-playphysio-blue font-light tracking-wide"
@@ -97,15 +91,17 @@ const NavBar: React.FC = () => {
                 Contact
               </a>
               <div className="px-3 py-2">
-                <Button
-                  className="w-full text-white rounded-full px-6 py-2 font-medium hover:scale-105 transition-all duration-300"
-                  style={{
-                    background: 'linear-gradient(to right, #4DBBFA, #58D68D)',
-                  }}
-                  onClick={closeMenu}
-                >
-                  Get Started
-                </Button>
+                <a href="/#contact">
+                  <Button
+                    className="w-full text-white rounded-full px-6 py-2 font-medium hover:scale-105 transition-all duration-300"
+                    style={{
+                      background: 'linear-gradient(to right, #4DBBFA, #58D68D)',
+                    }}
+                    onClick={closeMenu}
+                  >
+                    Get Started
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
