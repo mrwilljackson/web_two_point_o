@@ -124,6 +124,8 @@ async function auditContent() {
           alt: featuredImage.alt_text,
           caption: featuredImage.caption?.rendered
         } : null,
+        content: post.content.rendered,
+        excerpt: post.excerpt.rendered,
         ...contentAnalysis
       };
       

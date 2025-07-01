@@ -2,82 +2,37 @@
 import Layout from '../../layouts/Layout.astro';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
-import { wordpressAPI } from '../../lib/wordpress';
 import {
-  extractExcerpt,
-  getFeaturedImage,
-  getAuthor,
-  getCategories,
-  getTags,
+  getAllPosts,
+  getAllCategories,
+  getAllTags,
+  getFeaturedPosts,
+  getAuthorBySlug,
   formatDate,
-  getStickyPosts,
-  getNonStickyPosts,
-  decodeWordPressEntities
-} from '../../lib/content-utils';
-import { processFeaturedImage, processPostImages } from '../../lib/image-processor.js';
+  generateExcerpt
+} from '../../lib/content';
 
-// Fetch all posts
-let posts = [];
-let categories = [];
-let tags = [];
-let wordpressAvailable = false;
+// Fetch all content from FrontMatter collections
+console.log('🔄 Loading blog content from FrontMatter...');
 
-try {
-  console.log('🔄 Fetching blog data...');
-  [posts, categories, tags] = await Promise.all([
-    wordpressAPI.getAllPosts(),
-    wordpressAPI.getCategories(),
-    wordpressAPI.getTags()
-  ]);
-  wordpressAvailable = true;
-  console.log(`✅ Found ${posts.length} posts, ${categories.length} categories, ${tags.length} tags`);
-} catch (error) {
-  console.error('❌ Error fetching blog data:', error);
-  console.log('📝 Using placeholder content for development');
-}
+const [posts, categories, tags] = await Promise.all([
+  getAllPosts(),
+  getAllCategories(),
+  getAllTags()
+]);
 
-// Sort posts by date (newest first)
-posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+console.log(`✅ Loaded ${posts.length} posts, ${categories.length} categories, ${tags.length} tags`);
 
-// Process images for all posts
-if (posts.length > 0) {
-  console.log('🖼️ Processing images for blog posts...');
-  for (let i = 0; i < posts.length; i++) {
-    const post = posts[i];
-    try {
-      // Process featured image
-      const featuredImage = getFeaturedImage(post);
-      if (featuredImage) {
-        const processedImage = await processFeaturedImage(featuredImage, post.slug);
-        // Update the post's featured media
-        if (post._embedded && post._embedded['wp:featuredmedia']) {
-          post._embedded['wp:featuredmedia'][0] = processedImage;
-        }
-      }
+// Get featured posts and remaining posts
+const featuredPosts = getFeaturedPosts(posts);
+const featuredPost = featuredPosts.length > 0 ? featuredPosts[0] : null;
+const remainingPosts = posts.filter(post => !post.data.featured);
 
-      // Process images in post content
-      if (post.content && post.content.rendered) {
-        post.content.rendered = await processPostImages(post.content.rendered, post.slug);
-      }
-
-      console.log(`✅ Processed images for: ${post.title.rendered}`);
-    } catch (error) {
-      console.warn(`⚠️ Failed to process images for post ${post.slug}:`, error.message);
-    }
-  }
-  console.log('🎉 Image processing complete!');
-}
-
-// Get featured post (sticky post) and remaining posts
-const stickyPosts = getStickyPosts(posts);
-const featuredPost = stickyPosts.length > 0 ? stickyPosts[0] : null; // Use first sticky post as featured
-const remainingPosts = getNonStickyPosts(posts); // All non-sticky posts
-
-console.log(`📌 Found ${stickyPosts.length} sticky posts`);
+console.log(`📌 Found ${featuredPosts.length} featured posts`);
 if (featuredPost) {
-  console.log(`✨ Featured post: "${featuredPost.title.rendered}"`);
+  console.log(`✨ Featured post: "${featuredPost.data.title}"`);
 } else {
-  console.log('ℹ️ No sticky posts found - featured section will be hidden');
+  console.log('ℹ️ No featured posts found - featured section will be hidden');
 }
 
 // SEO data
@@ -612,18 +567,18 @@ const description = 'Read our latest posts and articles.';
     {featuredPost && (
       <section class="featured-section">
         <div class="featured-container">
-          <div class="featured-card" data-categories={getCategories(featuredPost).map(cat => cat.slug).join(',')}>
+          <div class="featured-card" data-categories={featuredPost.data.categories.join(',')}>
             <div class="featured-content">
               <div class="featured-badge">Featured</div>
-              <h2 class="featured-title">{decodeWordPressEntities(featuredPost.title.rendered)}</h2>
-              <p class="featured-excerpt" set:html={extractExcerpt(featuredPost.content.rendered)}></p>
+              <h2 class="featured-title">{featuredPost.data.title}</h2>
+              <p class="featured-excerpt">{featuredPost.data.excerpt}</p>
               <div class="featured-meta">
                 <div class="featured-meta-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                     <circle cx="12" cy="7" r="4"></circle>
                   </svg>
-                  <span>{getAuthor(featuredPost)?.name || 'PlayPhysio Team'}</span>
+                  <span>PlayPhysio Team</span>
                 </div>
                 <div class="featured-meta-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -632,7 +587,7 @@ const description = 'Read our latest posts and articles.';
                     <line x1="8" y1="2" x2="8" y2="6"></line>
                     <line x1="3" y1="10" x2="21" y2="10"></line>
                   </svg>
-                  <span>{formatDate(featuredPost.date)}</span>
+                  <span>{formatDate(featuredPost.data.date)}</span>
                 </div>
                 <div class="featured-meta-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -642,7 +597,7 @@ const description = 'Read our latest posts and articles.';
                   <span>5 min read</span>
                 </div>
               </div>
-              <a href={`/blog/${featuredPost.slug}`} class="featured-button">
+              <a href={`/blog/${featuredPost.data.slug}`} class="featured-button">
                 Read Article
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -651,10 +606,10 @@ const description = 'Read our latest posts and articles.';
               </a>
             </div>
             <div class="featured-image-container">
-              {getFeaturedImage(featuredPost) ? (
+              {featuredPost.data.featuredImage ? (
                 <img
-                  src={getFeaturedImage(featuredPost).source_url}
-                  alt={getFeaturedImage(featuredPost).alt_text || decodeWordPressEntities(featuredPost.title.rendered)}
+                  src={featuredPost.data.featuredImage.src}
+                  alt={featuredPost.data.featuredImage.alt || featuredPost.data.title}
                   class="featured-image"
                   loading="lazy"
                 />
@@ -663,13 +618,13 @@ const description = 'Read our latest posts and articles.';
                   PlayPhysio Blog
                 </div>
               )}
-              {getCategories(featuredPost).length > 0 && (
+              {featuredPost.data.categories.length > 0 && (
                 <div class="featured-category-badge">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
                     <line x1="7" y1="7" x2="7.01" y2="7"></line>
                   </svg>
-                  {getCategories(featuredPost)[0].name}
+                  {featuredPost.data.categories[0]}
                 </div>
               )}
             </div>
@@ -682,20 +637,15 @@ const description = 'Read our latest posts and articles.';
       {remainingPosts.length > 0 ? (
         <div class="posts-grid">
           {remainingPosts.map(post => {
-            const featuredImage = getFeaturedImage(post);
-            const author = getAuthor(post);
-            const postCategories = getCategories(post);
-            const excerpt = post.excerpt.rendered || extractExcerpt(post.content.rendered);
-            const formattedDate = formatDate(post.date);
-            const decodedTitle = decodeWordPressEntities(post.title.rendered);
+            const formattedDate = formatDate(post.data.date);
 
             return (
-              <article class="post-card" data-categories={postCategories.map(cat => cat.slug).join(',')}>
+              <article class="post-card" data-categories={post.data.categories.join(',')}>
                 <div class="post-image-container">
-                  {featuredImage ? (
+                  {post.data.featuredImage ? (
                     <img
-                      src={featuredImage.source_url}
-                      alt={featuredImage.alt_text || decodedTitle}
+                      src={post.data.featuredImage.src}
+                      alt={post.data.featuredImage.alt || post.data.title}
                       class="post-image"
                       loading="lazy"
                     />
@@ -704,23 +654,23 @@ const description = 'Read our latest posts and articles.';
                       PlayPhysio Blog
                     </div>
                   )}
-                  {postCategories.length > 0 && (
+                  {post.data.categories.length > 0 && (
                     <div class="post-category-badge">
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
                         <line x1="7" y1="7" x2="7.01" y2="7"></line>
                       </svg>
-                      {postCategories[0].name}
+                      {post.data.categories[0]}
                     </div>
                   )}
                 </div>
 
                 <div class="post-content">
                   <h3 class="post-title">
-                    <a href={`/blog/${post.slug}`}>{decodedTitle}</a>
+                    <a href={`/blog/${post.data.slug}`}>{post.data.title}</a>
                   </h3>
 
-                  <div class="post-excerpt">{decodeWordPressEntities(excerpt.replace(/<[^>]*>/g, '')).trim()}</div>
+                  <div class="post-excerpt">{post.data.excerpt}</div>
 
                   <div class="post-meta">
                     <div class="post-meta-left">
@@ -728,7 +678,7 @@ const description = 'Read our latest posts and articles.';
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                         <circle cx="12" cy="7" r="4"></circle>
                       </svg>
-                      <span>{author?.name || 'PlayPhysio Team'}</span>
+                      <span>PlayPhysio Team</span>
                     </div>
                     <div class="post-meta-right">
                       <div class="post-meta-item">
@@ -750,7 +700,7 @@ const description = 'Read our latest posts and articles.';
                     </div>
                   </div>
 
-                  <a href={`/blog/${post.slug}`} class="post-button">
+                  <a href={`/blog/${post.data.slug}`} class="post-button">
                     Read More
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -764,19 +714,8 @@ const description = 'Read our latest posts and articles.';
         </div>
       ) : posts.length === 0 ? (
         <div class="no-posts">
-          {wordpressAvailable ? (
-            <>
-              <h2>No posts found</h2>
-              <p>Check back later for new content!</p>
-            </>
-          ) : (
-            <>
-              <h2>WordPress Not Connected</h2>
-              <p>Blog posts will appear here when WordPress is running.</p>
-              <p>Start your WordPress server at <code>http://localhost:8080</code> to see blog content.</p>
-              <p>For production builds, the static content will be generated from WordPress.</p>
-            </>
-          )}
+          <h2>No posts found</h2>
+          <p>Check back later for new content!</p>
         </div>
       ) : null}
     </div>
