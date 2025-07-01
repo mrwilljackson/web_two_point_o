@@ -5,9 +5,6 @@ import Footer from '../../components/Footer';
 import { getAllPosts, getPostBySlug, formatDate, getRelatedPosts } from '../../lib/content';
 import type { BlogPost } from '../../lib/content';
 
-// Import our rich content components
-import { KeyInsight, StatsCards, Stat, Quote, Callout, Highlight, References } from '../../components/content';
-
 export async function getStaticPaths() {
   console.log('🔄 Generating static paths for blog posts...');
   const posts = await getAllPosts();
@@ -27,6 +24,8 @@ console.log(`📄 Loading post: ${post.data.title}`);
 
 // Render the content
 const { Content } = await post.render();
+
+// No need to process components - they're inline in MDX
 
 // Get related posts
 const relatedPosts = await getRelatedPosts(post, 3);
@@ -534,7 +533,7 @@ const postTags = post.data.tags;
       )}
 
       <div class="post-content">
-        <Content components={{ KeyInsight, StatsCards, Stat, Quote, Callout, Highlight, References }} />
+        <Content />
       </div>
 
       {/* Tags Section - V0 Style */}

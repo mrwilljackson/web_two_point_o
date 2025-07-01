@@ -8,6 +8,7 @@ export { default as Quote } from './Quote.astro';
 export { default as Callout } from './Callout.astro';
 export { default as Highlight } from './Highlight.astro';
 export { default as References } from './References.astro';
+export { default as InlineRef } from './InlineRef.astro';
 
 // Usage examples:
 /*

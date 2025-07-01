@@ -1,0 +1,170 @@
+---
+import { KeyInsight, StatsCards, Stat, Quote, Callout, Highlight, References } from './content';
+import type { ProcessedContent } from '../lib/content-processor';
+
+interface Props {
+  Content: any;
+  components: ProcessedContent['components'];
+}
+
+const { Content, components } = Astro.props;
+
+// Render the content to HTML string to process placeholders
+const contentHTML = await Content();
+let processedHTML = contentHTML;
+
+// Replace KeyInsight placeholders
+if (components.keyInsights.length > 0) {
+  components.keyInsights.forEach(insight => {
+    const placeholder = `{{keyInsight:${insight.id}}}`;
+    const keyInsightHTML = `<div class="key-insight-component" data-id="${insight.id}"></div>`;
+    processedHTML = processedHTML.replace(new RegExp(placeholder, 'g'), keyInsightHTML);
+  });
+}
+
+// Replace StatsCards placeholders
+if (components.statsCards.length > 0) {
+  components.statsCards.forEach(statsCard => {
+    const placeholder = `{{statsCards:${statsCard.id}}}`;
+    const statsCardsHTML = `<div class="stats-cards-component" data-id="${statsCard.id}"></div>`;
+    processedHTML = processedHTML.replace(new RegExp(placeholder, 'g'), statsCardsHTML);
+  });
+}
+
+// Replace Quote placeholders
+if (components.quotes.length > 0) {
+  components.quotes.forEach(quote => {
+    const placeholder = `{{quote:${quote.id}}}`;
+    const quoteHTML = `<div class="quote-component" data-id="${quote.id}"></div>`;
+    processedHTML = processedHTML.replace(new RegExp(placeholder, 'g'), quoteHTML);
+  });
+}
+
+// Replace Callout placeholders
+if (components.callouts.length > 0) {
+  components.callouts.forEach(callout => {
+    const placeholder = `{{callout:${callout.id}}}`;
+    const calloutHTML = `<div class="callout-component" data-id="${callout.id}"></div>`;
+    processedHTML = processedHTML.replace(new RegExp(placeholder, 'g'), calloutHTML);
+  });
+}
+
+// Replace References placeholders
+if (components.references.length > 0) {
+  components.references.forEach(reference => {
+    const placeholder = `{{references:${reference.id}}}`;
+    const referencesHTML = `<div class="references-component" data-id="${reference.id}"></div>`;
+    processedHTML = processedHTML.replace(new RegExp(placeholder, 'g'), referencesHTML);
+  });
+}
+---
+
+<!-- Render the processed HTML -->
+<div set:html={processedHTML} />
+
+<!-- Render the actual components positioned by JavaScript -->
+{components.keyInsights.map(insight => (
+  <KeyInsight 
+    icon={insight.icon} 
+    title={insight.title}
+    class="hidden"
+    data-component-id={insight.id}
+  >
+    {insight.content}
+  </KeyInsight>
+))}
+
+{components.statsCards.map(statsCard => (
+  <StatsCards class="hidden" data-component-id={statsCard.id}>
+    {statsCard.stats.map(stat => (
+      <Stat 
+        value={stat.value} 
+        label={stat.label} 
+        color={stat.color}
+      />
+    ))}
+  </StatsCards>
+))}
+
+{components.quotes.map(quote => (
+  <Quote 
+    author={quote.author} 
+    title={quote.title}
+    class="hidden"
+    data-component-id={quote.id}
+  >
+    {quote.content}
+  </Quote>
+))}
+
+{components.callouts.map(callout => (
+  <Callout 
+    type={callout.type} 
+    title={callout.title}
+    class="hidden"
+    data-component-id={callout.id}
+  >
+    {callout.content}
+  </Callout>
+))}
+
+{components.references.map(reference => (
+  <References class="hidden" data-component-id={reference.id}>
+    {reference.content}
+  </References>
+))}
+
+<script>
+  // Replace placeholder divs with actual components
+  document.addEventListener('DOMContentLoaded', () => {
+    // Replace KeyInsight placeholders
+    document.querySelectorAll('.key-insight-component').forEach(placeholder => {
+      const id = placeholder.getAttribute('data-id');
+      const component = document.querySelector(`[data-component-id="${id}"]`);
+      if (component) {
+        component.classList.remove('hidden');
+        placeholder.parentNode?.replaceChild(component, placeholder);
+      }
+    });
+
+    // Replace StatsCards placeholders
+    document.querySelectorAll('.stats-cards-component').forEach(placeholder => {
+      const id = placeholder.getAttribute('data-id');
+      const component = document.querySelector(`[data-component-id="${id}"]`);
+      if (component) {
+        component.classList.remove('hidden');
+        placeholder.parentNode?.replaceChild(component, placeholder);
+      }
+    });
+
+    // Replace Quote placeholders
+    document.querySelectorAll('.quote-component').forEach(placeholder => {
+      const id = placeholder.getAttribute('data-id');
+      const component = document.querySelector(`[data-component-id="${id}"]`);
+      if (component) {
+        component.classList.remove('hidden');
+        placeholder.parentNode?.replaceChild(component, placeholder);
+      }
+    });
+
+    // Replace Callout placeholders
+    document.querySelectorAll('.callout-component').forEach(placeholder => {
+      const id = placeholder.getAttribute('data-id');
+      const component = document.querySelector(`[data-component-id="${id}"]`);
+      if (component) {
+        component.classList.remove('hidden');
+        placeholder.parentNode?.replaceChild(component, placeholder);
+      }
+    });
+
+    // Replace References placeholders
+    document.querySelectorAll('.references-component').forEach(placeholder => {
+      const id = placeholder.getAttribute('data-id');
+      const component = document.querySelector(`[data-component-id="${id}"]`);
+      if (component) {
+        component.classList.remove('hidden');
+        placeholder.parentNode?.replaceChild(component, placeholder);
+      }
+    });
+  });
+</script>

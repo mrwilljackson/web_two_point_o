@@ -21,13 +21,14 @@ const { author, title, class: className = '' } = Astro.props;
 
 <style>
   .content-quote {
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-    border-left: 4px solid #0ea5e9;
+    background: linear-gradient(135deg, rgba(155, 89, 182, 0.08) 0%, rgba(255, 107, 129, 0.12) 100%);
+    border-left: 4px solid #9B59B6;
     border-radius: 0.5rem;
     padding: 1.5rem;
     margin: 2rem 0;
     position: relative;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: 0 1px 3px 0 rgba(155, 89, 182, 0.1), 0 1px 2px 0 rgba(255, 107, 129, 0.06);
+    backdrop-filter: blur(10px);
   }
 
   .content-quote::before {
@@ -36,7 +37,7 @@ const { author, title, class: className = '' } = Astro.props;
     top: -0.5rem;
     left: 1rem;
     font-size: 4rem;
-    color: #0ea5e9;
+    color: #9B59B6;
     font-family: Georgia, serif;
     line-height: 1;
     opacity: 0.3;

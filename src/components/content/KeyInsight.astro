@@ -21,12 +21,13 @@ const { icon = '💡', title = 'Key Insight', class: className = '' } = Astro.pr
 
 <style>
   .key-insight {
-    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-    border: 1px solid #f59e0b;
+    background: linear-gradient(135deg, rgba(77, 187, 250, 0.08) 0%, rgba(88, 214, 141, 0.12) 100%);
+    border: 1px solid rgba(77, 187, 250, 0.2);
     border-radius: 0.75rem;
     padding: 1.5rem;
     margin: 2rem 0;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 6px -1px rgba(77, 187, 250, 0.1), 0 2px 4px -1px rgba(88, 214, 141, 0.06);
+    backdrop-filter: blur(10px);
   }
 
   .key-insight-header {
@@ -44,13 +45,13 @@ const { icon = '💡', title = 'Key Insight', class: className = '' } = Astro.pr
   .key-insight-title {
     font-size: 1.125rem;
     font-weight: 700;
-    color: #92400e;
+    color: #1e40af;
     margin: 0;
     line-height: 1.25;
   }
 
   .key-insight-content {
-    color: #92400e;
+    color: #1f2937;
     line-height: 1.6;
   }
 

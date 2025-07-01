@@ -13,16 +13,23 @@ const { class: className = '' } = Astro.props;
 
 <style>
   .stats-cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    flex-wrap: nowrap;
     gap: 1.5rem;
     margin: 2rem 0;
     padding: 0;
+    align-items: stretch;
+  }
+
+  /* Ensure cards are equal width and don't wrap */
+  .stats-cards-container > :global(*) {
+    flex: 1;
+    min-width: 0; /* Allows flex items to shrink below their content size */
   }
 
   @media (max-width: 768px) {
     .stats-cards-container {
-      grid-template-columns: 1fr;
+      flex-direction: column;
       gap: 1rem;
       margin: 1.5rem 0;
     }

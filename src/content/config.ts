@@ -31,6 +31,42 @@ const blogCollection = defineCollection({
     featured: z.boolean().default(false), // replaces WordPress sticky posts
     hasShortcodes: z.boolean().default(false), // indicates rich content components
 
+    // Rich content UI elements
+    keyInsights: z.array(z.object({
+      id: z.string(),
+      icon: z.string().optional(),
+      title: z.string().optional(),
+      content: z.string(),
+    })).optional(),
+
+    statsCards: z.array(z.object({
+      id: z.string(),
+      stats: z.array(z.object({
+        value: z.string(),
+        label: z.string(),
+        color: z.enum(['cyan', 'emerald', 'purple', 'blue', 'green', 'indigo', 'pink', 'yellow', 'red']).optional(),
+      })),
+    })).optional(),
+
+    quotes: z.array(z.object({
+      id: z.string(),
+      author: z.string(),
+      title: z.string().optional(),
+      content: z.string(),
+    })).optional(),
+
+    callouts: z.array(z.object({
+      id: z.string(),
+      type: z.enum(['info', 'warning', 'success', 'error']).optional(),
+      title: z.string().optional(),
+      content: z.string(),
+    })).optional(),
+
+    references: z.array(z.object({
+      id: z.string(),
+      content: z.string(),
+    })).optional(),
+
     // SEO
     metaDescription: z.string().optional(),
     metaKeywords: z.array(z.string()).optional(),

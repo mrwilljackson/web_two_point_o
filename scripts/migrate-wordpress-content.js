@@ -123,6 +123,135 @@ function convertShortcodesToComponents(content) {
 }
 
 /**
+ * Extract UI components from content and convert to frontmatter + placeholders
+ */
+function extractUIComponentsToFrontmatter(post, content) {
+  let processedContent = content;
+  const uiComponents = {
+    keyInsights: [],
+    statsCards: [],
+    quotes: [],
+    callouts: [],
+    references: []
+  };
+
+  // First decode HTML entities
+  processedContent = decodeHtmlEntities(processedContent);
+
+  // Extract KeyInsight components
+  let keyInsightCounter = 1;
+  processedContent = processedContent.replace(
+    /\[key_insight(?:\s+icon="([^"]*)")?(?:\s+title="([^"]*)")?\](.*?)\[\/key_insight\]/gs,
+    (match, icon, title, content) => {
+      const id = `insight${keyInsightCounter++}`;
+      const cleanContent = content.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+
+      uiComponents.keyInsights.push({
+        id,
+        ...(icon && { icon }),
+        ...(title && { title }),
+        content: cleanContent
+      });
+
+      return `\n{{keyInsight:${id}}}\n`;
+    }
+  );
+
+  // Extract StatsCards components
+  let statsCardCounter = 1;
+  processedContent = processedContent.replace(
+    /\[stats_cards\](.*?)\[\/stats_cards\]/gs,
+    (match, content) => {
+      const id = `stats${statsCardCounter++}`;
+      const stats = [];
+
+      // Extract individual stats
+      const cleanContent = content.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+      cleanContent.replace(
+        /\[stat\s+value=["']([^"']*)["'](?:\s+label=["']([^"']*)["'])?(?:\s+color=["']([^"']*)["'])?\]/g,
+        (statMatch, value, label, color) => {
+          stats.push({
+            value,
+            label: label || '',
+            ...(color && { color })
+          });
+          return '';
+        }
+      );
+
+      if (stats.length > 0) {
+        uiComponents.statsCards.push({
+          id,
+          stats
+        });
+
+        return `\n{{statsCards:${id}}}\n`;
+      }
+
+      return match;
+    }
+  );
+
+  // Clean and convert HTML to markdown
+  processedContent = cleanWordPressContent(processedContent);
+
+  // Generate frontmatter with UI components
+  const frontmatter = generateFrontmatterWithComponents(post, uiComponents);
+
+  return {
+    frontmatter,
+    processedContent: processedContent.trim()
+  };
+}
+
+/**
+ * Convert HTML to Markdown
+ */
+function htmlToMarkdown(content) {
+  let markdown = content;
+
+  // Convert headings
+  markdown = markdown.replace(/<h([1-6])[^>]*>(.*?)<\/h[1-6]>/g, (match, level, text) => {
+    const hashes = '#'.repeat(parseInt(level));
+    return `\n${hashes} ${text.trim()}\n`;
+  });
+
+  // Convert paragraphs
+  markdown = markdown.replace(/<p[^>]*>(.*?)<\/p>/gs, (match, text) => {
+    return `\n${text.trim()}\n`;
+  });
+
+  // Convert lists
+  markdown = markdown.replace(/<ul[^>]*>(.*?)<\/ul>/gs, (match, content) => {
+    const items = content.replace(/<li[^>]*>(.*?)<\/li>/gs, '- $1');
+    return `\n${items}\n`;
+  });
+
+  markdown = markdown.replace(/<ol[^>]*>(.*?)<\/ol>/gs, (match, content) => {
+    let counter = 1;
+    const items = content.replace(/<li[^>]*>(.*?)<\/li>/gs, () => `${counter++}. $1`);
+    return `\n${items}\n`;
+  });
+
+  // Convert strong/bold
+  markdown = markdown.replace(/<strong[^>]*>(.*?)<\/strong>/g, '**$1**');
+  markdown = markdown.replace(/<b[^>]*>(.*?)<\/b>/g, '**$1**');
+
+  // Convert emphasis/italic
+  markdown = markdown.replace(/<em[^>]*>(.*?)<\/em>/g, '*$1*');
+  markdown = markdown.replace(/<i[^>]*>(.*?)<\/i>/g, '*$1*');
+
+  // Convert links
+  markdown = markdown.replace(/<a[^>]*href=["']([^"']*)["'][^>]*>(.*?)<\/a>/g, '[$2]($1)');
+
+  // Convert images
+  markdown = markdown.replace(/<img[^>]*src=["']([^"']*)["'][^>]*alt=["']([^"']*)["'][^>]*>/g, '![$2]($1)');
+  markdown = markdown.replace(/<img[^>]*src=["']([^"']*)["'][^>]*>/g, '![]($1)');
+
+  return markdown;
+}
+
+/**
  * Clean WordPress HTML and convert to markdown-friendly format
  */
 function cleanWordPressContent(content) {
@@ -142,6 +271,9 @@ function cleanWordPressContent(content) {
 
   // Remove empty HTML tags
   cleaned = cleaned.replace(/<(\w+)[^>]*>\s*<\/\1>/g, '');
+
+  // Convert HTML to Markdown
+  cleaned = htmlToMarkdown(cleaned);
 
   // Convert WordPress image captions
   cleaned = cleaned.replace(
@@ -216,28 +348,91 @@ function generateFrontmatter(post) {
 }
 
 /**
+ * Generate frontmatter with UI components
+ */
+function generateFrontmatterWithComponents(post, uiComponents) {
+  // Clean and generate excerpt
+  let excerpt = post.excerpt || `${post.title} - Read more about this topic on PlayPhysio.`;
+  excerpt = excerpt.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+
+  const frontmatter = [
+    '---',
+    `title: "${post.title.replace(/"/g, '\\"')}"`,
+    `date: ${new Date(post.date).toISOString().split('T')[0]}`,
+    `status: "published"`,
+    '',
+    `excerpt: "${excerpt.replace(/"/g, '\\"')}"`,
+    `wordCount: ${post.wordCount}`,
+    '',
+    `categories: [${post.categories.map(cat => `"${cat.slug}"`).join(', ')}]`,
+    `tags: [${post.tags.map(tag => `"${tag.slug}"`).join(', ')}]`,
+    '',
+    `author: "will-jackson"`,
+    ''
+  ];
+
+  // Add featured image if present
+  if (post.featuredImage) {
+    frontmatter.push(
+      'featuredImage:',
+      `  src: "${post.featuredImage.url}"`,
+      `  alt: "${post.featuredImage.alt.replace(/"/g, '\\"')}"`,
+      post.featuredImage.caption ? `  caption: "${post.featuredImage.caption.replace(/"/g, '\\"')}"` : '',
+      ''
+    );
+  }
+
+  // Add special flags
+  frontmatter.push(
+    `featured: ${post.sticky}`,
+    `hasShortcodes: ${post.hasShortcodes}`,
+    ''
+  );
+
+  // Add UI components if they exist
+  if (uiComponents.keyInsights.length > 0) {
+    frontmatter.push('keyInsights:');
+    uiComponents.keyInsights.forEach(insight => {
+      frontmatter.push(`  - id: "${insight.id}"`);
+      if (insight.icon) frontmatter.push(`    icon: "${insight.icon}"`);
+      if (insight.title) frontmatter.push(`    title: "${insight.title}"`);
+      frontmatter.push(`    content: "${insight.content.replace(/"/g, '\\"')}"`);
+    });
+    frontmatter.push('');
+  }
+
+  if (uiComponents.statsCards.length > 0) {
+    frontmatter.push('statsCards:');
+    uiComponents.statsCards.forEach(statsCard => {
+      frontmatter.push(`  - id: "${statsCard.id}"`);
+      frontmatter.push(`    stats:`);
+      statsCard.stats.forEach(stat => {
+        frontmatter.push(`      - value: "${stat.value}"`);
+        frontmatter.push(`        label: "${stat.label}"`);
+        if (stat.color) frontmatter.push(`        color: "${stat.color}"`);
+      });
+    });
+    frontmatter.push('');
+  }
+
+  frontmatter.push('---', '');
+  return frontmatter.filter(line => line !== '').join('\n');
+}
+
+/**
  * Convert a WordPress post to markdown file
  */
 function convertPostToMarkdown(post) {
-  const frontmatter = generateFrontmatter(post);
-
   // Use placeholder content if no content available
   let content = post.content || `# ${post.title}\n\nThis post was migrated from WordPress. Content needs to be added manually.`;
 
   // Process content in the right order
   console.log(`🔄 Processing content for: ${post.title}`);
 
-  // 1. First convert shortcodes (before cleaning HTML)
-  content = convertShortcodesToComponents(content);
+  // Extract UI components and convert to frontmatter + placeholders
+  const { frontmatter, processedContent } = extractUIComponentsToFrontmatter(post, content);
 
-  // 2. Then clean WordPress HTML
-  content = cleanWordPressContent(content);
-
-  // 3. Final cleanup
-  content = content.replace(/\n\s*\n\s*\n/g, '\n\n'); // Remove excessive line breaks
-  content = content.trim();
-
-  return `${frontmatter}\n\n${content}`;
+  return `${frontmatter}\n\n${processedContent}`;
 }
 
 /**

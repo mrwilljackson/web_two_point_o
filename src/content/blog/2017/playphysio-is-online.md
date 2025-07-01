@@ -2,7 +2,7 @@
 title: "Playphys.io is online"
 date: 2017-06-17
 status: "published"
-excerpt: "Welcome! After months of work, meetings, fund raising and planning, we're excited to release our website! We look forward to sharing news of our progress, myPhy..."
+excerpt: "Welcome! After months of work, meetings, fund raising and planning, we&#8217;re excited to release our website! We look forward to sharing news of our progress, myPhysioPal product updates and details about our upcoming games."
 wordCount: 35
 categories: ["news"]
 tags: []
@@ -11,5 +11,6 @@ featured: false
 hasShortcodes: false
 ---
 
-<p>Welcome! After months of work, meetings, fund raising and planning, we're excited to release our website!</p>
-<p>We look forward to sharing news of our progress, myPhysioPal product updates and details about our upcoming games.</p>
+Welcome! After months of work, meetings, fund raising and planning, we're excited to release our website!
+
+We look forward to sharing news of our progress, myPhysioPal product updates and details about our upcoming games.
