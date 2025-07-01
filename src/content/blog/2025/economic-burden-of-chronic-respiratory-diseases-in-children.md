@@ -94,11 +94,9 @@ Rural families travel 36+ miles for care, increasing costs by 22% versus urban c
 
 #### Policy Solutions
 
-1. $1
-
-2. $1
-
-3. $1
+- Diagnostic Acceleration: Reducing PCD diagnosis delays by 2 years saves $28,500/patient[14].
+- Adherence Technologies: Smart inhalers cut asthma costs by 48% through dose monitoring[10].
+- Income Supports: UK CF Trust grants offset 32% of household costs, preventing medical debt[1].
 
 <hr />
 
