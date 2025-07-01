@@ -24,7 +24,7 @@ const [posts, categories, tags] = await Promise.all([
 console.log(`✅ Loaded ${posts.length} posts, ${categories.length} categories, ${tags.length} tags`);
 
 // Get featured posts and remaining posts
-const featuredPosts = getFeaturedPosts(posts);
+const featuredPosts = await getFeaturedPosts();
 const featuredPost = featuredPosts.length > 0 ? featuredPosts[0] : null;
 const remainingPosts = posts.filter(post => !post.data.featured);
 
@@ -542,7 +542,7 @@ const description = 'Read our latest posts and articles.';
           </button>
           {categories.map(category => {
             const categoryPosts = posts.filter(post =>
-              getCategories(post).some(cat => cat.id === category.id)
+              post.data.categories.includes(category.slug)
             );
 
             return (
@@ -554,7 +554,7 @@ const description = 'Read our latest posts and articles.';
                   <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
                   <line x1="7" y1="7" x2="7.01" y2="7"></line>
                 </svg>
-                {category.name}
+                {category.data.name}
                 <span class="category-count">{categoryPosts.length}</span>
               </button>
             );
@@ -597,7 +597,7 @@ const description = 'Read our latest posts and articles.';
                   <span>5 min read</span>
                 </div>
               </div>
-              <a href={`/blog/${featuredPost.data.slug}`} class="featured-button">
+              <a href={`/blog/${featuredPost.slug}`} class="featured-button">
                 Read Article
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -667,7 +667,7 @@ const description = 'Read our latest posts and articles.';
 
                 <div class="post-content">
                   <h3 class="post-title">
-                    <a href={`/blog/${post.data.slug}`}>{post.data.title}</a>
+                    <a href={`/blog/${post.slug}`}>{post.data.title}</a>
                   </h3>
 
                   <div class="post-excerpt">{post.data.excerpt}</div>
@@ -700,7 +700,7 @@ const description = 'Read our latest posts and articles.';
                     </div>
                   </div>
 
-                  <a href={`/blog/${post.data.slug}`} class="post-button">
+                  <a href={`/blog/${post.slug}`} class="post-button">
                     Read More
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <line x1="5" y1="12" x2="19" y2="12"></line>

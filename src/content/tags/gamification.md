@@ -1,6 +1,5 @@
 ---
 name: "Gamification"
-slug: "gamification"
 description: "The use of game design elements in healthcare and therapy to improve engagement and outcomes"
 postCount: 7
 ---

@@ -1,6 +1,5 @@
 ---
 title: "Letting the MDR Genie out of the Bottle."
-slug: "letting-the-genie-out-of-the-bottle"
 date: 2021-10-19
 status: "published"
 excerpt: "When you embark on a building a business or a new venture there are lots of new things to learn. It can be incredibly daunting when you start to realise the she..."

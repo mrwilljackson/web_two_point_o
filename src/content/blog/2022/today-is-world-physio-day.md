@@ -1,6 +1,5 @@
 ---
 title: "Today is World Physio Day!"
-slug: "today-is-world-physio-day"
 date: 2022-09-08
 status: "published"
 excerpt: "In 1996, 8 September was designated as World PT Day. The day marks the unity and solidarity of the global physiotherapy community. It is an opportunity to recog..."

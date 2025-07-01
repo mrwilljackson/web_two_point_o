@@ -1,6 +1,5 @@
 ---
 title: "VentureFest East &#8217;17 votes for Playphysio"
-slug: "venturefest-east-17-votes-for-playphysio"
 date: 2017-09-29
 status: "published"
 excerpt: "Playphysio is a member of the &#8216;Serious Impact' incubator run by Allia in Cambridge. Allia invited me to take part in VentureFest East 2017 at Newmarket Ra..."

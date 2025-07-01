@@ -68,12 +68,12 @@ export async function getAllCategories(): Promise<(Category & { postCount: numbe
     getCollection('categories'),
     getAllPosts()
   ]);
-  
+
   return categories.map(category => {
-    const postCount = posts.filter(post => 
-      post.data.categories.includes(category.data.slug)
+    const postCount = posts.filter(post =>
+      post.data.categories.includes(category.slug)
     ).length;
-    
+
     return {
       ...category,
       postCount
@@ -89,12 +89,12 @@ export async function getAllTags(): Promise<(Tag & { postCount: number })[]> {
     getCollection('tags'),
     getAllPosts()
   ]);
-  
+
   return tags.map(tag => {
-    const postCount = posts.filter(post => 
-      post.data.tags.includes(tag.data.slug)
+    const postCount = posts.filter(post =>
+      post.data.tags.includes(tag.slug)
     ).length;
-    
+
     return {
       ...tag,
       postCount
@@ -107,7 +107,7 @@ export async function getAllTags(): Promise<(Tag & { postCount: number })[]> {
  */
 export async function getCategoryBySlug(slug: string): Promise<Category | undefined> {
   const categories = await getCollection('categories');
-  return categories.find(category => category.data.slug === slug);
+  return categories.find(category => category.slug === slug);
 }
 
 /**
@@ -115,7 +115,7 @@ export async function getCategoryBySlug(slug: string): Promise<Category | undefi
  */
 export async function getTagBySlug(slug: string): Promise<Tag | undefined> {
   const tags = await getCollection('tags');
-  return tags.find(tag => tag.data.slug === slug);
+  return tags.find(tag => tag.slug === slug);
 }
 
 /**
@@ -123,7 +123,7 @@ export async function getTagBySlug(slug: string): Promise<Tag | undefined> {
  */
 export async function getAuthorBySlug(slug: string): Promise<Author | undefined> {
   const authors = await getCollection('authors');
-  return authors.find(author => author.data.slug === slug);
+  return authors.find(author => author.slug === slug);
 }
 
 /**

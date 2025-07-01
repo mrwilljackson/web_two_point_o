@@ -1,6 +1,5 @@
 ---
 title: "Can Games Make Your Life Better?"
-slug: "can-games-make-your-life-better"
 date: 2020-12-14
 status: "published"
 excerpt: "Will, founder and CEO of Playphysio certainly believes that they can. He remembers the daily arguments with his daughter over exactly what the respiratory physi..."

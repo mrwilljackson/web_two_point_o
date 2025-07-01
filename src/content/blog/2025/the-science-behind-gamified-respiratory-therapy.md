@@ -1,6 +1,5 @@
 ---
 title: "The Science Behind Gamified Respiratory Therapy"
-slug: "the-science-behind-gamified-respiratory-therapy"
 date: 2025-05-30
 status: "published"
 excerpt: "Respiratory therapy has long been a challenge for both patients and healthcare providers. Traditional methods, while effective, often struggle with patient adhe..."

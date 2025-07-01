@@ -1,6 +1,5 @@
 ---
 title: "Building on Patient Involvement: A Focus on Cystic Fibrosis"
-slug: "building-on-patient-involvement-a-focus-on-cystic-fibrosis"
 date: 2025-03-05
 status: "published"
 excerpt: "Yesterday, I discussed the hidden power of Patient and Public Involvement (PPI) in healthcare innovation, highlighting its potential to create win-win-win scena..."

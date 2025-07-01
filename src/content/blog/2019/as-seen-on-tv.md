@@ -1,6 +1,5 @@
 ---
 title: "As seen on BBC Look East!"
-slug: "as-seen-on-tv"
 date: 2019-01-31
 status: "published"
 excerpt: "Comic Relief reached out to Playphysio to help raise awareness of Red Nose Day on Friday March 15th this year. We were very pleased to be able to help explain h..."

@@ -1,6 +1,5 @@
 ---
 title: "Economic Burden of Chronic Respiratory Diseases in Children"
-slug: "economic-burden-of-chronic-respiratory-diseases-in-children"
 date: 2025-04-24
 status: "published"
 excerpt: "Chronic respiratory diseases impose substantial financial and societal burdens on pediatric populations, with cystic fibrosis (CF), non-cystic fibrosis bronchie..."

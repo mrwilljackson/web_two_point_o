@@ -1,6 +1,5 @@
 ---
 title: "Testers wanted: Get in touch!"
-slug: "patients-wanted-for-our-trial"
 date: 2018-11-19
 status: "published"
 excerpt: "We are very excited to announce that Addenbrookes Respiratory Department in Cambridge UK are calling for volunteers to take part in a trial of Playphysio® mobil..."

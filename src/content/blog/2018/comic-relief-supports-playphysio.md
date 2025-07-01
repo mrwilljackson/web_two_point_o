@@ -1,6 +1,5 @@
 ---
 title: "Comic Relief supports Playphysio"
-slug: "comic-relief-supports-playphysio"
 date: 2018-10-29
 status: "published"
 excerpt: "We're absolutely delighted to announce that Playphysio has been awarded a grant from the Comic Relief and Paul Hamlyn Foundation in the &#8216;Tech for Good' pr..."

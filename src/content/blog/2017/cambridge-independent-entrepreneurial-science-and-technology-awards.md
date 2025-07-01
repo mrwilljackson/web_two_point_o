@@ -1,6 +1,5 @@
 ---
 title: "Cambridge Independent Entrepreneurial Science and Technology Awards"
-slug: "cambridge-independent-entrepreneurial-science-and-technology-awards"
 date: 2017-09-22
 status: "published"
 excerpt: "Playphysio has won a High Commendation award in Medtech Startup category for our gamification of respiratory physiotherapy from the Cambridge Independent Scienc..."

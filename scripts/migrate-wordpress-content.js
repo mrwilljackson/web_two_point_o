@@ -160,7 +160,6 @@ function generateFrontmatter(post) {
   const frontmatter = [
     '---',
     `title: "${post.title.replace(/"/g, '\\"')}"`,
-    `slug: "${post.slug}"`,
     `date: ${new Date(post.date).toISOString().split('T')[0]}`,
     `status: "published"`,
     '',

@@ -1,6 +1,5 @@
 ---
 title: "Play as Essential Medicine"
-slug: "play-as-essential-medicine"
 date: 2025-04-04
 status: "published"
 excerpt: "Why Chronic Pediatric Care Needs Play-Centered Solutions For children managing chronic conditions—from diabetes to cystic fibrosis—healthcare isn’t just about t..."

@@ -1,6 +1,5 @@
 ---
 title: "Playphys.io is online"
-slug: "playphysio-is-online"
 date: 2017-06-17
 status: "published"
 excerpt: "Welcome! After months of work, meetings, fund raising and planning, we're excited to release our website! We look forward to sharing news of our progress, myPhy..."

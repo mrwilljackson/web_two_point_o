@@ -1,6 +1,5 @@
 ---
 name: "Cystic Fibrosis"
-slug: "cystic-fibrosis"
 description: "Content related to cystic fibrosis treatment, research, and patient care"
 postCount: 3
 ---

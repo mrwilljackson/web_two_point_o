@@ -1,6 +1,5 @@
 ---
 title: "James Lind Alliance &#8211; CF Top 10"
-slug: "james-lind-alliance-cf-top-10"
 date: 2018-01-03
 status: "published"
 excerpt: "The James Lind Alliance was established in 2004 with the aim of setting various priorities for people managing chronic medical conditions. It is particularly in..."

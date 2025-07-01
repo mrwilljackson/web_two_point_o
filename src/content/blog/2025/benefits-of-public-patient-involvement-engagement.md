@@ -1,6 +1,5 @@
 ---
 title: "Benefits of Public Patient Involvement &amp; Engagement"
-slug: "benefits-of-public-patient-involvement-engagement"
 date: 2025-03-04
 status: "published"
 excerpt: "Last week I was invited to attend HETTNorth by NHS England as a Patient Representative and take part in a roundtable discussion. It was clear to me that Public..."

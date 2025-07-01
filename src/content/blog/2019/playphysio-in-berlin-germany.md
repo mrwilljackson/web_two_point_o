@@ -1,6 +1,5 @@
 ---
 title: "Playphysio in Berlin, Germany"
-slug: "playphysio-in-berlin-germany"
 date: 2019-12-07
 status: "published"
 excerpt: "Will is going to be sharing his story about Playphysio at Gamification Europe 2019 this December in Berlin. He's being joined by a whole host of gamification in..."

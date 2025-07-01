@@ -1,6 +1,5 @@
 ---
 title: "Thrilled to join the NHS Clinical Entrepreneur Program: A New Chapter Begins"
-slug: "thrilled-to-join-the-nhs-clinical-entrepreneur-program-a-new-chapter-begins"
 date: 2024-03-15
 status: "published"
 excerpt: "I'm excited to share some wonderful news with you all today. I have been accepted into the prestigious NHS Clinical Entrepreneur Program, an opportunity that ma..."

@@ -1,6 +1,5 @@
 ---
 name: "Research"
-slug: "research"
 description: "Research findings, clinical studies, and evidence-based insights in respiratory therapy"
 color: "#8B5CF6"
 postCount: 3

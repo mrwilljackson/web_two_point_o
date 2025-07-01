@@ -1,6 +1,5 @@
 ---
 name: "Physiotherapy"
-slug: "physiotherapy"
 description: "Physical therapy, respiratory therapy, and rehabilitation techniques"
 postCount: 3
 ---

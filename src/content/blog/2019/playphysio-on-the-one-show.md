@@ -1,6 +1,5 @@
 ---
 title: "Playphysio on TheOneShow"
-slug: "playphysio-on-the-one-show"
 date: 2019-02-25
 status: "published"
 excerpt: "We're super excited to reveal the news that Playphysio was featured on this evenings episode of The One Show on the BBC! 

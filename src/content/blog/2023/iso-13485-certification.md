@@ -1,6 +1,5 @@
 ---
 title: "ISO 13485 Certification!"
-slug: "iso-13485-certification"
 date: 2023-01-20
 status: "published"
 excerpt: "We wanted to share some exciting news with you all- we've just been certified with ISO 13485:2016! For those of you who may not know, this is an international s..."

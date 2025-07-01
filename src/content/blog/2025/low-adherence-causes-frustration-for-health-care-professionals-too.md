@@ -1,6 +1,5 @@
 ---
 title: "Low adherence causes frustration for health care professionals too!"
-slug: "low-adherence-causes-frustration-for-health-care-professionals-too"
 date: 2025-04-23
 status: "published"
 excerpt: "Low patient adherence to respiratory treatments doesn't just affect health outcomes—it deeply impacts the well-being of healthcare professionals (HCPs) who face..."

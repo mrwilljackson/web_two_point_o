@@ -1,6 +1,5 @@
 ---
 title: "Cystic Fibrosis is boring!"
-slug: "cystic-fibrosis-is-boring"
 date: 2019-03-13
 status: "published"
 excerpt: "You may spend 3630 hours (or 453 working days) continuously entertaining your child to encourage them whilst they do their physiotherapy treatment. Is this reas..."

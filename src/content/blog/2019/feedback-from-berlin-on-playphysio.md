@@ -1,6 +1,5 @@
 ---
 title: "Feedback from Berlin on Playphysio"
-slug: "feedback-from-berlin-on-playphysio"
 date: 2019-12-18
 status: "published"
 excerpt: "Last week was busy one for me, with two invitations to present. One at Gamification Europe 2019 in Berlin, and the other at Cambridge University's Judge Busines..."

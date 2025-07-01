@@ -1,6 +1,5 @@
 ---
 name: "Entrepreneurship"
-slug: "entrepreneurship"
 description: "Healthcare entrepreneurship, innovation, and building healthcare technology companies"
 postCount: 4
 ---

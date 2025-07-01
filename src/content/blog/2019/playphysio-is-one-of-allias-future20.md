@@ -1,6 +1,5 @@
 ---
 title: "Playphysio is one of Allia&#8217;s Future20."
-slug: "playphysio-is-one-of-allias-future20"
 date: 2019-07-01
 status: "published"
 excerpt: "Allia announces the Future20. 20 exciting companies looking to change the world. We have some very exciting news! We’re thrilled to announce that we have been c..."

@@ -1,6 +1,5 @@
 ---
 title: "&#8216;One in a million.&#8217;"
-slug: "playphysio-is-one-in-a-million-realities"
 date: 2019-01-03
 status: "published"
 excerpt: "In December 2017 Will Jackson of Playphysio was nominated to apply for a fellowship from a brand new, two year programme – A Million Realities."

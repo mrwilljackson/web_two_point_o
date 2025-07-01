@@ -1,6 +1,5 @@
 ---
 name: "Blog"
-slug: "blog"
 description: "In-depth articles and insights about PlayPhysio, respiratory therapy, and healthcare innovation"
 color: "#3B82F6"
 postCount: 4

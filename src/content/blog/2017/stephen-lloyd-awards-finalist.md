@@ -1,6 +1,5 @@
 ---
 title: "Finalists at the Stephen Lloyd Awards."
-slug: "stephen-lloyd-awards-finalist"
 date: 2017-06-29
 status: "published"
 excerpt: "On 27th June 2017 we set up our demos and presentation at Bates Wells Braithwate LLP at their London office ready for the Stephen Lloyd Awards finale event."

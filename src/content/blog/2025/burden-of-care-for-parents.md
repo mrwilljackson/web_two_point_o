@@ -1,6 +1,5 @@
 ---
 title: "Burden of care for Parents"
-slug: "burden-of-care-for-parents"
 date: 2025-06-03
 status: "published"
 excerpt: "Parenting a child with a chronic respiratory condition creates significant psychological burdens that extend beyond medical management. Research reveals how the..."
