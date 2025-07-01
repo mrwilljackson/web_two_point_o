@@ -44,13 +44,19 @@ function convertShortcodesToComponents(content) {
   // First decode HTML entities
   processedContent = decodeHtmlEntities(processedContent);
 
-  // Convert [key_insight] shortcodes
+  // Clean up WordPress paragraph wrapping around shortcodes
+  processedContent = processedContent.replace(/<p>\s*(\[[\w_]+[^\]]*\])/g, '$1');
+  processedContent = processedContent.replace(/(\[\/[\w_]+\])\s*<\/p>/g, '$1');
+
+  // Convert [key_insight] shortcodes - handle both self-closing and content versions
   processedContent = processedContent.replace(
     /\[key_insight(?:\s+icon="([^"]*)")?(?:\s+title="([^"]*)")?\](.*?)\[\/key_insight\]/gs,
     (match, icon, title, content) => {
       const iconAttr = icon ? ` icon="${icon}"` : '';
       const titleAttr = title ? ` title="${title}"` : '';
-      return `<KeyInsight${iconAttr}${titleAttr}>\n${content.trim()}\n</KeyInsight>`;
+      // Clean the content of HTML tags and extra formatting
+      const cleanContent = content.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+      return `\n<KeyInsight${iconAttr}${titleAttr}>\n${cleanContent}\n</KeyInsight>\n`;
     }
   );
 
@@ -58,15 +64,18 @@ function convertShortcodesToComponents(content) {
   processedContent = processedContent.replace(
     /\[stats_cards\](.*?)\[\/stats_cards\]/gs,
     (match, content) => {
+      // Clean the content first
+      let cleanContent = content.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+
       // Convert individual [stat] shortcodes within
-      const statsContent = content.replace(
+      const statsContent = cleanContent.replace(
         /\[stat\s+value=["']([^"']*)["'](?:\s+label=["']([^"']*)["'])?(?:\s+color=["']([^"']*)["'])?\]/g,
         (statMatch, value, label, color) => {
           const colorAttr = color ? ` color="${color}"` : '';
-          return `  <Stat value="${value}" label="${label || ''}"${colorAttr} />`;
+          return `\n  <Stat value="${value}" label="${label || ''}"${colorAttr} />`;
         }
       );
-      return `<StatsCards>\n${statsContent}\n</StatsCards>`;
+      return `\n<StatsCards>${statsContent}\n</StatsCards>\n`;
     }
   );
 
@@ -75,7 +84,8 @@ function convertShortcodesToComponents(content) {
     /\[quote\s+author="([^"]*)"(?:\s+title="([^"]*)")?\](.*?)\[\/quote\]/gs,
     (match, author, title, content) => {
       const titleAttr = title ? ` title="${title}"` : '';
-      return `<Quote author="${author}"${titleAttr}>\n${content.trim()}\n</Quote>`;
+      const cleanContent = content.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+      return `\n<Quote author="${author}"${titleAttr}>\n${cleanContent}\n</Quote>\n`;
     }
   );
 
@@ -85,7 +95,8 @@ function convertShortcodesToComponents(content) {
     (match, type, title, content) => {
       const typeAttr = type ? ` type="${type}"` : '';
       const titleAttr = title ? ` title="${title}"` : '';
-      return `<Callout${typeAttr}${titleAttr}>\n${content.trim()}\n</Callout>`;
+      const cleanContent = content.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+      return `\n<Callout${typeAttr}${titleAttr}>\n${cleanContent}\n</Callout>\n`;
     }
   );
 
@@ -94,7 +105,8 @@ function convertShortcodesToComponents(content) {
     /\[highlight(?:\s+color="([^"]*)")?\](.*?)\[\/highlight\]/gs,
     (match, color, content) => {
       const colorAttr = color ? ` color="${color}"` : '';
-      return `<Highlight${colorAttr}>${content.trim()}</Highlight>`;
+      const cleanContent = content.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+      return `<Highlight${colorAttr}>${cleanContent}</Highlight>`;
     }
   );
 
@@ -102,7 +114,8 @@ function convertShortcodesToComponents(content) {
   processedContent = processedContent.replace(
     /\[references\](.*?)\[\/references\]/gs,
     (match, content) => {
-      return `<References>\n${content.trim()}\n</References>`;
+      const cleanContent = content.replace(/<[^>]*>/g, '').trim();
+      return `\n<References>\n${cleanContent}\n</References>\n`;
     }
   );
 
@@ -124,6 +137,12 @@ function cleanWordPressContent(content) {
   // Clean up empty class attributes
   cleaned = cleaned.replace(/class=""\s*/g, '');
 
+  // Remove inline styles that interfere with components
+  cleaned = cleaned.replace(/style="[^"]*"/g, '');
+
+  // Remove empty HTML tags
+  cleaned = cleaned.replace(/<(\w+)[^>]*>\s*<\/\1>/g, '');
+
   // Convert WordPress image captions
   cleaned = cleaned.replace(
     /\[caption[^\]]*\](.*?)<img([^>]*)>(.*?)\[\/caption\]/gs,
@@ -135,8 +154,9 @@ function cleanWordPressContent(content) {
   // Remove WordPress gallery shortcodes (we'll handle these manually)
   cleaned = cleaned.replace(/\[gallery[^\]]*\]/g, '<!-- Gallery removed - add manually -->');
 
-  // Clean up extra whitespace
+  // Clean up extra whitespace and line breaks
   cleaned = cleaned.replace(/\n\s*\n\s*\n/g, '\n\n');
+  cleaned = cleaned.replace(/<br\s*\/?>\s*/g, '\n');
 
   return cleaned.trim();
 }
@@ -202,11 +222,22 @@ function convertPostToMarkdown(post) {
   const frontmatter = generateFrontmatter(post);
 
   // Use placeholder content if no content available
-  const content = post.content || `# ${post.title}\n\nThis post was migrated from WordPress. Content needs to be added manually.`;
-  const cleanedContent = cleanWordPressContent(content);
-  const convertedContent = convertShortcodesToComponents(cleanedContent);
+  let content = post.content || `# ${post.title}\n\nThis post was migrated from WordPress. Content needs to be added manually.`;
 
-  return `${frontmatter}\n${convertedContent}`;
+  // Process content in the right order
+  console.log(`🔄 Processing content for: ${post.title}`);
+
+  // 1. First convert shortcodes (before cleaning HTML)
+  content = convertShortcodesToComponents(content);
+
+  // 2. Then clean WordPress HTML
+  content = cleanWordPressContent(content);
+
+  // 3. Final cleanup
+  content = content.replace(/\n\s*\n\s*\n/g, '\n\n'); // Remove excessive line breaks
+  content = content.trim();
+
+  return `${frontmatter}\n\n${content}`;
 }
 
 /**

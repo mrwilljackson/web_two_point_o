@@ -13,6 +13,7 @@ featuredImage:
 featured: false
 hasShortcodes: false
 ---
+
 <p>In December 2017 Will Jackson of Playphysio was nominated to apply for a fellowship from A Million Realities. The interview process was intense and searching. The interview panels included representatives of the Packard Foundation and Ashoka UK. We're very excited to share the news that Will has been offered and has accepted a fellowship from A Million Realities.</p>
 
 <p><strong>About A Million Realities</strong></p>
@@ -26,5 +27,3 @@ hasShortcodes: false
 <div ><figure ><img loading="lazy" decoding="async" width="169" height="120" src="http://astro-wp.local/wp-content/uploads/2019/01/the-packard-foundation.png" alt="" /></figure></div>
 
 <p>The Packard Foundation is a family foundation based in central London. Alongside its funding of the A Million Realities programme, the foundation continues to support various projects and charities in the arts and education sector. </p>
-
-<p></p>

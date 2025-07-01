@@ -10,6 +10,7 @@ author: "will-jackson"
 featured: false
 hasShortcodes: false
 ---
+
 <p>On 27th June 2017 we set up our demos and presentation at Bates Wells LLP at their London office ready for the Stephen Lloyd Awards finale event.</p>
 
 <p>It was a great evening and I was honoured to be amongst a dozen other social ventures, as we delivered our elevator pitch for 1 minute to the entire audience.</p>

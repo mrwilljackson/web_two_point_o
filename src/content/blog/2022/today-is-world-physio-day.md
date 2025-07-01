@@ -13,6 +13,7 @@ featuredImage:
 featured: false
 hasShortcodes: false
 ---
+
 <p>In 1996, 8 September was designated as World PT Day. The day marks the unity and solidarity of the global physiotherapy community. It is an opportunity to recognise the work that physiotherapists do for their patients and community.</p>
 
 <p>If you know a physiotherapist, why not buy them a coffee to celebrate! </p>

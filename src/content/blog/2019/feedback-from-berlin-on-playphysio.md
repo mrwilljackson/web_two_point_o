@@ -13,6 +13,7 @@ featuredImage:
 featured: false
 hasShortcodes: false
 ---
+
 <p>Last week was busy one for me, with two invitations to present. One at Gamification Europe 2019 in Berlin, and the other at Cambridge University's Judge Business School. </p>
 
 <p>I think I'll have to return to Berlin another time to find the famous Christmas markets, the Brandenburg gate etc, as I was rather pre-occupied!</p>

@@ -13,7 +13,9 @@ featuredImage:
 featured: false
 hasShortcodes: false
 ---
-<h3 ><strong>Allia announces the Future20. </strong><br><strong>20 exciting companies looking to change the world.</strong></h3>
+
+<h3 ><strong>Allia announces the Future20. </strong>
+<strong>20 exciting companies looking to change the world.</strong></h3>
 
 <p><strong>We have some very exciting news!</strong> We’re thrilled to announce that we have been chosen as one of the Future 20! We’ve joined a new incubator programme from @Allia Future Business Centre along with 19 other startups who are tackling the #GlobalGoals and solving the most pressing issues.</p>
 

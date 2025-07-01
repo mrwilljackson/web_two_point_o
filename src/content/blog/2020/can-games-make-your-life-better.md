@@ -13,13 +13,14 @@ featuredImage:
 featured: false
 hasShortcodes: false
 ---
+
 <p class="has-medium-font-size">Will, founder and CEO of Playphysio certainly believes that they can. He remembers the daily arguments with his daughter over exactly what the respiratory physiotherapist had told her to do that week. </p>
 
 <p>His families daily routine of confusion over how many blows and the type of blows she’d done into her OPEP therapy device, are now in the past for Wills family: He has found that mobile games have definitely changed his, and his family’s, daily life for the better.</p>
 
 <p>The press and media  seem <a href="https://www.theguardian.com/technology/2009/oct/21/video-game-stigma" target="_blank" rel="noreferrer noopener">biased against video games, even gamers themselves</a>. There are so many stereotypes against them that we’ve become used to thinking of gamers as unproductive, lazy, and anti-social.. </p>
 
-<p>Therefore, to suggest building a mobile game for children to help them enjoy<em> </em>physiotherapy treatment seems very counterintuitive on health grounds. But Playphysio’s combining physiotherapy with games is being supported by doctors at Addenbrookes Hospital in Cambridge, UK: what does Playphysio know that society doesn’t? </p>
+<p>Therefore, to suggest building a mobile game for children to help them enjoyphysiotherapy treatment seems very counterintuitive on health grounds. But Playphysio’s combining physiotherapy with games is being supported by doctors at Addenbrookes Hospital in Cambridge, UK: what does Playphysio know that society doesn’t? </p>
 
 <p>A recent <a rel="noreferrer noopener" href="https://www.oii.ox.ac.uk/news/releases/groundbreaking-new-study-says-time-spent-playing-video-games-can-be-good-for-your-wellbeing/" target="_blank">University of Oxford study</a> has suggested that video games could actually be <em>good </em>for us: they can improve our overall mental well-being. The study found that the more gamers play a game, the more positive they felt. <a href="https://www.bbc.co.uk/news/technology-54954622" target="_blank" rel="noreferrer noopener">Interestingly, all participants were over 18 years of age</a>. They encourage playing video games as a way that could improve players’ mental health, which proves what Playphysio has known for a long time: games can make your life better. </p>
 

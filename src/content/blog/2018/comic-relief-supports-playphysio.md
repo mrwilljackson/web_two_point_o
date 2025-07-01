@@ -13,6 +13,7 @@ featuredImage:
 featured: false
 hasShortcodes: false
 ---
+
 <div ><figure ><img loading="lazy" decoding="async" width="117" height="118" src="http://astro-wp.local/wp-content/uploads/2018/08/comic-relief-logo.png" alt="playphysio is part funded by comic relief" /></figure></div>
 
 <p>We're absolutely delighted to announce that Playphysio has been awarded a grant from the Comic Relief and Paul Hamlyn Foundation in the &#8216;Tech for Good' program!</p>
@@ -31,4 +32,6 @@ hasShortcodes: false
 
 <p>We will also be talking to the CF Trust to find out how we might be able to share the physiotherapy treatment data with the national registry to help benefit the entire CF population.</p>
 
-<p><a href="https://www.comicrelief.com/your-impact/how-we-make-grants/tech-for-good">More information about Comic Relief &#8216;Tech for Good' is available here.</a><br><a href="https://www.phf.org.uk/">More information about Paul Hamyln Foundation is available here.</a><br><a href="https://play.physio/get-in-touch/">If you are interested in more info about Playphysio</a><sup><a href="https://play.physio/get-in-touch/">®</a></sup><a href="https://play.physio/get-in-touch/"> please get in touch.</a></p>
+<p><a href="https://www.comicrelief.com/your-impact/how-we-make-grants/tech-for-good">More information about Comic Relief &#8216;Tech for Good' is available here.</a>
+<a href="https://www.phf.org.uk/">More information about Paul Hamyln Foundation is available here.</a>
+<a href="https://play.physio/get-in-touch/">If you are interested in more info about Playphysio</a><sup><a href="https://play.physio/get-in-touch/">®</a></sup><a href="https://play.physio/get-in-touch/"> please get in touch.</a></p>

@@ -13,6 +13,7 @@ featuredImage:
 featured: false
 hasShortcodes: false
 ---
+
 <p>When you embark on a building a business or a new venture there are <strong>lots</strong> of new things to learn. It can be incredibly daunting when you start to realise the sheer volume of things you just don't know. </p>
 
 <p>For example, if you're a product person, you may not be comfortable with accounting and business development. If you're a sales person you may not have a clue how software development, electronics and version control is handled. If you're a software person, then you may need to deal with customer support, prospects and physical logistics.</p>

@@ -10,6 +10,7 @@ author: "will-jackson"
 featured: false
 hasShortcodes: false
 ---
+
 <p>The James Lind Alliance was established in 2004 with the aim of setting various priorities for people managing chronic medical conditions. It is particularly interesting because its defines priority lists from a shared view from <strong>patients, carers and clinicians.</strong></p>
 
 <p>We believe that Playphysio addresses three of these ten priorities!</p>
@@ -34,6 +35,9 @@ hasShortcodes: false
 
 <p>Playphysio Clinical Dashboard could help care teams identify when a patient may have a problem with keeping up with treatment. This may allow a physiotherapist to make contact with the family to prevent the onset of more serious problems.</p>
 
-<p>More information is available here:<br><a href="http://www.jla.nihr.ac.uk/priority-setting-partnerships/cystic-fibrosis/top-10-priorities.htm">James Lind Alliance Top Ten Priorities for Cystic Fibrosis Patients</a><br></p>
+<p>More information is available here:
+<a href="http://www.jla.nihr.ac.uk/priority-setting-partnerships/cystic-fibrosis/top-10-priorities.htm">James Lind Alliance Top Ten Priorities for Cystic Fibrosis Patients</a>
+</p>
 
-<p><br></p>
+<p>
+</p>

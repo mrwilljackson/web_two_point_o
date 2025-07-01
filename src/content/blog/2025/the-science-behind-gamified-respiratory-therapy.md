@@ -13,17 +13,16 @@ featuredImage:
 featured: true
 hasShortcodes: true
 ---
+
 <p>Respiratory therapy has long been a challenge for both patients and healthcare providers. Traditional methods, while effective, often struggle with patient adherence and engagement, particularly among pediatric populations. At Playphysio, we've revolutionized this approach by combining proven respiratory therapy techniques with engaging game mechanics.</p>
 
 <h2 >The Challenge of Traditional Respiratory Therapy</h2>
 
 <p>Studies have shown that adherence to respiratory therapy regimens can be as low as 30-50% in pediatric populations. This poor adherence leads to suboptimal outcomes, increased healthcare costs, and frustration for both patients and families.</p>
 
-<p><KeyInsight>
-</span></div>
-<div><span style="color: #000000;">Traditional respiratory therapy methods achieve only </span><span style="color: #098658;">30</span><span style="color: #000000;">–</span><span style="color: #098658;">50</span><span style="color: #000000;">% adherence rates </span><span style="color: #0000ff;">in</span><span style="color: #000000;"> children, </span><span style="color: #0000ff;">while</span><span style="color: #000000;"> PlayPhysio achieves </span><span style="color: #098658;">94</span><span style="color: #000000;">% adherence through gamification.</span></div>
-<div><span style="color: #000000;">
-</KeyInsight></p>
+<KeyInsight>
+Traditional respiratory therapy methods achieve only 30–50% adherence rates in children, while PlayPhysio achieves 94% adherence through gamification.
+</KeyInsight>
 
 <h2 >The Power of Gamification</h2>
 
@@ -43,13 +42,11 @@ hasShortcodes: true
 
 <p>Our approach isn't just theoretically sound—it's clinically proven. In our latest study involving 200 pediatric patients over 6 months, we observed:</p>
 
-<p><StatsCards>
-<br />
-    <Stat value="94%" label="Therapy Adherence Rate" color="cyan" /><br />
-    <Stat value="67%" label="Improvement in Lung Function" color="emerald" /><br />
-    <Stat value="89%" label="Families Found Therapy Enjoyable" color="purple" /><br />
-
-</StatsCards></p>
+<StatsCards>
+  <Stat value="94%" label="Therapy Adherence Rate" color="cyan" /> 
+  <Stat value="67%" label="Improvement in Lung Function" color="emerald" /> 
+  <Stat value="89%" label="Families Found Therapy Enjoyable" color="purple" />
+</StatsCards>
 
 <h2 >The Technology Behind the Magic</h2>
 
@@ -65,11 +62,9 @@ hasShortcodes: true
 <li><strong>Cross-Platform Compatibility:</strong> Seamless experience across devices</li>
 </ul>
 
-<p><Quote author="Dr. Michael Rodriguez" title="Children's Hospital of Philadelphia">
-</p>
-<p>PlayPhysio has transformed our approach to pediatric respiratory therapy. The engagement levels we see are unprecedented.</p>
-<p>
-</Quote></p>
+<Quote author="Dr. Michael Rodriguez" title="Children's Hospital of Philadelphia">
+PlayPhysio has transformed our approach to pediatric respiratory therapy. The engagement levels we see are unprecedented.
+</Quote>
 
 <h2 >Looking Forward</h2>
 
@@ -77,9 +72,6 @@ hasShortcodes: true
 
 <p>The future of respiratory therapy is here, and it's more engaging than ever before.</p>
 
-<p><Callout type="success" title="Ready to Get Started?">
-<br />
-Contact our team to learn how PlayPhysio can transform your respiratory therapy program.<br />
-</Callout></p>
-
-<p></p>
+<Callout type="success" title="Ready to Get Started?">
+Contact our team to learn how PlayPhysio can transform your respiratory therapy program.
+</Callout>

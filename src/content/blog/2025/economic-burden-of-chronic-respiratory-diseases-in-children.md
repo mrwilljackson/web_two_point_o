@@ -13,6 +13,7 @@ featuredImage:
 featured: false
 hasShortcodes: false
 ---
+
 <p>Chronic respiratory diseases impose substantial financial and societal burdens on pediatric populations, with cystic fibrosis (CF), non-cystic fibrosis bronchiectasis (NCFB), primary ciliary dyskinesia (PCD), and asthma disproportionately affecting children’s health systems, families, and national economies. Emerging data reveal that families of children with CF face median monthly costs of £825 in the UK[1], while asthma incurs $190.6 million annually in Australian public health expenditures[4]. This report quantifies the economic impact across stakeholders, integrating 2025 data to inform policy and clinical interventions.</p>
 
 <hr />

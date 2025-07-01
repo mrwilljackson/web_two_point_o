@@ -13,6 +13,7 @@ featuredImage:
 featured: false
 hasShortcodes: false
 ---
+
 <p><strong>I'm excited to share some wonderful news with you all today. I have been accepted into the prestigious NHS Clinical Entrepreneur Program, an opportunity that marks a significant milestone in both my personal and professional journey.</strong></p>
 
 <div ><figure ><a href="http://astro-wp.local/wp-content/uploads/2024/03/cropped-CEPForWeb_4-1.png"><img loading="lazy" decoding="async" src="http://astro-wp.local/wp-content/uploads/2024/03/cropped-CEPForWeb_4-1.png" alt=""  width="482" height="149" srcset="http://astro-wp.local/wp-content/uploads/2024/03/cropped-CEPForWeb_4-1.png 898w, http://astro-wp.local/wp-content/uploads/2024/03/cropped-CEPForWeb_4-1-300x93.png 300w, http://astro-wp.local/wp-content/uploads/2024/03/cropped-CEPForWeb_4-1-768x238.png 768w" sizes="auto, (max-width: 482px) 100vw, 482px" /></a><figcaption>for more info please visit the <a href="https://nhscep.com">NHSCEP website</a></figcaption></figure></div>

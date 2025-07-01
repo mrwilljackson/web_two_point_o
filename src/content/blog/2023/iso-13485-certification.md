@@ -13,6 +13,7 @@ featuredImage:
 featured: false
 hasShortcodes: false
 ---
+
 <p>We wanted to share some exciting news with you all- we've just been certified with ISO 13485:2016! For those of you who may not know, this is an international standard for medical device quality management systems. Basically, it means we've gone through a rigorous evaluation process to ensure that our products and services meet the highest standards of quality and safety.</p>
 
 <p>We know how important it is for our customers to have reliable and safe products, especially in the medical field. So, this certification is a big deal for us and we're really proud of our team for making it happen. It's a validation of all the hard work and dedication we put in to make sure we're always providing the best for our customers.</p>

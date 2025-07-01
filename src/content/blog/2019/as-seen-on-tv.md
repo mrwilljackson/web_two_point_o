@@ -13,9 +13,10 @@ featuredImage:
 featured: false
 hasShortcodes: false
 ---
+
 <p>Comic Relief reached out to Playphysio to help raise awareness of <a href="https://www.comicrelief.com/rednoseday">Red Nose Day on Friday March 15th this year</a>. Naturally we were very happy to take part!</p>
 
-<figure><iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/NMUqqefMiJc" allowfullscreen=""></iframe></figure>
+<figure></figure>
 
 <p>As a beneficiary, we're very pleased to be able to help Red Nose Day and Comic Relief and the amazing grant programs that they run.</p>
 

@@ -13,17 +13,15 @@ featuredImage:
 featured: false
 hasShortcodes: true
 ---
+
 <h2 >Why Chronic Pediatric Care Needs Play-Centered Solutions</h2>
 
 <p>For children managing chronic conditions—from diabetes to cystic fibrosis—healthcare isn’t just about treatments. It’s about sustaining <strong>quality of life</strong> through years of routines that can feel isolating, scary, or monotonous. </p>
 
 <p>Groundbreaking research from the University of Cambridge, published in partnership with Starlight, now underscores what we’ve seen firsthand at Playphysio over the last seven years: </p>
 
-<p><StatsCards>
-<br />
-[value="play isn’t a distraction" label="for these children—it’s a lifeline to better health outcomes." color="cyan"]<br />
-
-</StatsCards></p>
+<StatsCards>[value="play isn’t a distraction" label="for these children—it’s a lifeline to better health outcomes." color="cyan"]
+</StatsCards>
 
 <h3 >Play as a Non-Negotiable in Holistic Care</h3>
 
@@ -43,12 +41,11 @@ hasShortcodes: true
 
 <p>For chronic conditions, these benefits are amplified. </p>
 
-<p>[quote author="Dr. Kelsey Graber" title="Lead Author, Playing with Children's Health? March 2025&#8243;]<br />
-<span style="color: #1f2328;">Play humanizes healthcare. It supports the emotional and mental aspects of being well, which are critical for children facing repeated medical interventions.</span>[/quote]</p>
+[quote author="Dr. Kelsey Graber" title="Lead Author, Playing with Children's Health? March 2025&#8243;]
+<span >Play humanizes healthcare. It supports the emotional and mental aspects of being well, which are critical for children facing repeated medical interventions.</span>[/quote]
 
-<p></p>
-
-<h2 >Chronic Care’s Silent Gap: <br>The Missing Play Element</h2>
+<h2 >Chronic Care’s Silent Gap: 
+The Missing Play Element</h2>
 
 <p>While play is increasingly integrated into acute care, the Cambridge study reveals a stark oversight: <strong>children with chronic illnesses often lack sustained access to play-based interventions</strong>. This gap is costly because 70% of all healthcare costs are due to the management of chronic conditions.</p>
 
@@ -71,5 +68,3 @@ hasShortcodes: true
 <p>Learn more about the Cambridge report and find out how  <a href="https://www.cam.ac.uk/research/news/play-humanises-paediatric-care-and-should-be-key-feature-of-a-child-friendly-nhs-report-0">Play &#8216;humanises' paediatric care and should be key feature of a child-friendly NHS</a>.</p>
 
 <p><a href="https://www.pedalhub.net/wp-content/uploads/2025/03/PEDAL-Playing-with-childrens-health.pdf">Click here to download the report "Playing with Childrens' Health?"</a></p>
-
-<p></p>
