@@ -44,7 +44,21 @@ mrwilljackson/web_two_point_o/
 
 ## 🔧 Quick Deployment Commands
 
-### **Standard Deployment Process:**
+### **🚀 Automated Deployment Script (Recommended):**
+```bash
+# Single command deployment (run from project root)
+./deploy.sh
+```
+
+**What it does:**
+- ✅ Builds the static site (`npm run build`)
+- ✅ Creates temporary git repository with only dist contents
+- ✅ Pushes to your GitHub repository root
+- ✅ Triggers Vercel auto-deployment
+- ✅ Cleans up temporary files
+- ✅ No git conflicts or dual repository issues
+
+### **Manual Deployment (Alternative):**
 ```bash
 # 1. Navigate to your project directory
 cd "/Users/willjackson/Documents/Playphysio/website design/web3"
@@ -52,26 +66,8 @@ cd "/Users/willjackson/Documents/Playphysio/website design/web3"
 # 2. Build the static site
 npm run build
 
-# 3. Navigate to dist directory
-cd dist
-
-# 4. Add all changes
-git add .
-
-# 5. Commit with descriptive message
-git commit -m "Update content - $(date '+%Y-%m-%d %H:%M')"
-
-# 6. Push to GitHub (triggers Vercel deployment)
-git push origin master
-
-# 7. Return to main project directory
-cd ..
-```
-
-### **One-Line Deployment:**
-```bash
-# Quick deployment script (run from project root)
-npm run build && cd dist && git add . && git commit -m "Deploy $(date '+%Y-%m-%d %H:%M')" && git push origin master && cd ..
+# 3. Use the deployment script
+./deploy.sh
 ```
 
 ---
