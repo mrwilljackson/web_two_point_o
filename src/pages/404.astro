@@ -2,32 +2,22 @@
 import Layout from '../layouts/Layout.astro';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
-import { wordpressAPI } from '../lib/wordpress';
-import {
-  extractExcerpt,
-  getFeaturedImage,
-  getAuthor,
-  getCategories,
-  formatDate,
-  getStickyPosts,
-  decodeWordPressEntities
-} from '../lib/content-utils';
+import { getFeaturedPosts, formatDate } from '../lib/content';
 
-// Fetch sticky posts for featured content
+// Fetch featured posts for featured content
 let featuredPost = null;
-let wordpressAvailable = false;
+let frontmatterAvailable = false;
 
 try {
-  console.log('🔄 Fetching sticky posts for 404 page...');
-  const posts = await wordpressAPI.getAllPosts();
-  const stickyPosts = getStickyPosts(posts);
-  featuredPost = stickyPosts.length > 0 ? stickyPosts[0] : null;
-  wordpressAvailable = true;
+  console.log('🔄 Fetching featured posts for 404 page...');
+  const featuredPosts = await getFeaturedPosts();
+  featuredPost = featuredPosts.length > 0 ? featuredPosts[0] : null;
+  frontmatterAvailable = true;
 
   if (featuredPost) {
-    console.log(`✨ 404 page featuring: "${featuredPost.title.rendered}"`);
+    console.log(`✨ 404 page featuring: "${featuredPost.data.title}"`);
   } else {
-    console.log('ℹ️ No sticky posts found for 404 page - using fallback content');
+    console.log('ℹ️ No featured posts found for 404 page - using fallback content');
   }
 } catch (error) {
   console.error('❌ Error fetching posts for 404 page:', error);
@@ -151,9 +141,9 @@ function getBlogUrl(slug: string, date: string) {
         {featuredPost ? (
           <div class="featured-card-404">
             <div class="featured-content-404">
-              <h3 class="featured-title-404">{decodeWordPressEntities(featuredPost.title.rendered)}</h3>
+              <h3 class="featured-title-404">{featuredPost.data.title}</h3>
               <p class="featured-excerpt-404">
-                {extractExcerpt(featuredPost.content.rendered, 200)}
+                {featuredPost.data.excerpt}
               </p>
               <div class="featured-meta-404">
                 <div class="featured-meta-item-404">
@@ -161,7 +151,7 @@ function getBlogUrl(slug: string, date: string) {
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                     <circle cx="12" cy="7" r="4"></circle>
                   </svg>
-                  <span>{getAuthor(featuredPost)?.name || 'PlayPhysio Team'}</span>
+                  <span>{featuredPost.data.author || 'Playphysio Team'}</span>
                 </div>
                 <div class="featured-meta-item-404">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -170,7 +160,7 @@ function getBlogUrl(slug: string, date: string) {
                     <line x1="8" y1="2" x2="8" y2="6"></line>
                     <line x1="3" y1="10" x2="21" y2="10"></line>
                   </svg>
-                  <span>{formatDate(featuredPost.date)}</span>
+                  <span>{formatDate(featuredPost.data.date)}</span>
                 </div>
                 <div class="featured-meta-item-404">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -180,7 +170,7 @@ function getBlogUrl(slug: string, date: string) {
                   <span>5 min read</span>
                 </div>
               </div>
-              <a href={getBlogUrl(featuredPost.slug, featuredPost.date)} class="featured-button-404">
+              <a href={getBlogUrl(featuredPost.slug, featuredPost.data.date.toISOString())} class="featured-button-404">
                 Read This Article
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -190,10 +180,10 @@ function getBlogUrl(slug: string, date: string) {
             </div>
             <div class="featured-image-container-404">
               <div class="featured-image-404">
-                {getFeaturedImage(featuredPost) ? (
+                {featuredPost.data.featuredImage?.src ? (
                   <img
-                    src={getFeaturedImage(featuredPost).source_url}
-                    alt={getFeaturedImage(featuredPost).alt_text || decodeWordPressEntities(featuredPost.title.rendered)}
+                    src={featuredPost.data.featuredImage.src}
+                    alt={featuredPost.data.featuredImage.alt || featuredPost.data.title}
                     class="featured-image-real-404"
                     loading="lazy"
                   />
@@ -207,13 +197,13 @@ function getBlogUrl(slug: string, date: string) {
                     </div>
                   </div>
                 )}
-                {getCategories(featuredPost).length > 0 && (
+                {featuredPost.data.categories && featuredPost.data.categories.length > 0 && (
                   <div class="featured-category-badge-404">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
                       <line x1="7" y1="7" x2="7.01" y2="7"></line>
                     </svg>
-                    {getCategories(featuredPost)[0].name}
+                    {featuredPost.data.categories[0]}
                   </div>
                 )}
               </div>

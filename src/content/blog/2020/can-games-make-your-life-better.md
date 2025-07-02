@@ -2,13 +2,13 @@
 title: "Can Games Make Your Life Better?"
 date: 2020-12-14
 status: "published"
-excerpt: "Will, founder and CEO of Playphysio certainly believes that they can. He remembers the daily arguments with his daughter over exactly what the respiratory physiotherapist had told her to do that week. His families daily routine of confusion over how many blows and the type of blows she’d done into her OPEP therapy device, are [&hellip;]"
+excerpt: "Will, founder and CEO of Playphysio certainly believes that they can. He remembers the daily arguments with his daughter over exactly what the respiratory physiotherapist had told her to do that week. His families daily routine of confusion over how many blows and the type of blows she’d done into her OPEP therapy device, are [...]"
 wordCount: 558
 categories: ["blog"]
 tags: ["cystic-fibrosis", "gamification", "physiotherapy", "quality-of-life"]
 author: "will-jackson"
 featuredImage:
-  src: "http://astro-wp.local/wp-content/uploads/2020/12/happy-family.jpg"
+  src: "/images/blog/2020/can-games-make-your-life-better-happy-family.jpg"
   alt: ""
 featured: false
 hasShortcodes: false

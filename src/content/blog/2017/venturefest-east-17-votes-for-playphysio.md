@@ -1,8 +1,8 @@
 ---
-title: "VentureFest East &#8217;17 votes for Playphysio"
+title: "VentureFest East '17 votes for Playphysio"
 date: 2017-09-29
 status: "published"
-excerpt: "Playphysio is a member of the &#8216;Serious Impact&#8217; incubator run by Allia in Cambridge. Allia invited me to take part in VentureFest East 2017 at Newmarket Racecourse Cambridgeshire, in the &#8216;Meet the Future&#8217; session. Representing Playphysio I pitched to VentureFest East attendees for the award &#8216;Impact Entrepreneur 2017&#8217;."
+excerpt: "Playphysio is a member of the 'Serious Impact' incubator run by Allia in Cambridge. Allia invited me to take part in VentureFest East 2017 at Newmarket Racecourse Cambridgeshire, in the 'Meet the Future' session. Representing Playphysio I pitched to VentureFest East attendees for the award 'Impact Entrepreneur 2017'."
 wordCount: 179
 categories: ["news"]
 tags: []
@@ -17,7 +17,7 @@ The pitching session was opened and introduced by renown angel investor Peter Co
 
 The culmination of the event was the final vote – the audience were asked to move next to their selected winner. (If you remember the 1980's childrens' tv show &#8216;Runaround' you have the right idea!) I'm delighted to report that the Playphysio podium was promptly surrounded by most of the audience!
 
-<figure >![](http://astro-wp.local/wp-content/uploads/2019/01/Peter-Cowley-Playphysio.jpg)</figure>
+<figure >![](/images/blog/2017/venturefest-east-17-votes-for-playphysio-Peter-Cowley-Playphysio.jpg)</figure>
 
 I was very pleased to receive the prestigious 3d printed Allia "Impact Entrepreneur 2017&#8243; award from Peter Cowley.
 

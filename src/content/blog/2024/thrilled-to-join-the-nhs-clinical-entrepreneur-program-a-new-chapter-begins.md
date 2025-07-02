@@ -2,13 +2,13 @@
 title: "Thrilled to join the NHS Clinical Entrepreneur Program: A New Chapter Begins"
 date: 2024-03-15
 status: "published"
-excerpt: "I&#8217;m excited to share some wonderful news with you all today. I have been accepted into the prestigious NHS Clinical Entrepreneur Program, an opportunity that marks a significant milestone in both my personal and professional journey. The NHS Clinical Entrepreneur Program is renowned for its dedication to nurturing innovation within the healthcare sector, offering unparalleled [&hellip;]"
+excerpt: "I'm excited to share some wonderful news with you all today. I have been accepted into the prestigious NHS Clinical Entrepreneur Program, an opportunity that marks a significant milestone in both my personal and professional journey. The NHS Clinical Entrepreneur Program is renowned for its dedication to nurturing innovation within the healthcare sector, offering unparalleled [...]"
 wordCount: 231
 categories: ["news"]
 tags: ["entrepreneurship", "physiotherapy", "social-venture"]
 author: "will-jackson"
 featuredImage:
-  src: "http://astro-wp.local/wp-content/uploads/2024/03/cropped-CEPForWeb_4-1.png"
+  src: "/images/blog/2024/thrilled-to-join-the-nhs-clinical-entrepreneur-program-a-new-chapter-begins-cropped-CEPForWeb_4-1.png"
   alt: "NHS Clinical Entrepreneur Program"
 featured: false
 hasShortcodes: false
@@ -16,7 +16,7 @@ hasShortcodes: false
 
 **I'm excited to share some wonderful news with you all today. I have been accepted into the prestigious NHS Clinical Entrepreneur Program, an opportunity that marks a significant milestone in both my personal and professional journey.**
 
-<div ><figure >[![](http://astro-wp.local/wp-content/uploads/2024/03/cropped-CEPForWeb_4-1.png)](http://astro-wp.local/wp-content/uploads/2024/03/cropped-CEPForWeb_4-1.png)<figcaption>for more info please visit the [NHSCEP website](https://nhscep.com)</figcaption></figure></div>
+<div ><figure >[![](/images/blog/2024/thrilled-to-join-the-nhs-clinical-entrepreneur-program-a-new-chapter-begins-cropped-CEPForWeb_4-1.png)](/images/blog/2024/thrilled-to-join-the-nhs-clinical-entrepreneur-program-a-new-chapter-begins-cropped-CEPForWeb_4-1.png)<figcaption>for more info please visit the [NHSCEP website](https://nhscep.com)</figcaption></figure></div>
 
 The NHS Clinical Entrepreneur Program is renowned for its dedication to nurturing innovation within the healthcare sector, offering unparalleled support, mentoring, and resources to healthcare professionals aiming to bring transformative ideas to life. Its goal? To improve patient care and streamline healthcare delivery across the board.
 

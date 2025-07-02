@@ -2,13 +2,13 @@
 title: "Letting the MDR Genie out of the Bottle."
 date: 2021-10-19
 status: "published"
-excerpt: "When you embark on a building a business or a new venture there are lots of new things to learn. It can be incredibly daunting when you start to realise the sheer volume of things you just don&#8217;t know. For example, if you&#8217;re a product person, you may not be comfortable with accounting and business [&hellip;]"
+excerpt: "When you embark on a building a business or a new venture there are lots of new things to learn. It can be incredibly daunting when you start to realise the sheer volume of things you just don't know. For example, if you're a product person, you may not be comfortable with accounting and business [...]"
 wordCount: 540
 categories: ["blog"]
 tags: ["entrepreneurship", "social-venture"]
 author: "will-jackson"
 featuredImage:
-  src: "http://astro-wp.local/wp-content/uploads/2021/10/magic-lamp.png"
+  src: "/images/blog/2021/letting-the-genie-out-of-the-bottle-magic-lamp.png"
   alt: ""
 featured: false
 hasShortcodes: false
@@ -30,7 +30,7 @@ I'm only *half* joking here! MDR practitioners and software companies tend to hi
 
 Recently I have found an organisation that ignores the cabal of MDR consulting. If you need MDR in your life/venture/business I'd head over and take a look at [Open Regulatory](https://www.openregulatory.com/) and reach out to [Oliver Eidel](https://www.openregulatory.com/about/). Trust me, it might just be the best thing you do today. Open clear and practical advice on how to adhere to MDR for medical  startups. As Oliver explains:
 
-<div ><figure >[![](http://astro-wp.local/wp-content/uploads/2021/10/openregulatory_1.png)](http://astro-wp.local/wp-content/uploads/2021/10/openregulatory_1.png)<figcaption>[https://www.openregulatory.com](https://www.openregulatory.com)</figcaption></figure></div>
+<div ><figure >[![](/images/blog/2021/letting-the-genie-out-of-the-bottle-openregulatory_1.png)](/images/blog/2021/letting-the-genie-out-of-the-bottle-openregulatory_1.png)<figcaption>[https://www.openregulatory.com](https://www.openregulatory.com)</figcaption></figure></div>
 
 <blockquote >
 OpenRegulatory enables Healthcare startups to solve regulatory problems by providing free templates and a Slack community. With their screencasts, we were able to create most of our documentation ourselves, saving lots of expensive consulting hours.

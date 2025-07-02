@@ -17,22 +17,27 @@ This project generates static files from a locally hosted WordPress installation
 ```text
 /
 ├── public/
-│   └── favicon.svg
+│   ├── favicon.svg
+│   └── images/blog/              # Local blog images organized by year
 ├── src/
+│   ├── content/
+│   │   ├── blog/                 # FrontMatter blog posts (.mdx files)
+│   │   ├── authors/              # Author profiles
+│   │   ├── categories/           # Category definitions
+│   │   └── tags/                 # Tag definitions
 │   ├── lib/
-│   │   ├── wordpress.ts          # WordPress API client
-│   │   └── content-utils.ts      # Content processing utilities
-│   ├── types/
-│   │   └── wordpress.ts          # TypeScript definitions
+│   │   ├── content.ts            # FrontMatter content utilities
+│   │   └── utils.ts              # General utilities
+│   ├── components/
+│   │   ├── content/              # Blog content components (Quote, Stats, etc.)
+│   │   └── ...                   # Other UI components
 │   └── pages/
-│       ├── index.astro           # Homepage (fetches from WordPress)
-│       ├── [...slug].astro       # Dynamic pages
+│       ├── index.astro           # Homepage (fully static)
+│       ├── 404.astro             # 404 page with featured content
 │       └── blog/
 │           ├── index.astro       # Blog listing page
 │           └── [...slug].astro   # Individual blog posts
-├── scripts/
-│   └── test-wordpress.js         # WordPress connection test
-├── .env.example                  # Environment variables template
+├── scripts/                      # Migration and utility scripts
 ├── astro.config.mjs             # Astro configuration
 └── package.json
 ```
@@ -166,31 +171,35 @@ Each page includes embedded CSS for styling. You can:
 - Extract styles to separate CSS files
 - Add a CSS framework like Tailwind CSS
 
-### Content Processing
-The `src/lib/content-utils.ts` file contains utilities for:
-- Processing WordPress shortcodes
-- Cleaning WordPress-specific CSS classes
-- Optimizing images
-- Extracting excerpts
+### Content Management
+The `src/lib/content.ts` file provides FrontMatter content utilities for:
+- Fetching published blog posts
+- Getting featured posts
+- Filtering by categories and tags
 - Formatting dates
+- Processing content components
 
-### WordPress API
-The `src/lib/wordpress.ts` file provides a comprehensive API client with methods for:
-- Fetching posts, pages, categories, tags, users, media
-- Handling pagination
-- Error handling and retry logic
-- Authentication
+### Content Components
+The `src/components/content/` directory contains reusable blog components:
+- KeyInsight panels with colored backgrounds
+- StatsCards for displaying metrics
+- Quote components with author attribution
+- References for academic citations
+- Interactive inline references
 
 ## 🚀 Deployment
 
-### Option 1: FTP Upload
-1. Build the static site: `npm run build`
-2. Upload the contents of `dist/` to your web server via FTP
+### Static Site Deployment
+1. **Add new content**: Create `.mdx` files in `src/content/blog/YYYY/`
+2. **Add images**: Place in `public/images/blog/YYYY/`
+3. **Build the site**: `npm run build`
+4. **Deploy**: Upload the `dist/` folder to your hosting provider
 
-### Option 2: GitHub Pages
-1. Push your code to GitHub
-2. Build the static site: `npm run build`
-3. Deploy the `dist/` folder to GitHub Pages
+### Hosting Options
+- **FTP Upload**: Upload `dist/` contents to your web server
+- **GitHub Pages**: Deploy `dist/` folder to GitHub Pages
+- **Netlify/Vercel**: Connect your repository for automatic deployments
+- **Any static hosting**: The site is fully static and works anywhere
 
 ### Option 3: Netlify/Vercel
 1. Connect your repository to Netlify or Vercel
@@ -210,15 +219,18 @@ The `src/lib/wordpress.ts` file provides a comprehensive API client with methods
 
 ### Build Issues
 
-1. **Missing Content**: Run `npm run test:wordpress` to verify content is available
-2. **Memory Issues**: For large sites, you may need to increase Node.js memory limit
-3. **Timeout Issues**: Increase timeout values in `src/lib/wordpress.ts`
+1. **Missing Content**: Check that `.mdx` files exist in `src/content/blog/`
+2. **Image Issues**: Verify images are in `public/images/blog/` and paths are correct
+3. **Build Issues**: Run `npm run dev` to test locally before building
 
-### Common WordPress Plugins for Enhanced Functionality
+### Content Management Workflow
 
-- **WP REST API Menus**: Adds menu endpoints to REST API
-- **Advanced Custom Fields**: Adds custom field support to REST API
-- **Yoast SEO**: Adds SEO data to REST API responses
+1. **Create new posts**: Add `.mdx` files in `src/content/blog/YYYY/`
+2. **Add frontmatter**: Include title, date, excerpt, categories, etc.
+3. **Add images**: Place in `public/images/blog/YYYY/` and reference in frontmatter
+4. **Use components**: Import and use Quote, StatsCards, References, etc.
+5. **Test locally**: Run `npm run dev` to preview changes
+6. **Build and deploy**: Run `npm run build` then upload `dist/`
 
 ## 📚 Documentation
 

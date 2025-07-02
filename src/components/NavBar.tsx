@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from "./ui/button";
+import playphysioLogo from '../assets/playphysio-logo.svg';
 
 const NavBar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,7 +19,7 @@ const NavBar: React.FC = () => {
         <div className="flex justify-between h-16 items-center">
           <div className="flex items-center">
             <a href="/" className="flex-shrink-0 flex items-center justify-center h-full py-2">
-              <img src="/src/assets/playphysio-logo.svg" alt="Playphysio Logo" className="h-10 w-auto max-w-none" />
+              <img src={playphysioLogo.src} alt="Playphysio Logo" className="h-10 w-auto max-w-none" />
             </a>
           </div>
 

@@ -2,19 +2,19 @@
 title: "Comic Relief supports Playphysio"
 date: 2018-10-29
 status: "published"
-excerpt: "We&#8217;re absolutely delighted to announce that Playphysio has been awarded a grant from the Comic Relief and Paul Hamlyn Foundation in the &#8216;Tech for Good&#8217; program!"
+excerpt: "We're absolutely delighted to announce that Playphysio has been awarded a grant from the Comic Relief and Paul Hamlyn Foundation in the 'Tech for Good' program!"
 wordCount: 307
 categories: ["news"]
 tags: []
 author: "will-jackson"
 featuredImage:
-  src: "http://astro-wp.local/wp-content/uploads/2018/08/comic-relief-logo.png"
+  src: "/images/blog/2018/comic-relief-supports-playphysio-comic-relief-logo.png"
   alt: "playphysio is part funded by comic relief"
 featured: false
 hasShortcodes: false
 ---
 
-<div ><figure >![playphysio is part funded by comic relief](http://astro-wp.local/wp-content/uploads/2018/08/comic-relief-logo.png)</figure></div>
+<div ><figure >![playphysio is part funded by comic relief](/images/blog/2018/comic-relief-supports-playphysio-comic-relief-logo.png)</figure></div>
 
 We're absolutely delighted to announce that Playphysio has been awarded a grant from the Comic Relief and Paul Hamlyn Foundation in the &#8216;Tech for Good' program!
 

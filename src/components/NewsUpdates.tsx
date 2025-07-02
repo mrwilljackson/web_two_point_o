@@ -1,49 +1,31 @@
 import { useState, useEffect } from 'react';
 import { Calendar } from "lucide-react";
 
-interface BlogPost {
-  id: number;
-  title: {
-    rendered: string;
-  };
-  excerpt: {
-    rendered: string;
-  };
+interface NewsPost {
+  title: string;
+  excerpt: string;
   date: string;
-  link: string;
   slug: string;
-  content: {
-    rendered: string;
-  };
+  content: string;
 }
 
-const NewsUpdates = () => {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
+interface NewsUpdatesProps {
+  posts: NewsPost[];
+}
+
+const NewsUpdates = ({ posts: initialPosts }: NewsUpdatesProps) => {
+  const [posts, setPosts] = useState<NewsPost[]>(initialPosts || []);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        // Replace with your WordPress site URL
-        const response = await fetch('http://astro-wp.local/wp-json/wp/v2/posts?per_page=3&orderby=date&order=desc');
-        
-        if (!response.ok) {
-          throw new Error('Failed to fetch posts');
-        }
-        
-        const data = await response.json();
-        setPosts(data);
-      } catch (err) {
-        setError('Unable to load latest news');
-        console.error('Error fetching posts:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPosts();
-  }, []);
+    // Posts are passed as props, no need to fetch
+    if (initialPosts && initialPosts.length > 0) {
+      setPosts(initialPosts);
+    } else {
+      setError('No posts available');
+    }
+  }, [initialPosts]);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -54,16 +36,9 @@ const NewsUpdates = () => {
     });
   };
 
-  const stripHtml = (html: string) => {
-    const tmp = document.createElement('div');
-    tmp.innerHTML = html;
-    return tmp.textContent || tmp.innerText || '';
-  };
-
   const getFirstWords = (text: string, maxLength: number = 150) => {
-    const cleanText = stripHtml(text);
-    if (cleanText.length <= maxLength) return cleanText;
-    return cleanText.substring(0, maxLength).trim() + '...';
+    if (text.length <= maxLength) return text;
+    return text.substring(0, maxLength).trim() + '...';
   };
 
   const getBlogUrl = (slug: string, date: string) => {
@@ -148,12 +123,13 @@ const NewsUpdates = () => {
                   <a
                     href={getBlogUrl(post.slug, post.date)}
                     className="hover:text-purple-600 transition-colors duration-300"
-                    dangerouslySetInnerHTML={{ __html: post.title.rendered }}
-                  />
+                  >
+                    {post.title}
+                  </a>
                 </h3>
                 
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  {getFirstWords(post.content.rendered, 150)}
+                  {getFirstWords(post.content, 150)}
                 </p>
                 
                 <div className="mt-4">

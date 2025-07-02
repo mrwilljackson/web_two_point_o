@@ -1,0 +1,441 @@
+{
+  "totalFiles": 26,
+  "filesWithImages": 22,
+  "totalImages": 27,
+  "images": [
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2019/01/cambIndAwards.jpg",
+      "postSlug": "cambridge-independent-entrepreneurial-science-and-technology-awards",
+      "postYear": "2017",
+      "postFile": "src/content/blog/2017/cambridge-independent-entrepreneurial-science-and-technology-awards.md",
+      "localFilename": "cambridge-independent-entrepreneurial-science-and-technology-awards-cambIndAwards.jpg",
+      "localPath": "/images/blog/2017/cambridge-independent-entrepreneurial-science-and-technology-awards-cambIndAwards.jpg"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2019/01/Peter-Cowley-Playphysio.jpg",
+      "postSlug": "venturefest-east-17-votes-for-playphysio",
+      "postYear": "2017",
+      "postFile": "src/content/blog/2017/venturefest-east-17-votes-for-playphysio.md",
+      "localFilename": "venturefest-east-17-votes-for-playphysio-Peter-Cowley-Playphysio.jpg",
+      "localPath": "/images/blog/2017/venturefest-east-17-votes-for-playphysio-Peter-Cowley-Playphysio.jpg"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2018/08/comic-relief-logo.png",
+      "postSlug": "comic-relief-supports-playphysio",
+      "postYear": "2018",
+      "postFile": "src/content/blog/2018/comic-relief-supports-playphysio.md",
+      "localFilename": "comic-relief-supports-playphysio-comic-relief-logo.png",
+      "localPath": "/images/blog/2018/comic-relief-supports-playphysio-comic-relief-logo.png"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2019/02/BBC-Look-East-Still.png",
+      "postSlug": "as-seen-on-tv",
+      "postYear": "2019",
+      "postFile": "src/content/blog/2019/as-seen-on-tv.md",
+      "localFilename": "as-seen-on-tv-BBC-Look-East-Still.png",
+      "localPath": "/images/blog/2019/as-seen-on-tv-BBC-Look-East-Still.png"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2019/03/Dde61TUV4AA0E1J.jpg",
+      "postSlug": "cystic-fibrosis-is-boring",
+      "postYear": "2019",
+      "postFile": "src/content/blog/2019/cystic-fibrosis-is-boring.md",
+      "localFilename": "cystic-fibrosis-is-boring-Dde61TUV4AA0E1J.jpg",
+      "localPath": "/images/blog/2019/cystic-fibrosis-is-boring-Dde61TUV4AA0E1J.jpg"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2019/12/0.jpg",
+      "postSlug": "feedback-from-berlin-on-playphysio",
+      "postYear": "2019",
+      "postFile": "src/content/blog/2019/feedback-from-berlin-on-playphysio.md",
+      "localFilename": "feedback-from-berlin-on-playphysio-0.jpg",
+      "localPath": "/images/blog/2019/feedback-from-berlin-on-playphysio-0.jpg"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2019/12/berlin.jpg",
+      "postSlug": "playphysio-in-berlin-germany",
+      "postYear": "2019",
+      "postFile": "src/content/blog/2019/playphysio-in-berlin-germany.md",
+      "localFilename": "playphysio-in-berlin-germany-berlin.jpg",
+      "localPath": "/images/blog/2019/playphysio-in-berlin-germany-berlin.jpg"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2019/12/GEU19-Will-Jackson.png",
+      "postSlug": "playphysio-in-berlin-germany",
+      "postYear": "2019",
+      "postFile": "src/content/blog/2019/playphysio-in-berlin-germany.md",
+      "localFilename": "playphysio-in-berlin-germany-GEU19-Will-Jackson.png",
+      "localPath": "/images/blog/2019/playphysio-in-berlin-germany-GEU19-Will-Jackson.png"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2019/01/a-million-realities-logo.png",
+      "postSlug": "playphysio-is-one-in-a-million-realities",
+      "postYear": "2019",
+      "postFile": "src/content/blog/2019/playphysio-is-one-in-a-million-realities.md",
+      "localFilename": "playphysio-is-one-in-a-million-realities-a-million-realities-logo.png",
+      "localPath": "/images/blog/2019/playphysio-is-one-in-a-million-realities-a-million-realities-logo.png"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2019/01/the-packard-foundation.png",
+      "postSlug": "playphysio-is-one-in-a-million-realities",
+      "postYear": "2019",
+      "postFile": "src/content/blog/2019/playphysio-is-one-in-a-million-realities.md",
+      "localFilename": "playphysio-is-one-in-a-million-realities-the-packard-foundation.png",
+      "localPath": "/images/blog/2019/playphysio-is-one-in-a-million-realities-the-packard-foundation.png"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2019/07/Future-20-coloured-title.jpg",
+      "postSlug": "playphysio-is-one-of-allias-future20",
+      "postYear": "2019",
+      "postFile": "src/content/blog/2019/playphysio-is-one-of-allias-future20.md",
+      "localFilename": "playphysio-is-one-of-allias-future20-Future-20-coloured-title.jpg",
+      "localPath": "/images/blog/2019/playphysio-is-one-of-allias-future20-Future-20-coloured-title.jpg"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2019/02/Will-and-Anita.jpg",
+      "postSlug": "playphysio-on-the-one-show",
+      "postYear": "2019",
+      "postFile": "src/content/blog/2019/playphysio-on-the-one-show.md",
+      "localFilename": "playphysio-on-the-one-show-Will-and-Anita.jpg",
+      "localPath": "/images/blog/2019/playphysio-on-the-one-show-Will-and-Anita.jpg"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2019/02/OneShowScreen.jpg",
+      "postSlug": "playphysio-on-the-one-show",
+      "postYear": "2019",
+      "postFile": "src/content/blog/2019/playphysio-on-the-one-show.md",
+      "localFilename": "playphysio-on-the-one-show-OneShowScreen.jpg",
+      "localPath": "/images/blog/2019/playphysio-on-the-one-show-OneShowScreen.jpg"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2019/02/comicReliefRedNoseDay.jpeg",
+      "postSlug": "playphysio-on-the-one-show",
+      "postYear": "2019",
+      "postFile": "src/content/blog/2019/playphysio-on-the-one-show.md",
+      "localFilename": "playphysio-on-the-one-show-comicReliefRedNoseDay.jpeg",
+      "localPath": "/images/blog/2019/playphysio-on-the-one-show-comicReliefRedNoseDay.jpeg"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2020/12/happy-family.jpg",
+      "postSlug": "can-games-make-your-life-better",
+      "postYear": "2020",
+      "postFile": "src/content/blog/2020/can-games-make-your-life-better.md",
+      "localFilename": "can-games-make-your-life-better-happy-family.jpg",
+      "localPath": "/images/blog/2020/can-games-make-your-life-better-happy-family.jpg"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2021/10/magic-lamp.png",
+      "postSlug": "letting-the-genie-out-of-the-bottle",
+      "postYear": "2021",
+      "postFile": "src/content/blog/2021/letting-the-genie-out-of-the-bottle.md",
+      "localFilename": "letting-the-genie-out-of-the-bottle-magic-lamp.png",
+      "localPath": "/images/blog/2021/letting-the-genie-out-of-the-bottle-magic-lamp.png"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2021/10/openregulatory_1.png",
+      "postSlug": "letting-the-genie-out-of-the-bottle",
+      "postYear": "2021",
+      "postFile": "src/content/blog/2021/letting-the-genie-out-of-the-bottle.md",
+      "localFilename": "letting-the-genie-out-of-the-bottle-openregulatory_1.png",
+      "localPath": "/images/blog/2021/letting-the-genie-out-of-the-bottle-openregulatory_1.png"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2022/09/worldPTday.png",
+      "postSlug": "today-is-world-physio-day",
+      "postYear": "2022",
+      "postFile": "src/content/blog/2022/today-is-world-physio-day.md",
+      "localFilename": "today-is-world-physio-day-worldPTday.png",
+      "localPath": "/images/blog/2022/today-is-world-physio-day-worldPTday.png"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2023/01/piles-of-files.png",
+      "postSlug": "iso-13485-certification",
+      "postYear": "2023",
+      "postFile": "src/content/blog/2023/iso-13485-certification.md",
+      "localFilename": "iso-13485-certification-piles-of-files.png",
+      "localPath": "/images/blog/2023/iso-13485-certification-piles-of-files.png"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2024/03/cropped-CEPForWeb_4-1.png",
+      "postSlug": "thrilled-to-join-the-nhs-clinical-entrepreneur-program-a-new-chapter-begins",
+      "postYear": "2024",
+      "postFile": "src/content/blog/2024/thrilled-to-join-the-nhs-clinical-entrepreneur-program-a-new-chapter-begins.md",
+      "localFilename": "thrilled-to-join-the-nhs-clinical-entrepreneur-program-a-new-chapter-begins-cropped-CEPForWeb_4-1.png",
+      "localPath": "/images/blog/2024/thrilled-to-join-the-nhs-clinical-entrepreneur-program-a-new-chapter-begins-cropped-CEPForWeb_4-1.png"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2025/03/consultation.png",
+      "postSlug": "benefits-of-public-patient-involvement-engagement",
+      "postYear": "2025",
+      "postFile": "src/content/blog/2025/benefits-of-public-patient-involvement-engagement.mdx",
+      "localFilename": "benefits-of-public-patient-involvement-engagement-consultation.png",
+      "localPath": "/images/blog/2025/benefits-of-public-patient-involvement-engagement-consultation.png"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2019/03/Dde61TUV4AA0E1J.jpg",
+      "postSlug": "building-on-patient-involvement-a-focus-on-cystic-fibrosis",
+      "postYear": "2025",
+      "postFile": "src/content/blog/2025/building-on-patient-involvement-a-focus-on-cystic-fibrosis.md",
+      "localFilename": "building-on-patient-involvement-a-focus-on-cystic-fibrosis-Dde61TUV4AA0E1J.jpg",
+      "localPath": "/images/blog/2025/building-on-patient-involvement-a-focus-on-cystic-fibrosis-Dde61TUV4AA0E1J.jpg"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2025/06/depositphotos_563366138-stock-photo-why-do-they-have-to.webp",
+      "postSlug": "burden-of-care-for-parents",
+      "postYear": "2025",
+      "postFile": "src/content/blog/2025/burden-of-care-for-parents.mdx",
+      "localFilename": "burden-of-care-for-parents-depositphotos_563366138-stock-photo-why-do-they-have-to.webp",
+      "localPath": "/images/blog/2025/burden-of-care-for-parents-depositphotos_563366138-stock-photo-why-do-they-have-to.webp"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2025/04/depositphotos_194470846-stock-photo-child-taking-respiratory-inhalation-therapy.webp",
+      "postSlug": "economic-burden-of-chronic-respiratory-diseases-in-children",
+      "postYear": "2025",
+      "postFile": "src/content/blog/2025/economic-burden-of-chronic-respiratory-diseases-in-children.md",
+      "localFilename": "economic-burden-of-chronic-respiratory-diseases-in-children-depositphotos_194470846-stock-photo-child-taking-respiratory-inhalation-therapy.webp",
+      "localPath": "/images/blog/2025/economic-burden-of-chronic-respiratory-diseases-in-children-depositphotos_194470846-stock-photo-child-taking-respiratory-inhalation-therapy.webp"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2025/04/Screenshot-2025-05-30-at-17.15.55.png",
+      "postSlug": "low-adherence-causes-frustration-for-health-care-professionals-too",
+      "postYear": "2025",
+      "postFile": "src/content/blog/2025/low-adherence-causes-frustration-for-health-care-professionals-too.mdx",
+      "localFilename": "low-adherence-causes-frustration-for-health-care-professionals-too-Screenshot-2025-05-30-at-17.15.55.png",
+      "localPath": "/images/blog/2025/low-adherence-causes-frustration-for-health-care-professionals-too-Screenshot-2025-05-30-at-17.15.55.png"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2025/04/cambridge-report.png",
+      "postSlug": "play-as-essential-medicine",
+      "postYear": "2025",
+      "postFile": "src/content/blog/2025/play-as-essential-medicine.mdx",
+      "localFilename": "play-as-essential-medicine-cambridge-report.png",
+      "localPath": "/images/blog/2025/play-as-essential-medicine-cambridge-report.png"
+    },
+    {
+      "originalUrl": "http://astro-wp.local/wp-content/uploads/2025/05/science-of-gamification.png",
+      "postSlug": "the-science-behind-gamified-respiratory-therapy",
+      "postYear": "2025",
+      "postFile": "src/content/blog/2025/the-science-behind-gamified-respiratory-therapy.mdx",
+      "localFilename": "the-science-behind-gamified-respiratory-therapy-science-of-gamification.png",
+      "localPath": "/images/blog/2025/the-science-behind-gamified-respiratory-therapy-science-of-gamification.png"
+    }
+  ],
+  "migrationPlan": [
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2019/01/cambIndAwards.jpg",
+      "to": "public/images/blog/2017/cambridge-independent-entrepreneurial-science-and-technology-awards-cambIndAwards.jpg",
+      "updateFile": "src/content/blog/2017/cambridge-independent-entrepreneurial-science-and-technology-awards.md",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2019/01/cambIndAwards.jpg",
+      "withUrl": "/images/blog/2017/cambridge-independent-entrepreneurial-science-and-technology-awards-cambIndAwards.jpg"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2019/01/Peter-Cowley-Playphysio.jpg",
+      "to": "public/images/blog/2017/venturefest-east-17-votes-for-playphysio-Peter-Cowley-Playphysio.jpg",
+      "updateFile": "src/content/blog/2017/venturefest-east-17-votes-for-playphysio.md",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2019/01/Peter-Cowley-Playphysio.jpg",
+      "withUrl": "/images/blog/2017/venturefest-east-17-votes-for-playphysio-Peter-Cowley-Playphysio.jpg"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2018/08/comic-relief-logo.png",
+      "to": "public/images/blog/2018/comic-relief-supports-playphysio-comic-relief-logo.png",
+      "updateFile": "src/content/blog/2018/comic-relief-supports-playphysio.md",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2018/08/comic-relief-logo.png",
+      "withUrl": "/images/blog/2018/comic-relief-supports-playphysio-comic-relief-logo.png"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2019/02/BBC-Look-East-Still.png",
+      "to": "public/images/blog/2019/as-seen-on-tv-BBC-Look-East-Still.png",
+      "updateFile": "src/content/blog/2019/as-seen-on-tv.md",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2019/02/BBC-Look-East-Still.png",
+      "withUrl": "/images/blog/2019/as-seen-on-tv-BBC-Look-East-Still.png"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2019/03/Dde61TUV4AA0E1J.jpg",
+      "to": "public/images/blog/2019/cystic-fibrosis-is-boring-Dde61TUV4AA0E1J.jpg",
+      "updateFile": "src/content/blog/2019/cystic-fibrosis-is-boring.md",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2019/03/Dde61TUV4AA0E1J.jpg",
+      "withUrl": "/images/blog/2019/cystic-fibrosis-is-boring-Dde61TUV4AA0E1J.jpg"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2019/12/0.jpg",
+      "to": "public/images/blog/2019/feedback-from-berlin-on-playphysio-0.jpg",
+      "updateFile": "src/content/blog/2019/feedback-from-berlin-on-playphysio.md",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2019/12/0.jpg",
+      "withUrl": "/images/blog/2019/feedback-from-berlin-on-playphysio-0.jpg"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2019/12/berlin.jpg",
+      "to": "public/images/blog/2019/playphysio-in-berlin-germany-berlin.jpg",
+      "updateFile": "src/content/blog/2019/playphysio-in-berlin-germany.md",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2019/12/berlin.jpg",
+      "withUrl": "/images/blog/2019/playphysio-in-berlin-germany-berlin.jpg"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2019/12/GEU19-Will-Jackson.png",
+      "to": "public/images/blog/2019/playphysio-in-berlin-germany-GEU19-Will-Jackson.png",
+      "updateFile": "src/content/blog/2019/playphysio-in-berlin-germany.md",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2019/12/GEU19-Will-Jackson.png",
+      "withUrl": "/images/blog/2019/playphysio-in-berlin-germany-GEU19-Will-Jackson.png"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2019/01/a-million-realities-logo.png",
+      "to": "public/images/blog/2019/playphysio-is-one-in-a-million-realities-a-million-realities-logo.png",
+      "updateFile": "src/content/blog/2019/playphysio-is-one-in-a-million-realities.md",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2019/01/a-million-realities-logo.png",
+      "withUrl": "/images/blog/2019/playphysio-is-one-in-a-million-realities-a-million-realities-logo.png"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2019/01/the-packard-foundation.png",
+      "to": "public/images/blog/2019/playphysio-is-one-in-a-million-realities-the-packard-foundation.png",
+      "updateFile": "src/content/blog/2019/playphysio-is-one-in-a-million-realities.md",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2019/01/the-packard-foundation.png",
+      "withUrl": "/images/blog/2019/playphysio-is-one-in-a-million-realities-the-packard-foundation.png"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2019/07/Future-20-coloured-title.jpg",
+      "to": "public/images/blog/2019/playphysio-is-one-of-allias-future20-Future-20-coloured-title.jpg",
+      "updateFile": "src/content/blog/2019/playphysio-is-one-of-allias-future20.md",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2019/07/Future-20-coloured-title.jpg",
+      "withUrl": "/images/blog/2019/playphysio-is-one-of-allias-future20-Future-20-coloured-title.jpg"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2019/02/Will-and-Anita.jpg",
+      "to": "public/images/blog/2019/playphysio-on-the-one-show-Will-and-Anita.jpg",
+      "updateFile": "src/content/blog/2019/playphysio-on-the-one-show.md",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2019/02/Will-and-Anita.jpg",
+      "withUrl": "/images/blog/2019/playphysio-on-the-one-show-Will-and-Anita.jpg"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2019/02/OneShowScreen.jpg",
+      "to": "public/images/blog/2019/playphysio-on-the-one-show-OneShowScreen.jpg",
+      "updateFile": "src/content/blog/2019/playphysio-on-the-one-show.md",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2019/02/OneShowScreen.jpg",
+      "withUrl": "/images/blog/2019/playphysio-on-the-one-show-OneShowScreen.jpg"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2019/02/comicReliefRedNoseDay.jpeg",
+      "to": "public/images/blog/2019/playphysio-on-the-one-show-comicReliefRedNoseDay.jpeg",
+      "updateFile": "src/content/blog/2019/playphysio-on-the-one-show.md",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2019/02/comicReliefRedNoseDay.jpeg",
+      "withUrl": "/images/blog/2019/playphysio-on-the-one-show-comicReliefRedNoseDay.jpeg"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2020/12/happy-family.jpg",
+      "to": "public/images/blog/2020/can-games-make-your-life-better-happy-family.jpg",
+      "updateFile": "src/content/blog/2020/can-games-make-your-life-better.md",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2020/12/happy-family.jpg",
+      "withUrl": "/images/blog/2020/can-games-make-your-life-better-happy-family.jpg"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2021/10/magic-lamp.png",
+      "to": "public/images/blog/2021/letting-the-genie-out-of-the-bottle-magic-lamp.png",
+      "updateFile": "src/content/blog/2021/letting-the-genie-out-of-the-bottle.md",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2021/10/magic-lamp.png",
+      "withUrl": "/images/blog/2021/letting-the-genie-out-of-the-bottle-magic-lamp.png"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2021/10/openregulatory_1.png",
+      "to": "public/images/blog/2021/letting-the-genie-out-of-the-bottle-openregulatory_1.png",
+      "updateFile": "src/content/blog/2021/letting-the-genie-out-of-the-bottle.md",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2021/10/openregulatory_1.png",
+      "withUrl": "/images/blog/2021/letting-the-genie-out-of-the-bottle-openregulatory_1.png"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2022/09/worldPTday.png",
+      "to": "public/images/blog/2022/today-is-world-physio-day-worldPTday.png",
+      "updateFile": "src/content/blog/2022/today-is-world-physio-day.md",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2022/09/worldPTday.png",
+      "withUrl": "/images/blog/2022/today-is-world-physio-day-worldPTday.png"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2023/01/piles-of-files.png",
+      "to": "public/images/blog/2023/iso-13485-certification-piles-of-files.png",
+      "updateFile": "src/content/blog/2023/iso-13485-certification.md",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2023/01/piles-of-files.png",
+      "withUrl": "/images/blog/2023/iso-13485-certification-piles-of-files.png"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2024/03/cropped-CEPForWeb_4-1.png",
+      "to": "public/images/blog/2024/thrilled-to-join-the-nhs-clinical-entrepreneur-program-a-new-chapter-begins-cropped-CEPForWeb_4-1.png",
+      "updateFile": "src/content/blog/2024/thrilled-to-join-the-nhs-clinical-entrepreneur-program-a-new-chapter-begins.md",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2024/03/cropped-CEPForWeb_4-1.png",
+      "withUrl": "/images/blog/2024/thrilled-to-join-the-nhs-clinical-entrepreneur-program-a-new-chapter-begins-cropped-CEPForWeb_4-1.png"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2025/03/consultation.png",
+      "to": "public/images/blog/2025/benefits-of-public-patient-involvement-engagement-consultation.png",
+      "updateFile": "src/content/blog/2025/benefits-of-public-patient-involvement-engagement.mdx",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2025/03/consultation.png",
+      "withUrl": "/images/blog/2025/benefits-of-public-patient-involvement-engagement-consultation.png"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2019/03/Dde61TUV4AA0E1J.jpg",
+      "to": "public/images/blog/2025/building-on-patient-involvement-a-focus-on-cystic-fibrosis-Dde61TUV4AA0E1J.jpg",
+      "updateFile": "src/content/blog/2025/building-on-patient-involvement-a-focus-on-cystic-fibrosis.md",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2019/03/Dde61TUV4AA0E1J.jpg",
+      "withUrl": "/images/blog/2025/building-on-patient-involvement-a-focus-on-cystic-fibrosis-Dde61TUV4AA0E1J.jpg"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2025/06/depositphotos_563366138-stock-photo-why-do-they-have-to.webp",
+      "to": "public/images/blog/2025/burden-of-care-for-parents-depositphotos_563366138-stock-photo-why-do-they-have-to.webp",
+      "updateFile": "src/content/blog/2025/burden-of-care-for-parents.mdx",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2025/06/depositphotos_563366138-stock-photo-why-do-they-have-to.webp",
+      "withUrl": "/images/blog/2025/burden-of-care-for-parents-depositphotos_563366138-stock-photo-why-do-they-have-to.webp"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2025/04/depositphotos_194470846-stock-photo-child-taking-respiratory-inhalation-therapy.webp",
+      "to": "public/images/blog/2025/economic-burden-of-chronic-respiratory-diseases-in-children-depositphotos_194470846-stock-photo-child-taking-respiratory-inhalation-therapy.webp",
+      "updateFile": "src/content/blog/2025/economic-burden-of-chronic-respiratory-diseases-in-children.md",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2025/04/depositphotos_194470846-stock-photo-child-taking-respiratory-inhalation-therapy.webp",
+      "withUrl": "/images/blog/2025/economic-burden-of-chronic-respiratory-diseases-in-children-depositphotos_194470846-stock-photo-child-taking-respiratory-inhalation-therapy.webp"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2025/04/Screenshot-2025-05-30-at-17.15.55.png",
+      "to": "public/images/blog/2025/low-adherence-causes-frustration-for-health-care-professionals-too-Screenshot-2025-05-30-at-17.15.55.png",
+      "updateFile": "src/content/blog/2025/low-adherence-causes-frustration-for-health-care-professionals-too.mdx",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2025/04/Screenshot-2025-05-30-at-17.15.55.png",
+      "withUrl": "/images/blog/2025/low-adherence-causes-frustration-for-health-care-professionals-too-Screenshot-2025-05-30-at-17.15.55.png"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2025/04/cambridge-report.png",
+      "to": "public/images/blog/2025/play-as-essential-medicine-cambridge-report.png",
+      "updateFile": "src/content/blog/2025/play-as-essential-medicine.mdx",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2025/04/cambridge-report.png",
+      "withUrl": "/images/blog/2025/play-as-essential-medicine-cambridge-report.png"
+    },
+    {
+      "action": "download",
+      "from": "http://astro-wp.local/wp-content/uploads/2025/05/science-of-gamification.png",
+      "to": "public/images/blog/2025/the-science-behind-gamified-respiratory-therapy-science-of-gamification.png",
+      "updateFile": "src/content/blog/2025/the-science-behind-gamified-respiratory-therapy.mdx",
+      "replaceUrl": "http://astro-wp.local/wp-content/uploads/2025/05/science-of-gamification.png",
+      "withUrl": "/images/blog/2025/the-science-behind-gamified-respiratory-therapy-science-of-gamification.png"
+    }
+  ]
+}

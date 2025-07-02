@@ -8,13 +8,13 @@ categories: ["news"]
 tags: ["cystic-fibrosis", "respiratory-disease"]
 author: "will-jackson"
 featuredImage:
-  src: "http://astro-wp.local/wp-content/uploads/2019/03/Dde61TUV4AA0E1J.jpg"
+  src: "/images/blog/2019/cystic-fibrosis-is-boring-Dde61TUV4AA0E1J.jpg"
   alt: ""
 featured: false
 hasShortcodes: false
 ---
 
-<figure >![](http://astro-wp.local/wp-content/uploads/2019/03/Dde61TUV4AA0E1J.jpg)<figcaption>read Alex Darkin's story [here in the Manchester Evening News](https://www.manchestereveningnews.co.uk/news/greater-manchester-news/my-name-alex-condition-called-14670380)</figcaption></figure>
+<figure >![](/images/blog/2019/cystic-fibrosis-is-boring-Dde61TUV4AA0E1J.jpg)<figcaption>read Alex Darkin's story [here in the Manchester Evening News](https://www.manchestereveningnews.co.uk/news/greater-manchester-news/my-name-alex-condition-called-14670380)</figcaption></figure>
 
 Q:* How do you get your children to do things they don't want to do&#8230;.?*
 

@@ -2,13 +2,13 @@
 title: "Building on Patient Involvement: A Focus on Cystic Fibrosis"
 date: 2025-03-05
 status: "published"
-excerpt: "Yesterday, I discussed the hidden power of Patient and Public Involvement (PPI) in healthcare innovation, highlighting its potential to create win-win-win scenarios for patients, innovators, and healthcare providers. The core message was that involving patients meaningfully leads to better health outcomes, more effective products, and increased efficiency within the healthcare system. Now, let&#8217;s bring this [&hellip;]"
+excerpt: "Yesterday, I discussed the hidden power of Patient and Public Involvement (PPI) in healthcare innovation, highlighting its potential to create win-win-win scenarios for patients, innovators, and healthcare providers. The core message was that involving patients meaningfully leads to better health outcomes, more effective products, and increased efficiency within the healthcare system. Now, let's bring this [...]"
 wordCount: 270
 categories: ["blog"]
 tags: ["cystic-fibrosis", "social-venture"]
 author: "will-jackson"
 featuredImage:
-  src: "http://astro-wp.local/wp-content/uploads/2019/03/Dde61TUV4AA0E1J.jpg"
+  src: "/images/blog/2025/building-on-patient-involvement-a-focus-on-cystic-fibrosis-Dde61TUV4AA0E1J.jpg"
   alt: ""
 featured: false
 hasShortcodes: false

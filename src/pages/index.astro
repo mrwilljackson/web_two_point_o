@@ -11,6 +11,17 @@ import CTASection from '../components/CTASection';
 import NewsUpdates from '../components/NewsUpdates';
 import Supporters from '../components/Supporters';
 import Footer from '../components/Footer';
+import { getAllPosts } from '../lib/content';
+
+// Fetch latest posts server-side
+const allPosts = await getAllPosts();
+const latestPosts = allPosts.slice(0, 3).map((post) => ({
+  title: post.data.title,
+  excerpt: post.data.excerpt,
+  date: post.data.date.toISOString(),
+  slug: post.slug,
+  content: post.data.excerpt
+}));
 ---
 
 <Layout title="Playphysio - Gamified Respiratory Therapy">
@@ -22,7 +33,7 @@ import Footer from '../components/Footer';
 		<Testimonials client:load />
 		<FoundersJourney client:load />
 		<CTASection client:load />
-		<NewsUpdates client:load />
+		<NewsUpdates client:load posts={latestPosts} />
 		<Supporters client:load />
 	</main>
 	<Footer client:load />

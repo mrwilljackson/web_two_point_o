@@ -2,13 +2,13 @@
 title: "Economic Burden of Chronic Respiratory Diseases in Children"
 date: 2025-04-24
 status: "published"
-excerpt: "Chronic respiratory diseases impose substantial financial and societal burdens on pediatric populations, with cystic fibrosis (CF), non-cystic fibrosis bronchiectasis (NCFB), primary ciliary dyskinesia (PCD), and asthma disproportionately affecting children’s health systems, families, and national economies. Emerging data reveal that families of children with CF face median monthly costs of £825 in the UK[1], while asthma [&hellip;]"
+excerpt: "Chronic respiratory diseases impose substantial financial and societal burdens on pediatric populations, with cystic fibrosis (CF), non-cystic fibrosis bronchiectasis (NCFB), primary ciliary dyskinesia (PCD), and asthma disproportionately affecting children’s health systems, families, and national economies. Emerging data reveal that families of children with CF face median monthly costs of £825 in the UK[1], while asthma [...]"
 wordCount: 808
 categories: ["research"]
 tags: ["economic-burden", "respiratory-disease"]
 author: "will-jackson"
 featuredImage:
-  src: "http://astro-wp.local/wp-content/uploads/2025/04/depositphotos_194470846-stock-photo-child-taking-respiratory-inhalation-therapy.webp"
+  src: "/images/blog/2025/economic-burden-of-chronic-respiratory-diseases-in-children-depositphotos_194470846-stock-photo-child-taking-respiratory-inhalation-therapy.webp"
   alt: ""
 featured: false
 hasShortcodes: false

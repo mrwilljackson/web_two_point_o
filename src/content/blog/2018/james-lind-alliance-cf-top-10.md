@@ -1,8 +1,8 @@
 ---
-title: "James Lind Alliance &#8211; CF Top 10"
+title: "James Lind Alliance – CF Top 10"
 date: 2018-01-03
 status: "published"
-excerpt: "The James Lind Alliance was established in 2004 with the aim of setting various priorities for people managing chronic medical conditions. It is particularly interesting because its defines priority lists from a shared view from patients, carers and clinicians. We believe that Playphysio addresses three of these ten priorities! The top ten priorities for Cystic [&hellip;]"
+excerpt: "The James Lind Alliance was established in 2004 with the aim of setting various priorities for people managing chronic medical conditions. It is particularly interesting because its defines priority lists from a shared view from patients, carers and clinicians. We believe that Playphysio addresses three of these ten priorities! The top ten priorities for Cystic [...]"
 wordCount: 274
 categories: ["news"]
 tags: []

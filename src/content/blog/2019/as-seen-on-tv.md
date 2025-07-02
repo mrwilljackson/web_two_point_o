@@ -8,7 +8,7 @@ categories: ["news"]
 tags: ["gamification"]
 author: "will-jackson"
 featuredImage:
-  src: "http://astro-wp.local/wp-content/uploads/2019/02/BBC-Look-East-Still.png"
+  src: "/images/blog/2019/as-seen-on-tv-BBC-Look-East-Still.png"
   alt: "Will Jackson and William show Look East how Playphysio is changing the lives of children with CF in Cambridge, UK."
 featured: false
 hasShortcodes: false

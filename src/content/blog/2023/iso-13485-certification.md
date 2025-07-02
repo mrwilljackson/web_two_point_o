@@ -2,13 +2,13 @@
 title: "ISO 13485 Certification!"
 date: 2023-01-20
 status: "published"
-excerpt: "We wanted to share some exciting news with you all- we&#8217;ve just been certified with ISO 13485:2016! For those of you who may not know, this is an international standard for medical device quality management systems. Basically, it means we&#8217;ve gone through a rigorous evaluation process to ensure that our products and services meet the [&hellip;]"
+excerpt: "We wanted to share some exciting news with you all- we've just been certified with ISO 13485:2016! For those of you who may not know, this is an international standard for medical device quality management systems. Basically, it means we've gone through a rigorous evaluation process to ensure that our products and services meet the [...]"
 wordCount: 220
 categories: ["news"]
 tags: ["entrepreneurship", "social-venture"]
 author: "will-jackson"
 featuredImage:
-  src: "http://astro-wp.local/wp-content/uploads/2023/01/piles-of-files.png"
+  src: "/images/blog/2023/iso-13485-certification-piles-of-files.png"
   alt: ""
 featured: false
 hasShortcodes: false

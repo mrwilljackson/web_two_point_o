@@ -1,14 +1,14 @@
 ---
-title: "Playphysio is one of Allia&#8217;s Future20."
+title: "Playphysio is one of Allia's Future20."
 date: 2019-07-01
 status: "published"
-excerpt: "Allia announces the Future20. 20 exciting companies looking to change the world. We have some very exciting news! We’re thrilled to announce that we have been chosen as one of the Future 20! We’ve joined a new incubator programme from @Allia Future Business Centre along with 19 other startups who are tackling the #GlobalGoals and [&hellip;]"
+excerpt: "Allia announces the Future20. 20 exciting companies looking to change the world. We have some very exciting news! We’re thrilled to announce that we have been chosen as one of the Future 20! We’ve joined a new incubator programme from @Allia Future Business Centre along with 19 other startups who are tackling the #GlobalGoals and [...]"
 wordCount: 315
 categories: ["news"]
 tags: ["entrepreneurship", "social-venture"]
 author: "will-jackson"
 featuredImage:
-  src: "http://astro-wp.local/wp-content/uploads/2019/07/Future-20-coloured-title.jpg"
+  src: "/images/blog/2019/playphysio-is-one-of-allias-future20-Future-20-coloured-title.jpg"
   alt: ""
 featured: false
 hasShortcodes: false

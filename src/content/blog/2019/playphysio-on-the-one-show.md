@@ -2,13 +2,13 @@
 title: "Playphysio on TheOneShow"
 date: 2019-02-25
 status: "published"
-excerpt: "We&#8217;re super excited to reveal the news that Playphysio was featured on this evenings episode of The One Show on the BBC! Roving reporter Anita Rani explains how projects funded by Comic Relief grants are changing the lives of chronically sick children as part of this years build up to Red Nose Day 2019!"
+excerpt: "We're super excited to reveal the news that Playphysio was featured on this evenings episode of The One Show on the BBC! Roving reporter Anita Rani explains how projects funded by Comic Relief grants are changing the lives of chronically sick children as part of this years build up to Red Nose Day 2019!"
 wordCount: 204
 categories: ["news"]
 tags: ["gamification"]
 author: "will-jackson"
 featuredImage:
-  src: "http://astro-wp.local/wp-content/uploads/2019/02/Will-and-Anita.jpg"
+  src: "/images/blog/2019/playphysio-on-the-one-show-Will-and-Anita.jpg"
   alt: ""
   caption: "<p>Will Jackson shows and Anita Rani how to use the Playphysio Monitoring App and games.</p>
 "
@@ -18,11 +18,11 @@ hasShortcodes: false
 
 We're super excited to reveal the news that Playphysio was featured on this evenings episode of The One Show on the BBC!
 
-<figure >[![](http://astro-wp.local/wp-content/uploads/2019/02/OneShowScreen.jpg)](https://youtu.be/vnyWhAUmsak)<figcaption>Anita Rani – tells the story of Playphysio on the One Show Monday 25th Feb 2019</figcaption></figure>
+<figure >[![](/images/blog/2019/playphysio-on-the-one-show-OneShowScreen.jpg)](https://youtu.be/vnyWhAUmsak)<figcaption>Anita Rani – tells the story of Playphysio on the One Show Monday 25th Feb 2019</figcaption></figure>
 
 [Click here or the picture above to view the film.](https://youtu.be/vnyWhAUmsak)
 
-<div ><figure >![](http://astro-wp.local/wp-content/uploads/2019/02/comicReliefRedNoseDay.jpeg)</figure></div>
+<div ><figure >![](/images/blog/2019/playphysio-on-the-one-show-comicReliefRedNoseDay.jpeg)</figure></div>
 
 As a beneficiary of a &#8216;Comic Relief Tech for Good' grant Playphysio was delighted to be invited by their storytelling team to take part in a film to show how grants have been used as part of this years build up to Red Nose Day 2019!
 

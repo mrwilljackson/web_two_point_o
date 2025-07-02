@@ -15,7 +15,7 @@ Playphysio has won a High Commendation award in Medtech Startup category for our
 
 It was amazing evening and great fun to be invited to receive an award and have the chance to meet other Cambridge based entrepreneurs.
 
-<figure >![](http://astro-wp.local/wp-content/uploads/2019/01/cambIndAwards.jpg)</figure>
+<figure >![](/images/blog/2017/cambridge-independent-entrepreneurial-science-and-technology-awards-cambIndAwards.jpg)</figure>
 
 Paul Brackley, Editor of the Cambridge Independent Newspaper said “We were delighted to celebrate the extraordinary talent of these companies. These awards, held on the Cambridge Independent’s first birthday, honoured some incredible entrepreneurs poised to make a big difference to the world we live in.”
 
