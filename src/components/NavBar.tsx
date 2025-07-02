@@ -18,7 +18,7 @@ const NavBar: React.FC = () => {
         <div className="flex justify-between h-16 items-center">
           <div className="flex items-center">
             <a href="/" className="flex-shrink-0 flex items-center justify-center h-full py-2">
-              <img src="/src/assets/playphysio-logo.svg" alt="PlayPhysio Logo" className="h-10 w-auto max-w-none" />
+              <img src="/src/assets/playphysio-logo.svg" alt="Playphysio Logo" className="h-10 w-auto max-w-none" />
             </a>
           </div>
 

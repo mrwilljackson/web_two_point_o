@@ -26,7 +26,7 @@ export { default as InlineRef } from './InlineRef.astro';
 
 // Quote
 <Quote author="Dr. Michael Rodriguez" title="Children's Hospital of Philadelphia">
-  PlayPhysio has transformed our approach to pediatric respiratory therapy.
+  Playphysio has transformed our approach to pediatric respiratory therapy.
 </Quote>
 
 // Callout

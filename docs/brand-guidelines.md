@@ -42,7 +42,7 @@ Transform respiratory therapy into an exciting adventure that makes breathing ex
 
 ### **Primary Brand Colors**
 
-#### **PlayPhysio Purple** (Brand Primary)
+#### **Playphysio Purple** (Brand Primary)
 - **Hex**: `#812C7C`
 - **RGB**: `129, 44, 124`
 - **HSL**: `304°, 49%, 34%`

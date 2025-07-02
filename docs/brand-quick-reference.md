@@ -139,13 +139,13 @@ Favicon:          public/favicon.svg
 ### **HTML Usage**
 ```html
 <!-- Primary Logo (official) -->
-<img src="/docs/playphysio-p-logo.svg" alt="PlayPhysio" />
+<img src="/docs/playphysio-p-logo.svg" alt="Playphysio" />
 
 <!-- Primary Logo (development) -->
-<img src="/src/assets/playphysio-p-logo.svg" alt="PlayPhysio" />
+<img src="/src/assets/playphysio-p-logo.svg" alt="Playphysio" />
 
 <!-- Horizontal Logo -->
-<img src="/images/playphysio-logo-horizontal.svg" alt="PlayPhysio" />
+<img src="/images/playphysio-logo-horizontal.svg" alt="Playphysio" />
 ```
 
 ---

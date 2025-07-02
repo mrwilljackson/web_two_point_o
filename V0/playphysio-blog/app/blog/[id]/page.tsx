@@ -11,14 +11,14 @@ const blogPost = {
   id: 1,
   title: "The Science Behind Gamified Respiratory Therapy",
   content: `
-    <p class="text-lg text-gray-700 leading-relaxed mb-6">Respiratory therapy has long been a challenge for both patients and healthcare providers. Traditional methods, while effective, often struggle with patient adherence and engagement, particularly among pediatric populations. At PlayPhysio, we've revolutionized this approach by combining proven respiratory therapy techniques with engaging game mechanics.</p>
+    <p class="text-lg text-gray-700 leading-relaxed mb-6">Respiratory therapy has long been a challenge for both patients and healthcare providers. Traditional methods, while effective, often struggle with patient adherence and engagement, particularly among pediatric populations. At Playphysio, we've revolutionized this approach by combining proven respiratory therapy techniques with engaging game mechanics.</p>
 
     <h2 class="text-2xl font-bold text-gray-800 mt-8 mb-4">The Challenge of Traditional Respiratory Therapy</h2>
     <p class="text-gray-700 leading-relaxed mb-6">Studies have shown that adherence to respiratory therapy regimens can be as low as 30-50% in pediatric populations. This poor adherence leads to suboptimal outcomes, increased healthcare costs, and frustration for both patients and families.</p>
 
     <div class="bg-gradient-to-br from-cyan-50 to-purple-50 rounded-xl p-6 my-8">
       <h3 class="text-lg font-semibold text-gray-800 mb-3">💡 Key Insight</h3>
-      <p class="text-gray-700">Traditional respiratory therapy methods achieve only 30-50% adherence rates in children, while PlayPhysio achieves 94% adherence through gamification.</p>
+      <p class="text-gray-700">Traditional respiratory therapy methods achieve only 30-50% adherence rates in children, while Playphysio achieves 94% adherence through gamification.</p>
     </div>
 
     <h2 class="text-2xl font-bold text-gray-800 mt-8 mb-4">The Power of Gamification</h2>
@@ -49,7 +49,7 @@ const blogPost = {
     </div>
 
     <h2 class="text-2xl font-bold text-gray-800 mt-8 mb-4">The Technology Behind the Magic</h2>
-    <p class="text-gray-700 leading-relaxed mb-4">PlayPhysio's platform combines several cutting-edge technologies:</p>
+    <p class="text-gray-700 leading-relaxed mb-4">Playphysio's platform combines several cutting-edge technologies:</p>
     <ul class="list-disc list-inside space-y-2 text-gray-700 mb-6 ml-4">
       <li><strong>Smart Sensors:</strong> Precise measurement of breathing patterns and technique</li>
       <li><strong>AI-Powered Adaptation:</strong> Personalized difficulty adjustment based on individual progress</li>
@@ -58,7 +58,7 @@ const blogPost = {
     </ul>
 
     <blockquote class="border-l-4 border-cyan-400 pl-6 py-4 my-8 bg-gray-50 rounded-r-lg">
-      <p class="text-lg text-gray-700 italic">"PlayPhysio has transformed our approach to pediatric respiratory therapy. The engagement levels we see are unprecedented."</p>
+      <p class="text-lg text-gray-700 italic">"Playphysio has transformed our approach to pediatric respiratory therapy. The engagement levels we see are unprecedented."</p>
       <footer class="text-sm text-gray-600 mt-2">— Dr. Michael Rodriguez, Children's Hospital of Philadelphia</footer>
     </blockquote>
 
@@ -69,7 +69,7 @@ const blogPost = {
   `,
   author: "Dr. Sarah Chen",
   authorBio:
-    "Dr. Sarah Chen is a leading researcher in pediatric respiratory therapy and gamification in healthcare. She has published over 50 peer-reviewed articles and is a key contributor to PlayPhysio's clinical validation efforts.",
+    "Dr. Sarah Chen is a leading researcher in pediatric respiratory therapy and gamification in healthcare. She has published over 50 peer-reviewed articles and is a key contributor to Playphysio's clinical validation efforts.",
   date: "2024-01-15",
   readTime: "5 min read",
   category: "Research",
@@ -90,8 +90,8 @@ const relatedPosts = [
   },
   {
     id: 3,
-    title: "Setting Up Your First PlayPhysio Session",
-    excerpt: "A step-by-step guide to getting started with PlayPhysio.",
+    title: "Setting Up Your First Playphysio Session",
+    excerpt: "A step-by-step guide to getting started with Playphysio.",
     image: "/placeholder.svg?height=150&width=250",
     readTime: "4 min read",
     category: "How-To",

@@ -10,7 +10,7 @@ const blogPosts = [
     id: 1,
     title: "The Science Behind Gamified Respiratory Therapy",
     excerpt:
-      "Discover how PlayPhysio's innovative approach combines proven respiratory therapy techniques with engaging game mechanics to improve patient outcomes.",
+      "Discover how Playphysio's innovative approach combines proven respiratory therapy techniques with engaging game mechanics to improve patient outcomes.",
     author: "Dr. Sarah Chen",
     date: "2024-01-15",
     readTime: "5 min read",
@@ -22,7 +22,7 @@ const blogPosts = [
     id: 2,
     title: "94% Therapy Adherence: Real Results from Real Families",
     excerpt:
-      "Learn how families across the country are transforming their respiratory therapy routines with PlayPhysio's engaging platform.",
+      "Learn how families across the country are transforming their respiratory therapy routines with Playphysio's engaging platform.",
     author: "Maria Rodriguez",
     date: "2024-01-10",
     readTime: "3 min read",
@@ -31,9 +31,9 @@ const blogPosts = [
   },
   {
     id: 3,
-    title: "Setting Up Your First PlayPhysio Session",
+    title: "Setting Up Your First Playphysio Session",
     excerpt:
-      "A step-by-step guide to getting started with PlayPhysio, from device connection to your first breathing exercise game.",
+      "A step-by-step guide to getting started with Playphysio, from device connection to your first breathing exercise game.",
     author: "Tech Team",
     date: "2024-01-08",
     readTime: "4 min read",

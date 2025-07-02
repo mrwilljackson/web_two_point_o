@@ -140,7 +140,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-200 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm">© 2024 PlayPhysio. All rights reserved.</p>
+          <p className="text-gray-500 text-sm">© 2024 Playphysio. All rights reserved.</p>
           <p className="text-gray-500 text-sm mt-2 md:mt-0">Clinically validated • FDA approved • HIPAA compliant</p>
         </div>
       </div>

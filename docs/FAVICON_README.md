@@ -1,15 +1,15 @@
-# PlayPhysio Favicon Setup
+# Playphysio Favicon Setup
 
 ## 🎨 Design Elements
 
-The PlayPhysio favicon uses the **official PlayPhysio P logo** design:
+The Playphysio favicon uses the **official Playphysio P logo** design:
 
 ### **Colors**
-- **Brand Purple**: `#812C7C` (official PlayPhysio brand color)
+- **Brand Purple**: `#812C7C` (official Playphysio brand color)
 - **White**: `#FFFFFF` (for the P design)
 
 ### **Design Features**
-- **Official P Logo**: Exact reproduction of the PlayPhysio P logo from `src/assets/playphysio-p-logo.svg`
+- **Official P Logo**: Exact reproduction of the Playphysio P logo from `src/assets/playphysio-p-logo.svg`
 - **Rounded Rectangle**: Matches the official logo's rounded corner design
 - **Brand Consistency**: 100% faithful to the official brand identity
 - **Optimized Scaling**: Adjusted for maximum visibility at small favicon sizes

@@ -6,4 +6,4 @@ postCount: 3
 
 # Physiotherapy
 
-Physiotherapy, including respiratory physiotherapy, plays a crucial role in managing chronic respiratory conditions. PlayPhysio enhances traditional physiotherapy approaches through gamification and technology.
+Physiotherapy, including respiratory physiotherapy, plays a crucial role in managing chronic respiratory conditions. Playphysio enhances traditional physiotherapy approaches through gamification and technology.

@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Button } from "./ui/button";
 import { Play } from "lucide-react";
-import happyPlayPhysioUser1 from '../assets/happy-playphysio-user-1.jpg';
-import happyPlayPhysioUser2 from '../assets/happy-playphysio-user-2.jpg';
-import happyPlayPhysioUser3 from '../assets/happy-playphysio-user-3.jpg';
+import happyPlayphysioUser1 from '../assets/happy-playphysio-user-1.jpg';
+import happyPlayphysioUser2 from '../assets/happy-playphysio-user-2.jpg';
+import happyPlayphysioUser3 from '../assets/happy-playphysio-user-3.jpg';
 
 interface Bubble {
   id: number;
@@ -29,19 +29,19 @@ const HeroSection: React.FC = () => {
   const animationFrameRef = useRef<number | null>(null);
   const timeRef = useRef<number>(0);
 
-  // Array of hero images with multiple happy PlayPhysio users
+  // Array of hero images with multiple happy Playphysio users
   const heroImages = [
     {
-      src: happyPlayPhysioUser1.src,
-      alt: "Happy PlayPhysio user enjoying respiratory therapy"
+      src: happyPlayphysioUser1.src,
+      alt: "Happy Playphysio user enjoying respiratory therapy"
     },
     {
-      src: happyPlayPhysioUser2.src,
-      alt: "Child having fun with PlayPhysio breathing exercises"
+      src: happyPlayphysioUser2.src,
+      alt: "Child having fun with Playphysio breathing exercises"
     },
     {
-      src: happyPlayPhysioUser3.src,
-      alt: "Family enjoying PlayPhysio together"
+      src: happyPlayphysioUser3.src,
+      alt: "Family enjoying Playphysio together"
     }
   ];
 

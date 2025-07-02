@@ -112,7 +112,7 @@ postCount: 3 # auto-calculated
 name: "Will Jackson"
 slug: "will-jackson"
 email: "will@playphysio.com"
-bio: "Founder and CEO of PlayPhysio"
+bio: "Founder and CEO of Playphysio"
 avatar: "/assets/authors/will-jackson.jpg"
 social:
   twitter: "@willjackson"
