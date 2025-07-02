@@ -725,4 +725,27 @@ const description = 'Read our latest posts and articles.';
 
   <!-- Category Filtering JavaScript -->
   <script src="/src/scripts/category-filter.js"></script>
+
+  <!-- URL Parameter Handling -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check for category parameter in URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const categoryParam = urlParams.get('category');
+
+      if (categoryParam) {
+        console.log('URL category parameter found:', categoryParam);
+
+        // Wait a moment for the page to fully load, then filter
+        setTimeout(() => {
+          // Check if the filterByCategory function exists (from category-filter.js)
+          if (typeof filterByCategory === 'function') {
+            filterByCategory(categoryParam);
+          } else {
+            console.warn('filterByCategory function not found');
+          }
+        }, 100);
+      }
+    });
+  </script>
 </Layout>
