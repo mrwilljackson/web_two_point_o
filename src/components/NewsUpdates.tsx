@@ -66,8 +66,10 @@ const NewsUpdates = () => {
     return cleanText.substring(0, maxLength).trim() + '...';
   };
 
-  const getBlogUrl = (slug: string) => {
-    return `/blog/${slug}`;
+  const getBlogUrl = (slug: string, date: string) => {
+    // Extract year from the post date to match Astro content collection structure
+    const year = new Date(date).getFullYear();
+    return `/blog/${year}/${slug}`;
   };
 
   if (loading) {
@@ -144,7 +146,7 @@ const NewsUpdates = () => {
                 
                 <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
                   <a
-                    href={getBlogUrl(post.slug)}
+                    href={getBlogUrl(post.slug, post.date)}
                     className="hover:text-purple-600 transition-colors duration-300"
                     dangerouslySetInnerHTML={{ __html: post.title.rendered }}
                   />
@@ -156,7 +158,7 @@ const NewsUpdates = () => {
                 
                 <div className="mt-4">
                   <a
-                    href={getBlogUrl(post.slug)}
+                    href={getBlogUrl(post.slug, post.date)}
                     className="inline-flex items-center text-purple-600 hover:text-purple-700 font-semibold text-sm transition-colors duration-300"
                   >
                     Read more →

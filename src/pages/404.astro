@@ -33,6 +33,12 @@ try {
   console.error('❌ Error fetching posts for 404 page:', error);
   console.log('📝 Using static fallback content for 404 page');
 }
+
+// Helper function to generate correct blog URLs with year
+function getBlogUrl(slug: string, date: string) {
+  const year = new Date(date).getFullYear();
+  return `/blog/${year}/${slug}`;
+}
 ---
 
 <Layout title="Page Not Found - Playphysio">
@@ -174,7 +180,7 @@ try {
                   <span>5 min read</span>
                 </div>
               </div>
-              <a href={`/blog/${featuredPost.slug}`} class="featured-button-404">
+              <a href={getBlogUrl(featuredPost.slug, featuredPost.date)} class="featured-button-404">
                 Read This Article
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
