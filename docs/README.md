@@ -42,6 +42,14 @@ Welcome to the comprehensive documentation for the Playphysio website. This site
 - Image optimization and placement
 - Testing and deployment process
 
+#### **[Image Preparation Guide](image-preparation-guide.md)**
+*Complete workflow for preparing and optimizing blog images*
+- Image specifications and organization structure
+- Optimization tools and techniques
+- Step-by-step preparation workflow
+- Best practices for performance and SEO
+- Alt text guidelines and accessibility
+
 ---
 
 ### 🚀 **Deployment & Hosting**
@@ -54,6 +62,22 @@ Welcome to the comprehensive documentation for the Playphysio website. This site
 - Cloud storage deployment options
 - Verification and troubleshooting
 - Automated deployment setup
+
+#### **[Temporary Deployment Guide](temporary-deployment-guide.md)**
+*Current deployment workflow using personal GitHub repo and Vercel*
+- Quick deployment commands and workflows
+- GitHub repository management
+- Vercel integration and monitoring
+- Troubleshooting common deployment issues
+- Performance monitoring and backup procedures
+
+#### **[WordPress Proxy Setup Todo](wordpress-proxy-setup-todo.md)**
+*Run WordPress alongside your static site using proxy forwarding*
+- Complete setup checklist for hybrid static/dynamic architecture
+- Proxy configuration for Vercel, Cloudflare, and traditional hosting
+- WordPress installation and security hardening
+- Cross-site navigation and branding consistency
+- Testing, monitoring, and maintenance procedures
 
 ---
 

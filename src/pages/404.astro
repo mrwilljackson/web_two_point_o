@@ -170,7 +170,7 @@ function getBlogUrl(slug: string, date: string) {
                   <span>5 min read</span>
                 </div>
               </div>
-              <a href={getBlogUrl(featuredPost.slug, featuredPost.data.date.toISOString())} class="featured-button-404">
+              <a href={`/blog/${featuredPost.slug}`} class="featured-button-404">
                 Read This Article
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <line x1="5" y1="12" x2="19" y2="12"></line>

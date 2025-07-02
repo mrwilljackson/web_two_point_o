@@ -8,7 +8,10 @@
 | **[Content Management Guide](content-management-guide.md)** | Complete content management | Daily content tasks |
 | **[Quick Reference](quick-reference.md)** | Common tasks cheat sheet | Quick lookups |
 | **[First Post Tutorial](tutorial-first-post.md)** | Step-by-step beginner guide | Creating your first post |
+| **[Image Preparation Guide](image-preparation-guide.md)** | Complete image workflow | Preparing and optimizing images |
 | **[Deployment Guide](DEPLOYMENT.md)** | Deploy to hosting providers | Going live |
+| **[Temporary Deployment Guide](temporary-deployment-guide.md)** | Current GitHub + Vercel workflow | Quick deployment |
+| **[WordPress Proxy Setup](wordpress-proxy-setup-todo.md)** | Run WordPress alongside static site | Hybrid architecture setup |
 
 ## 🎨 **Design & Branding**
 
@@ -53,7 +56,9 @@ docs/
 | **Remove a blog post** | [Content Management Guide](content-management-guide.md#removing-blog-posts) |
 | **Use interactive components** | [Content Management Guide](content-management-guide.md#available-content-components) |
 | **Deploy my site** | [Deployment Guide](DEPLOYMENT.md) |
+| **Quick deploy to Vercel** | [Temporary Deployment Guide](temporary-deployment-guide.md) |
 | **Learn the basics** | [First Post Tutorial](tutorial-first-post.md) |
+| **Prepare images** | [Image Preparation Guide](image-preparation-guide.md) |
 | **Quick command lookup** | [Quick Reference](quick-reference.md) |
 | **Check brand colors** | [Brand Quick Reference](brand-quick-reference.md) |
 | **Understand the system** | [Content Structure Guide](frontmatter-content-structure.md) |

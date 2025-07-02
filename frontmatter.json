@@ -1,0 +1,129 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.framework.id": "astro",
+  "frontMatter.preview.host": "http://localhost:4322",
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "Blog Posts",
+      "path": "[[workspace]]/src/content/blog"
+    }
+  ],
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "blogpost",
+      "pageBundle": false,
+      "previewPath": "/blog",
+      "filePrefix": null,
+      "fields": [
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Publishing date",
+          "name": "date",
+          "type": "datetime",
+          "default": "{{now}}",
+          "isPublishDate": true,
+          "required": true
+        },
+        {
+          "title": "Status",
+          "name": "status",
+          "type": "choice",
+          "choices": [
+            "published",
+            "draft",
+            "archived"
+          ],
+          "default": "published",
+          "required": true
+        },
+        {
+          "title": "Excerpt",
+          "name": "excerpt",
+          "type": "string",
+          "description": "Brief description for SEO and previews (under 160 characters)",
+          "required": true
+        },
+        {
+          "title": "Word Count",
+          "name": "wordCount",
+          "type": "number",
+          "description": "Approximate word count of the post"
+        },
+        {
+          "title": "Categories",
+          "name": "categories",
+          "type": "categories",
+          "required": true
+        },
+        {
+          "title": "Tags",
+          "name": "tags",
+          "type": "tags"
+        },
+        {
+          "title": "Author",
+          "name": "author",
+          "type": "choice",
+          "choices": [
+            "will-jackson"
+          ],
+          "default": "will-jackson",
+          "required": true
+        },
+        {
+          "title": "Featured Image",
+          "name": "featuredImage",
+          "type": "fields",
+          "fields": [
+            {
+              "title": "Image Source",
+              "name": "src",
+              "type": "image",
+              "description": "Path to featured image (e.g., /images/blog/2025/post-name.jpg)"
+            },
+            {
+              "title": "Alt Text",
+              "name": "alt",
+              "type": "string",
+              "description": "Descriptive alt text for accessibility"
+            }
+          ]
+        },
+        {
+          "title": "Featured Post",
+          "name": "featured",
+          "type": "boolean",
+          "default": false,
+          "description": "Mark as featured post for homepage and 404 page"
+        },
+        {
+          "title": "Has Shortcodes",
+          "name": "hasShortcodes",
+          "type": "boolean",
+          "default": true,
+          "description": "Whether this post uses interactive components"
+        }
+      ]
+    }
+  ],
+  "frontMatter.taxonomy.categories": [
+    "news",
+    "blog",
+    "research"
+  ],
+  "frontMatter.taxonomy.tags": [
+    "gamification",
+    "respiratory-therapy",
+    "pediatric-healthcare",
+    "patient-engagement",
+    "cystic-fibrosis",
+    "adherence",
+    "innovation",
+    "healthcare-technology"
+  ]
+}
