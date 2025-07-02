@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
-import { getAllPosts, getPostBySlug, formatDate, getRelatedPosts } from '../../lib/content';
+import { getAllPosts, getPostBySlug, formatDate, getRelatedPosts, getAuthorBySlug } from '../../lib/content';
 import type { BlogPost } from '../../lib/content';
 
 export async function getStaticPaths() {
@@ -30,6 +30,11 @@ const { Content } = await post.render();
 // Get related posts
 const relatedPosts = await getRelatedPosts(post, 3);
 
+// Get author information
+const authorSlug = post.data.author || 'will-jackson';
+const authorEntry = await getAuthorBySlug(authorSlug);
+const authorName = authorEntry?.data.name || 'PlayPhysio Team';
+
 // Format data for display
 const formattedDate = formatDate(post.data.date);
 const featuredImage = post.data.featuredImage;
@@ -41,7 +46,6 @@ const featuredImageUrl = featuredImage?.src;
 const canonical = `${process.env.SITE_URL || 'https://playphysio.com'}/blog/${post.slug}`;
 const publishedTime = new Date(post.data.date).toISOString();
 const modifiedTime = publishedTime; // Use published time as modified time for now
-const authorName = 'PlayPhysio Team';
 const postTags = post.data.tags;
 ---
 

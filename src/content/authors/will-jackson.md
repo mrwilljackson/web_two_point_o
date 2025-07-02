@@ -11,16 +11,16 @@ social:
 
 # Will Jackson
 
-Will Jackson is the Founder and CEO of PlayPhysio, a healthcare technology company focused on improving pediatric respiratory therapy through gamification. With a background in healthcare innovation and entrepreneurship, Will is passionate about making medical treatments more engaging and effective for children and families.
+Will Jackson is the Founder and CEO of Playphysio, a healthcare technology company focused on improving pediatric respiratory therapy through gamification. With a background in healthcare innovation and entrepreneurship, Will is passionate about making medical treatments more engaging and effective for children and families.
 
 ## Background
 
-Will's journey began with recognizing the challenges faced by children with chronic respiratory conditions and their families. Through PlayPhysio, he aims to transform the treatment experience by making therapy sessions more enjoyable and engaging, ultimately improving adherence and health outcomes.
+Will's journey began with recognizing the challenges faced by children with chronic respiratory conditions and their families. Through Playphysio, he aims to transform the treatment experience by making therapy sessions more enjoyable and engaging, ultimately improving adherence and health outcomes.
 
 ## Achievements
 
 - NHS Clinical Entrepreneur Program participant
-- ISO 13485 Certification for PlayPhysio
+- ISO 13485 Certification for Playphysio
 - Featured on BBC's The One Show and Look East
 - Allia Future20 recipient
 - Multiple healthcare innovation awards

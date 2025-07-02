@@ -28,6 +28,24 @@ const featuredPosts = await getFeaturedPosts();
 const featuredPost = featuredPosts.length > 0 ? featuredPosts[0] : null;
 const remainingPosts = posts.filter(post => !post.data.featured);
 
+// Get author information for featured post
+let featuredPostAuthor = null;
+if (featuredPost) {
+  const authorSlug = featuredPost.data.author || 'will-jackson';
+  const authorEntry = await getAuthorBySlug(authorSlug);
+  featuredPostAuthor = authorEntry?.data.name || 'PlayPhysio Team';
+}
+
+// Get author information for all posts
+const postsWithAuthors = await Promise.all(
+  remainingPosts.map(async (post) => {
+    const authorSlug = post.data.author || 'will-jackson';
+    const authorEntry = await getAuthorBySlug(authorSlug);
+    const authorName = authorEntry?.data.name || 'PlayPhysio Team';
+    return { ...post, authorName };
+  })
+);
+
 console.log(`📌 Found ${featuredPosts.length} featured posts`);
 if (featuredPost) {
   console.log(`✨ Featured post: "${featuredPost.data.title}"`);
@@ -578,7 +596,7 @@ const description = 'Read our latest posts and articles.';
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                     <circle cx="12" cy="7" r="4"></circle>
                   </svg>
-                  <span>PlayPhysio Team</span>
+                  <span>{featuredPostAuthor}</span>
                 </div>
                 <div class="featured-meta-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -634,9 +652,9 @@ const description = 'Read our latest posts and articles.';
     )}
 
     <div class="main-content">
-      {remainingPosts.length > 0 ? (
+      {postsWithAuthors.length > 0 ? (
         <div class="posts-grid">
-          {remainingPosts.map(post => {
+          {postsWithAuthors.map(post => {
             const formattedDate = formatDate(post.data.date);
 
             return (
@@ -678,7 +696,7 @@ const description = 'Read our latest posts and articles.';
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                         <circle cx="12" cy="7" r="4"></circle>
                       </svg>
-                      <span>PlayPhysio Team</span>
+                      <span>{post.authorName}</span>
                     </div>
                     <div class="post-meta-right">
                       <div class="post-meta-item">

@@ -2,7 +2,7 @@
 title: "Playphysio is one of Allia's Future20."
 date: 2019-07-01
 status: "published"
-excerpt: "Allia announces the Future20. 20 exciting companies looking to change the world. We have some very exciting news! We’re thrilled to announce that we have been chosen as one of the Future 20! We’ve joined a new incubator programme from @Allia Future Business Centre along with 19 other startups who are tackling the #GlobalGoals and [...]"
+excerpt: "Allia announces the Future20! Twenty exciting companies looking to change the world. We have some very exciting news! We’re thrilled to announce that we have been chosen as one of the Future 20! We’ve joined a new incubator programme from @Allia Future Business Centre along with 19 other startups who are tackling the #GlobalGoals and [...]"
 wordCount: 315
 categories: ["news"]
 tags: ["entrepreneurship", "social-venture"]
