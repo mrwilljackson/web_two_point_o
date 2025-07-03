@@ -1,12 +1,12 @@
 ---
 name: "Will Jackson"
-email: "will@playphysio.com"
+email: "will@play.physio"
 bio: "Founder and CEO of PlayPhysio, passionate about transforming pediatric respiratory therapy through gamification and innovative healthcare technology."
 avatar: "/assets/authors/will-jackson.jpg"
 social:
   twitter: "@willjackson"
-  linkedin: "willjackson"
-  website: "https://playphysio.com"
+  linkedin: "mrwilljackson"
+  website: "https://play.physio"
 ---
 
 # Will Jackson
