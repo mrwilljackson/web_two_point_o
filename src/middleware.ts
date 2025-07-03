@@ -2,10 +2,20 @@ import { defineMiddleware } from 'astro:middleware';
 
 export const onRequest = defineMiddleware(async (context, next) => {
   // Check if maintenance mode is enabled
-  const isMaintenanceMode = import.meta.env.MAINTENANCE_MODE === 'true' || 
-                           import.meta.env.MAINTENANCE_MODE === '1' ||
-                           process.env.MAINTENANCE_MODE === 'true' ||
-                           process.env.MAINTENANCE_MODE === '1';
+  const envMaintenanceMode = import.meta.env.MAINTENANCE_MODE;
+  const processMaintenanceMode = process.env.MAINTENANCE_MODE;
+
+  // Debug logging (will appear in Vercel function logs)
+  console.log('🔧 Maintenance Mode Check:', {
+    'import.meta.env.MAINTENANCE_MODE': envMaintenanceMode,
+    'process.env.MAINTENANCE_MODE': processMaintenanceMode,
+    'NODE_ENV': process.env.NODE_ENV
+  });
+
+  const isMaintenanceMode = envMaintenanceMode === 'true' ||
+                           envMaintenanceMode === '1' ||
+                           processMaintenanceMode === 'true' ||
+                           processMaintenanceMode === '1';
 
   // If maintenance mode is enabled, show maintenance page for all routes
   if (isMaintenanceMode) {
