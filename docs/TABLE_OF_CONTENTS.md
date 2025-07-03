@@ -15,6 +15,7 @@ Quick reference for all PlayPhysio website documentation.
 | **[IMAGE_HANDLING_GUIDE.md](IMAGE_HANDLING_GUIDE.md)** | 🖼️ Image processing and optimization | Everyone |
 | **[FAVICON_README.md](FAVICON_README.md)** | 🎯 Brand consistency and favicon setup | Designers |
 | **[404_PAGE_GUIDE.md](404_PAGE_GUIDE.md)** | 🚫 Custom 404 error page design and UX | Designers |
+| **[maintenance-mode-guide.md](maintenance-mode-guide.md)** | 🚧 Emergency maintenance mode control | Developers |
 
 ## 🎯 By Use Case
 
@@ -41,9 +42,9 @@ Quick reference for all PlayPhysio website documentation.
 
 ## 📊 Documentation Stats
 
-- **Total Files**: 9 documentation files
+- **Total Files**: 10 documentation files
 - **Content Creation**: 4 guides
-- **Technical Setup**: 3 guides
+- **Technical Setup**: 4 guides
 - **Brand/Design**: 3 guides
 - **Last Updated**: January 2025
 

@@ -82,6 +82,7 @@ Welcome to the comprehensive documentation for the PlayPhysio website project. T
 | **Featured Posts** | WordPress sticky posts integration | [Sticky Posts Feature](STICKY_POSTS_FEATURE.md) |
 | **Image Optimization** | Automatic processing and responsive images | [Image Handling Guide](IMAGE_HANDLING_GUIDE.md) |
 | **Brand Consistency** | Favicon and logo management system | [Favicon Guide](FAVICON_README.md) |
+| **Maintenance Mode** | Emergency maintenance with single variable control | [Maintenance Mode Guide](maintenance-mode-guide.md) |
 | **Static Generation** | Fast, SEO-friendly static site output | [Main README](../README.md) |
 
 ### Available Shortcodes
