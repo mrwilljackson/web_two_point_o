@@ -28,6 +28,7 @@ export default defineConfig({
       'process.env.WORDPRESS_APP_PASSWORD': JSON.stringify(env.WORDPRESS_APP_PASSWORD),
       'process.env.SITE_URL': JSON.stringify(env.SITE_URL),
       'process.env.SITE_NAME': JSON.stringify(env.SITE_NAME),
+      'process.env.MAINTENANCE_MODE': JSON.stringify(env.MAINTENANCE_MODE),
     },
 
     plugins: [tailwindcss()],
