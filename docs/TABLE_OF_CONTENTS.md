@@ -13,6 +13,21 @@
 | **[Temporary Deployment Guide](temporary-deployment-guide.md)** | Current GitHub + Vercel workflow | Quick deployment |
 | **[WordPress Proxy Setup](wordpress-proxy-setup-todo.md)** | Run WordPress alongside static site | Hybrid architecture setup |
 
+## 📁 All Documentation Files
+
+| File | Purpose | Audience |
+|------|---------|----------|
+| **[README.md](README.md)** | 📚 Main documentation index and overview | Everyone |
+| **[../README.md](../README.md)** | 🚀 Project setup and basic usage | Developers |
+| **[SHORTCODES_GUIDE.md](SHORTCODES_GUIDE.md)** | 🎨 WordPress shortcodes for rich content | Content Creators |
+| **[DEPLOYMENT.md](DEPLOYMENT.md)** | 🚀 Production deployment instructions | Developers |
+| **[CATEGORY_SYSTEM_README.md](CATEGORY_SYSTEM_README.md)** | 🏷️ Blog category organization and filtering | Content Creators |
+| **[STICKY_POSTS_FEATURE.md](STICKY_POSTS_FEATURE.md)** | ⭐ Featured posts management | Content Creators |
+| **[IMAGE_HANDLING_GUIDE.md](IMAGE_HANDLING_GUIDE.md)** | 🖼️ Image processing and optimization | Everyone |
+| **[FAVICON_README.md](FAVICON_README.md)** | 🎯 Brand consistency and favicon setup | Designers |
+| **[404_PAGE_GUIDE.md](404_PAGE_GUIDE.md)** | 🚫 Custom 404 error page design and UX | Designers |
+| **[maintenance-mode-guide.md](maintenance-mode-guide.md)** | 🚧 Emergency maintenance mode control | Developers |
+
 ## 🎨 **Design & Branding**
 
 | Document | Purpose | When to Use |
@@ -64,20 +79,13 @@ docs/
 | **Understand the system** | [Content Structure Guide](frontmatter-content-structure.md) |
 | **See what changed** | [WordPress Independence Summary](wordpress-independence-complete.md) |
 
-## 📊 **Documentation Status**
+## 📊 **Documentation Stats**
 
-| Document | Status | Last Updated |
-|----------|--------|--------------|
-| README.md | ✅ Current | July 2025 |
-| Content Management Guide | ✅ Current | July 2025 |
-| Quick Reference | ✅ Current | July 2025 |
-| First Post Tutorial | ✅ Current | July 2025 |
-| Deployment Guide | ✅ Updated | July 2025 |
-| Brand Guidelines | ✅ Current | Previous |
-| Brand Quick Reference | ✅ Current | Previous |
-| Favicon Guide | ✅ Current | Previous |
-| Content Structure Guide | ✅ Current | Previous |
-| WordPress Independence | ✅ Current | July 2025 |
+- **Total Files**: 10 documentation files
+- **Content Creation**: 4 guides
+- **Technical Setup**: 4 guides
+- **Brand/Design**: 3 guides
+- **Last Updated**: July 2025
 
 ---
 
